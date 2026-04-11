@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "stardust",
+  "metadata": {
+    "description": "Skill-based pipeline for creating AEM Edge Delivery Services websites from brand guidelines. Composes superpowers, impeccable, and Adobe EDS skills."
+  },
+  "owner": {
+    "name": "Paolo Mottadelli",
+    "email": "mottadel@adobe.com"
+  },
+  "plugins": [
+    {
+      "name": "stardust",
+      "description": "Navigate brand → design system → experience design → build pipeline for AEM EDS websites. 6 skills: /stardust (navigator), /stardust:brand, /stardust:design-system, /stardust:experience, /stardust:build, /stardust:refine.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paolo Mottadelli",
+        "email": "mottadel@adobe.com"
+      },
+      "source": "./",
+      "category": "design",
+      "tags": ["aem", "eds", "edge-delivery", "brand", "design-system", "pipeline"]
+    }
+  ]
+}

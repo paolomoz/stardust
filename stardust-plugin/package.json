@@ -1,0 +1,12 @@
+{
+  "name": "@excat/stardust",
+  "version": "0.1.0",
+  "description": "Skill-based pipeline for creating AEM Edge Delivery Services websites from brand guidelines",
+  "author": "Paolo Mottadelli <mottadel@adobe.com>",
+  "license": "Apache-2.0",
+  "keywords": ["claude-code", "plugin", "aem", "eds", "brand", "design-system"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/excat/stardust"
+  }
+}
