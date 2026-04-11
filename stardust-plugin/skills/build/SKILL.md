@@ -91,13 +91,13 @@ if (h1.closest('[class^="hero"]') || picture.closest('[class^="hero"]')) {
   padding-top: 0; /* remove section padding if needed */
 }
 
-.{block}-container > div {
+main .{block}-container > div {
   max-width: unset;
   padding: 0;
 }
 ```
 
-This override is required for any block that fills the viewport width — without it, the block will be constrained to `--content-max-width` (typically 1200px).
+**Specificity matters:** The base rule `main > .section > div` has specificity (0,1,2). A simple `.{block}-container > div` is only (0,1,1) and loses. Prefix with `main` to get (0,1,2) and win. Without this, the wrapper stays at `--content-max-width` and the block is not full-bleed.
 
 For EACH block in the manifest:
 
