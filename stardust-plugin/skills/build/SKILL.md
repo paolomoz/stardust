@@ -27,6 +27,14 @@ For each wireframe in `stardust/wireframes/`:
 3. Check existing `blocks/` directory — inventory what's already available
 4. Produce `stardust/block-manifest.json` with the mapping: which wireframe sections map to which blocks, which blocks exist, which need to be created
 
+### Prefer Custom Blocks Over Generic Blocks
+
+**When a wireframe section has a unique composition** — a hero with an eyebrow label and split layout, a feature section with alternating image/text, a story card with quote + attribution — **create a custom block** for it rather than forcing a generic block (hero, columns) to handle the variant.
+
+Generic blocks (hero, columns, cards) work well for simple, uniform content. But when a wireframe section has a specific layout, content model, or visual treatment, a custom block is cheaper to build and easier to maintain than CSS variant hacks on a generic block. Name custom blocks after their wireframe intent: `hero-split`, `hero-centered`, `feature-split`, `story-card`, `stat-row`, `pillars`.
+
+**Rule of thumb:** If a section would need more than a `section-metadata` style class to express its design, it needs its own block.
+
 5. Present the manifest to the user:
    - "I've analyzed your wireframes. Here's what I need to build:"
    - List existing blocks that can be reused (with any CSS updates needed)
@@ -44,13 +52,41 @@ For each wireframe in `stardust/wireframes/`:
 
 ## Phase 3: Build Blocks
 
-For EACH block in the manifest (existing or new):
+### Core Principle: All Block CSS Starts from Empty
 
-### For existing blocks that need updates:
-1. Read the current block code
-2. Update CSS to use brand design tokens (custom properties from `styles/styles.css`)
-3. Verify against wireframe section's visual intent
-4. Run `/impeccable craft` to visually iterate until the block matches the wireframe
+**Do NOT patch boilerplate block CSS.** Every block's CSS file must be written from scratch, using only brand design tokens from `styles/styles.css`. The boilerplate block CSS contains arbitrary default values with no connection to any brand. Patching it leaves stale rules that silently degrade the design.
+
+This applies equally to:
+- **Boilerplate blocks** (hero, columns, cards, header, footer): Keep the JS where it provides structural value (DOM transformation, fragment loading). **Rewrite the CSS entirely** from brand tokens.
+- **New blocks** (testimonials, specs, etc.): Write both JS and CSS from scratch.
+
+The block JS generates specific DOM structures and class names. Read the JS to understand what classes and elements exist, then write CSS that targets them with brand-appropriate styling. Cross-reference the wireframe section that maps to each block to understand the design intent (typography, spacing, visual weight, layout).
+
+### Full-Bleed Block Pattern
+
+`decorateBlock()` in `aem.js` wraps every block in a `{block}-wrapper` div. The DOM chain is: `.section.{block}-container > div.{block}-wrapper > div.{block}.block`. The wrapper inherits `max-width: var(--content-max-width)` from `main > .section > div`. Blocks that need to extend edge-to-edge (heroes, CTA bands, full-width backgrounds) must override this on the container and wrapper:
+
+```css
+.{block}-container {
+  padding-top: 0; /* remove section padding if needed */
+}
+
+.{block}-container > div {
+  max-width: unset;
+  padding: 0;
+}
+```
+
+This override is required for any block that fills the viewport width — without it, the block will be constrained to `--content-max-width` (typically 1200px).
+
+For EACH block in the manifest:
+
+### For boilerplate blocks (hero, columns, cards):
+1. Read the block JS to understand the DOM structure it produces
+2. Read the wireframe section(s) that map to this block for design intent
+3. **Write the CSS from empty** — no reference to the boilerplate CSS. Every rule derived from brand tokens and wireframe intent
+4. Verify against wireframe section's visual intent
+5. Run `/impeccable craft` to visually iterate until the block matches the wireframe
 
 ### For new blocks:
 1. Write the content model to `stardust/content-models/{block}.md` using `content-modeling` (from aem-edge-delivery-services)
@@ -60,7 +96,7 @@ For EACH block in the manifest (existing or new):
 2. Create test content in `drafts/blocks/{block}.html` using the content model
 3. Build the block using `content-driven-development` (from aem-edge-delivery-services):
    - `building-blocks` generates the initial `blocks/{name}/{name}.js` and `blocks/{name}/{name}.css`
-   - Apply brand design tokens in the CSS
+   - **Discard the generated CSS and write from scratch** using brand tokens
 4. Run `/impeccable craft` to enter the visual build loop:
    - `/craft` builds the block, takes a screenshot, evaluates against the wireframe intent, and iterates
    - Loop until the block is production-grade
@@ -85,11 +121,13 @@ Before generating pages, create the navigation and footer that appear on every p
    - Tools section for CTAs (e.g., `<p><strong><a href="...">Shop</a></strong></p>`)
 3. Create `footer.plain.html` **at the project root**:
    - Simple content: copyright, tagline, optional links
-4. Update **header CSS** (`blocks/header/header.css`) to use brand design tokens:
-   - Background: `var(--color-dark)` or appropriate brand color
-   - Text/links: `var(--color-accent)` or light brand color
-   - Brand name: `var(--heading-font-family)`
-5. Update **footer CSS** (`blocks/footer/footer.css`) to use brand design tokens
+4. **Write header CSS from scratch** (`blocks/header/header.css`):
+   - Read the header JS to understand the DOM structure (.nav-wrapper, .nav-brand, .nav-sections, .nav-tools, .nav-hamburger)
+   - Write all CSS from empty using brand tokens — nav background, link colors, brand typography, CTA button treatment, hamburger icon, mobile/desktop responsive layout
+   - The header JS is structural plumbing (fragment loading, hamburger toggle, aria states) — keep it, rewrite only CSS
+5. **Write footer CSS from scratch** (`blocks/footer/footer.css`):
+   - Read the footer JS to understand the DOM structure
+   - Write from empty — background, text color, link treatment, padding, typography
 
 **Why this matters:** The header block loads `/nav.plain.html` and the footer loads `/footer.plain.html` as fragments. Without these files at the project root, the header/footer crash and may block page rendering. These are NOT served from `drafts/` — the fragment loader fetches from the root path.
 
@@ -162,6 +200,31 @@ This rule applies equally to page drafts (`drafts/*.plain.html`) and fragment fi
 <div class="section-metadata">
   <div><div>style</div><div>dark</div></div>
 </div>
+```
+
+### Button / CTA Markup Rules
+
+**CRITICAL:** The `decorateButtons()` function in `scripts.js` checks `p.textContent.trim() !== text` — if a `<p>` contains anything besides a single link, NEITHER link in that paragraph gets decorated as a button. Every CTA link must be the **sole content** of its own `<p>` element.
+
+Button styles are determined by wrapping elements:
+- **Primary button** (filled): `<p><strong><a href="...">Label</a></strong></p>`
+- **Secondary button** (outline): `<p><em><a href="...">Label</a></em></p>`
+- **Accent button** (strong + italic): `<p><strong><em><a href="...">Label</a></em></strong></p>`
+
+**Correct (each CTA gets its own `<p>`):**
+```html
+<p><strong><a href="/buy">Shop VX1</a></strong></p>
+<p><em><a href="/capabilities">See What It Can Do</a></em></p>
+```
+
+**Wrong (two links share one `<p>` — neither becomes a button):**
+```html
+<p><strong><a href="/buy">Shop VX1</a></strong> <em><a href="/capabilities">See What It Can Do</a></em></p>
+```
+
+**Wrong (link is not wrapped — renders as plain text link, not a button):**
+```html
+<p><a href="/buy">Shop VX1</a></p>
 ```
 
 ### Placeholder Images
