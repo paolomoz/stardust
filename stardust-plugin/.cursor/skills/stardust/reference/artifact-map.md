@@ -47,8 +47,13 @@ All pipeline state lives under `stardust/`. EDS artifacts go to standard paths.
 | Content Models | `stardust/content-models/{block}.md` | Markdown | DA table contract per block |
 | Block JS | `blocks/{name}/{name}.js` | JavaScript | Block decoration code |
 | Block CSS | `blocks/{name}/{name}.css` | CSS | Block styles |
+| Header CSS | `blocks/header/header.css` | CSS | Header styles updated for brand |
+| Footer CSS | `blocks/footer/footer.css` | CSS | Footer styles updated for brand |
+| Nav Fragment | `nav.plain.html` | HTML | Navigation fragment (project root, NOT drafts/) |
+| Footer Fragment | `footer.plain.html` | HTML | Footer fragment (project root, NOT drafts/) |
 | Test Content | `drafts/blocks/{name}.html` | HTML | Test page per block |
-| Generated Pages | `drafts/{page}.html` | HTML | Full pages with real content |
+| Generated Pages | `drafts/{page}.plain.html` | HTML | Full pages — NO `<main>` wrapper |
+| Placeholder Images | `drafts/media_*.{png,webp}` | Image | Branded gradient placeholders |
 
 **Required input:** `stardust/wireframes/*.html`, `stardust/briefings/*.md`, `stardust/design-tokens.json`, `stardust/brand-profile.json`, `.impeccable.md`
 **Human gate:** Designer reviews final pages
@@ -78,4 +83,6 @@ The navigator reads the filesystem and reports status per stage:
 | `stardust/wireframes/` has `.html` files | Wireframes: created |
 | `stardust/block-manifest.json` exists | Block mapping: done |
 | `blocks/` has non-boilerplate blocks | Blocks: built |
-| `drafts/` has page `.html` files | Pages: generated |
+| `nav.plain.html` exists at project root | Nav fragment: created |
+| `footer.plain.html` exists at project root | Footer fragment: created |
+| `drafts/` has page `.plain.html` files | Pages: generated |

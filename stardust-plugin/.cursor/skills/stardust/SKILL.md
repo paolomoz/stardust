@@ -29,7 +29,9 @@ Check: stardust/briefings/ (has .md files)   → briefings
 Check: stardust/wireframes/ (has .html files)→ wireframes
 Check: stardust/block-manifest.json          → block_manifest
 Check: blocks/ (non-boilerplate blocks)      → custom_blocks
-Check: drafts/ (page .html files)            → generated_pages
+Check: nav.plain.html (project root)         → nav_fragment
+Check: footer.plain.html (project root)      → footer_fragment
+Check: drafts/ (page .plain.html files)      → generated_pages
 ```
 
 To check if `styles/styles.css` has custom properties (not just boilerplate), look for brand-specific custom property names like `--color-primary`, `--heading-font-family`, or properties that don't match the default boilerplate values.

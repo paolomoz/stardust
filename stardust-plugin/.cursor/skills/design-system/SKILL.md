@@ -78,6 +78,10 @@ The designer does NOT see intermediate states. Run these checks and fix issues b
 3. If the designer wants changes: update brand-profile.json or tweak CSS directly, then re-run the quality gate
 4. When satisfied: "Design system complete. Run `/stardust` to see your next step, or `/stardust:experience` to start wireframing."
 
+## Note on Header and Footer
+
+The design system applies base styles, but `blocks/header/header.css` and `blocks/footer/footer.css` also need brand updates since they appear on every page. This is handled in the Build stage (Phase 3.5), not here — the design system stage focuses on the global tokens and base styles. However, if you're testing the design system visually before building pages, be aware that the header/footer will still use boilerplate styling until the build stage updates them.
+
 ## Artifacts Written
 
 | File | Description |

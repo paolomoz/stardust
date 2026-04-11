@@ -72,6 +72,27 @@ For EACH block in the manifest (existing or new):
 - Block follows EDS conventions (scoped selectors, no `-container`/`-wrapper` classes)
 - Block decoration handles missing optional fields gracefully
 
+## Phase 3.5: Build Nav and Footer Fragments
+
+Before generating pages, create the navigation and footer that appear on every page:
+
+1. Read the site briefing (`stardust/briefings/_site.md`) for navigation structure
+2. Create `nav.plain.html` **at the project root** (NOT in `drafts/`):
+   - Three sections (divs): brand, nav links, tools — in that order
+   - The header block maps these to `.nav-brand`, `.nav-sections`, `.nav-tools`
+   - Brand link should be `<p><a href="/">Brand Name</a></p>`
+   - Nav links as `<ul><li><a href="...">Page Name</a></li>...</ul>`
+   - Tools section for CTAs (e.g., `<p><strong><a href="...">Shop</a></strong></p>`)
+3. Create `footer.plain.html` **at the project root**:
+   - Simple content: copyright, tagline, optional links
+4. Update **header CSS** (`blocks/header/header.css`) to use brand design tokens:
+   - Background: `var(--color-dark)` or appropriate brand color
+   - Text/links: `var(--color-accent)` or light brand color
+   - Brand name: `var(--heading-font-family)`
+5. Update **footer CSS** (`blocks/footer/footer.css`) to use brand design tokens
+
+**Why this matters:** The header block loads `/nav.plain.html` and the footer loads `/footer.plain.html` as fragments. Without these files at the project root, the header/footer crash and may block page rendering. These are NOT served from `drafts/` — the fragment loader fetches from the root path.
+
 ## Phase 4: Generate Pages
 
 For each wireframe that has all its blocks built:
@@ -83,8 +104,48 @@ For each wireframe that has all its blocks built:
    - Section-by-section, fill wireframe structure with real content
    - Headlines, body copy, CTA text generated in brand voice
    - Use `ai-image-generator` (from eds-site-builder) for images, applying photography style from brand profile
-5. Write generated pages to `drafts/{page}.html`
-6. Serve via dev server at `http://localhost:3000/drafts/{page}`
+5. Write generated pages to `drafts/{page}.plain.html`
+6. Restart the dev server with the drafts folder: `npx -y @adobe/aem-cli up --no-open --html-folder drafts`
+7. Serve via dev server at `http://localhost:3000/drafts/{page}`
+
+### `.plain.html` Format Rules
+
+**CRITICAL:** Draft page files MUST follow the AEM `.plain.html` format:
+- File extension: `.plain.html`
+- Content is **section divs only** — NO `<html>`, `<body>`, or `<main>` wrapper tags
+- The dev server wraps content in `<html><body><main>...</main></body></html>` automatically
+- If you include `<main>` tags, the result is nested `<main><main>` which breaks section loading — `decorateSections` cannot find sections inside a nested main
+
+**Correct format:**
+```html
+<div>
+  <h1>Page heading</h1>
+  <p>Default content</p>
+</div>
+<div>
+  <div class="block-name">
+    ...block content...
+  </div>
+</div>
+```
+
+**Wrong format (will break):**
+```html
+<main>
+  <div>...</div>
+</main>
+```
+
+This rule applies equally to page drafts (`drafts/*.plain.html`) and fragment files (`nav.plain.html`, `footer.plain.html`).
+
+### Placeholder Images
+
+Generate placeholder images for all `<picture>` elements referenced in draft pages:
+- Use Python/Pillow, ImageMagick, or similar to create branded gradient images
+- Use brand colors from `brand-profile.json` for warm, on-brand gradients
+- Hero images: 1600x800px, content images: 800x600px, card images: 600x450px
+- Save as both `.png` and `.webp` in `drafts/`
+- Image filenames must match the `src`/`srcset` references in the HTML
 
 ## Phase 5: Quality Gate
 
@@ -109,5 +170,10 @@ Present results to designer:
 | `stardust/content-models/{block}.md` | DA table contract per new block |
 | `blocks/{name}/{name}.js` | Block JavaScript (new or modified) |
 | `blocks/{name}/{name}.css` | Block CSS (new or modified) |
+| `blocks/header/header.css` | Header CSS updated for brand |
+| `blocks/footer/footer.css` | Footer CSS updated for brand |
+| `nav.plain.html` | Navigation fragment (project root) |
+| `footer.plain.html` | Footer fragment (project root) |
 | `drafts/blocks/{name}.html` | Test content per block |
-| `drafts/{page}.html` | Full generated pages |
+| `drafts/{page}.plain.html` | Full generated pages |
+| `drafts/media_*.{png,webp}` | Placeholder images for draft pages |
