@@ -1,5 +1,4 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "stardust",
   "metadata": {
     "description": "Skill-based pipeline for creating AEM Edge Delivery Services websites from brand guidelines. Composes superpowers, impeccable, and Adobe EDS skills."
