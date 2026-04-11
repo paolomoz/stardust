@@ -46,10 +46,10 @@ Based on which artifacts exist, determine the stage:
 |---|---|---|
 | **Fresh project** | No stardust/ artifacts | Start with `/stardust:brand` |
 | **Brand in progress** | brand_profile but no brand_board | Complete brand: render the board |
-| **Brand complete** | brand_profile + brand_board + design_personality | Run `/stardust:design-system` |
-| **Design system applied** | design_system_css + design_tokens | Run `/stardust:experience` |
+| **Brand complete** | brand_profile + brand_board + design_personality | Run `/stardust:experience` |
 | **Briefings authored** | briefings exist but no wireframes | Continue `/stardust:experience` to create wireframes |
-| **Wireframes approved** | wireframes exist but no block_manifest | Run `/stardust:build` |
+| **Wireframes approved** | wireframes exist but no design_tokens | Run `/stardust:design-system` |
+| **Design system applied** | design_system_css + design_tokens but no block_manifest | Run `/stardust:build` |
 | **Build in progress** | block_manifest exists, some blocks built | Continue `/stardust:build` |
 | **Build complete** | generated_pages exist | Run `/stardust:refine` |
 | **Ready to ship** | All artifacts present, pages refined | Publish via `/stardust:refine` |
@@ -65,13 +65,13 @@ Report to the user in this format:
 - ✓ Brand extracted (brand-profile.json)
 - ✓ Design personality set (.impeccable.md)
 - ✓ Brand board rendered
-- ✓ Design system applied
+- ✓ Experience: 3 briefings authored, 3 wireframes approved
 
 ### Current
-→ Experience Design: 2 briefings authored, 0 wireframes created
+→ Design System: wireframes approved, ready to derive CSS tokens
 
 ### Next Step
-Run `/stardust:experience` to create visual wireframes from your briefings.
+Run `/stardust:design-system` to generate EDS CSS from your approved wireframes.
 ```
 
 Adapt the format to what's actually present. If nothing exists yet:
@@ -106,7 +106,7 @@ Consult [artifact-map.md](reference/artifact-map.md) for the complete artifact s
 | Stage | Skill | What it does |
 |---|---|---|
 | Brand | `/stardust:brand` | Extract brand → board + tokens + personality |
-| Design System | `/stardust:design-system` | Tokens → EDS CSS |
-| Experience Design | `/stardust:experience` | Briefings + visual wireframes |
+| Experience Design | `/stardust:experience` | Briefings + visual wireframes (uses brand colors/fonts) |
+| Design System | `/stardust:design-system` | Derive EDS CSS from approved wireframes + brand profile |
 | Build | `/stardust:build` | Wireframes → EDS blocks + generated pages |
 | Refine | `/stardust:refine` | Polish + publish |

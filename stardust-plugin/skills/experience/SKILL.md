@@ -10,8 +10,7 @@ Help the designer express their page vision through briefings (what + why) and v
 ## MANDATORY PREPARATION
 
 1. Read `.impeccable.md` for design context. If it doesn't exist, recommend running `/stardust:brand` first.
-2. Read `stardust/brand-profile.json` if it exists — use brand voice and personality to inform the conversation.
-3. Check if `stardust/design-tokens.json` exists — this determines wireframe fidelity mode (grey vs branded).
+2. Read `stardust/brand-profile.json` if it exists — use brand voice, colors, fonts, and personality to inform the conversation and wireframe rendering.
 
 ---
 
@@ -62,7 +61,7 @@ For each page with an approved briefing:
 4. For multi-page sites, run `/write-plan` (from superpowers) first to plan the information architecture across all pages before wireframing individual ones
 
 5. Render the wireframe as visual HTML:
-   - Check wireframe mode: grey (no design-tokens.json) or branded (design-tokens.json exists)
+   - Wireframes always use brand colors and fonts from `brand-profile.json` — no grey mode
    - Follow the rendering rules in [wireframe-guide.md](reference/wireframe-guide.md)
    - Each section gets `data-section`, `data-intent`, `data-layout` attributes
    - For multi-page sites: add `data-fragment`, `data-fragment-role`, and `data-fragment-source` attributes to reusable content sections — see [wireframe-guide.md](reference/wireframe-guide.md) Content Reuse & Fragments section
@@ -88,11 +87,21 @@ Common feedback and how to handle it:
 - **"Add a section for [X]"** → Add new section with appropriate data attributes, re-render
 - **"I want something interactive here"** → Add `data-interactive` attribute with the interaction type
 - **"This section feels wrong"** → Ask what they want instead, redesign that section
-- **"Can I see it with brand colors?"** → If design-tokens.json exists, switch to branded mode and re-render
+- **"Can I see it with different colors?"** → Update wireframe CSS with alternative brand colors from brand-profile.json, re-render
 
 Iterate until the designer approves. Then:
 1. Confirm wireframes are saved
-2. Tell the designer: "Wireframes approved. Run `/stardust` to see your next step, or `/stardust:build` to start building."
+2. Tell the designer: "Wireframes approved. Run `/stardust` to see your next step, or `/stardust:design-system` to generate your CSS design system from these wireframes."
+
+## Why Wireframes Come Before the Design System
+
+Wireframes are where the designer makes visual judgment calls about type scale, spacing, proportions, and visual weight. These decisions are subjective and benefit from seeing them in context — a heading size that looks right next to body text on a hero section might look wrong on a specs grid.
+
+The design system is then **derived from** the approved wireframes. This ensures:
+- `design-tokens.json` captures the designer's actual visual intent, not theoretical values
+- `styles.css` desktop breakpoint exactly matches what the designer approved in wireframes
+- Zero token drift between wireframe appearance and EDS page appearance
+- The designer never has to "fix" the design system because it already matches their wireframes
 
 ## Artifacts Written
 
