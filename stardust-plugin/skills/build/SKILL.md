@@ -108,6 +108,8 @@ For each wireframe that has all its blocks built:
 6. Restart the dev server with the drafts folder: `npx -y @adobe/aem-cli up --no-open --html-folder drafts`
 7. Serve via dev server at `http://localhost:3000/drafts/{page}`
 
+**URL path note:** When using `--html-folder drafts`, pages are served under `/drafts/` — NOT at the root. So `drafts/index.plain.html` is at `http://localhost:3000/drafts/index`, NOT `http://localhost:3000/`. Tell the designer the correct `/drafts/{page}` URLs.
+
 ### `.plain.html` Format Rules
 
 **CRITICAL:** Draft page files MUST follow the AEM `.plain.html` format:
@@ -179,6 +181,13 @@ Generate placeholder images for all `<picture>` elements referenced in draft pag
 2. Auto-fix P0 (critical) and P1 (serious) issues by running the recommended commands
 3. Collect P2-P3 issues for designer review
 4. Run `npm run lint` to verify code quality
+
+**Headless browser fallback:** If Playwright/Puppeteer is not installed, skip screenshot-based visual checks and fall back to structural HTML verification:
+- Check each page returns HTTP 200 from the dev server
+- Verify `<main>` exists and is not nested (`<main><main>` breaks decoration)
+- Verify blocks are present in the HTML (`.cards`, `.columns`, `.hero` etc.)
+- Verify section-metadata divs are correctly nested inside section divs
+- Verify CSS and JS are linked (`styles.css`, `aem.js`, `scripts.js`)
 
 Present results to designer:
 - "Pages are built. Here's what to review:"

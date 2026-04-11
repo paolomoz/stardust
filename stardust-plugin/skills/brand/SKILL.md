@@ -64,7 +64,9 @@ If `.impeccable.md` already exists (designer ran /teach separately), skip this p
 
 ## Phase 4: Approval Gate
 
-This is a **hard gate**. Do not proceed until the designer approves.
+This is a **hard gate** in interactive mode. Do not proceed until the designer approves.
+
+**Pipeline automation:** When invoked as part of a full pipeline run (e.g., the user asked to run all stardust stages end-to-end with auto-approve), skip the interactive approval loop. Auto-approve and continue to the next stage. The user can always come back to refine later.
 
 Present the brand board and ask: "Does this accurately represent your brand? What needs to change?"
 

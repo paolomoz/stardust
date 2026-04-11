@@ -38,6 +38,16 @@ Translate brand tokens from `brand-profile.json` into production-ready EDS CSS.
 - If brand fonts are Google Fonts, download them (don't use CDN links — EDS performance requirement)
 - If brand fonts are commercial/unavailable, select the closest Google Font alternative and flag the substitution
 
+**Google Fonts download strategy (in order of preference):**
+1. Use the Google Fonts CSS API with a Chrome user-agent to get woff2 URLs:
+   ```
+   curl -sH "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+     "https://fonts.googleapis.com/css2?family=Font+Name:wght@400;700&display=swap"
+   ```
+   Then download the woff2 URLs from the response. Use the latin subset URL (last in the list for each weight).
+2. **Do NOT** use `https://fonts.google.com/download?family=` — this endpoint returns invalid/empty zip files.
+3. For variable fonts, a single woff2 file covers multiple weights. Use `font-weight: 400 700` range syntax in @font-face.
+
 4. Write `stardust/design-tokens.json` — a structured export of all CSS custom properties for programmatic access:
 
 ```json

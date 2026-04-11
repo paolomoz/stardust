@@ -48,6 +48,8 @@ If the feedback doesn't map to a specific command, apply the changes directly an
 5. Ask: "How does that look? Anything else?"
 6. Repeat until designer is satisfied
 
+**Without a headless browser:** When Playwright/Puppeteer is not available, impeccable commands that depend on screenshots (`/craft`, `/critique` with visual mode) won't have visual feedback. In this case, focus on code-level refinement: run `npm run lint`, verify CSS custom properties are used consistently, check responsive breakpoints exist, and review HTML structure. Suggest the designer open pages in their browser and provide feedback directly.
+
 ### Verification
 
 Before publishing, run `/verification` (from superpowers) to check that final pages match the approved wireframe intent:

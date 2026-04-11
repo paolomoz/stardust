@@ -60,7 +60,9 @@ For each page with an approved briefing:
 
 ## Phase 3: Approval Gate
 
-This is a **hard gate**. Do not proceed to Build until the designer approves.
+This is a **hard gate** in interactive mode. Do not proceed to Build until the designer approves.
+
+**Pipeline automation:** When invoked as part of a full pipeline run (e.g., the user asked to run all stardust stages end-to-end with auto-approve), skip the interactive approval loop. Auto-approve and continue to the next stage. The user can always come back to refine later.
 
 Present the wireframe and ask: "Does this layout capture what you had in mind? What should change?"
 
