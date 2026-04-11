@@ -145,9 +145,30 @@ Section style variants applied via `section-metadata`. For each variant (dark, w
 }
 ```
 
-### Wireframe–EDS Consistency Rule
+### Token Architecture: design-tokens.json → styles.css → wireframes
 
-The design system defines the base visual rules. The wireframe stage reads `styles.css` values (or should produce CSS consistent with them). If these two diverge, the rendered EDS page will look worse than the wireframe. To prevent this:
+`design-tokens.json` is the **single source of truth** for all design values. It records desktop-resolution values. The pipeline uses it in two places:
+
+1. **styles.css** — consumes design-tokens.json values as CSS custom properties. Since EDS is mobile-first, `styles.css` must define **smaller base values** for mobile, then scale up to the design-tokens.json values at the desktop breakpoint (`min-width: 900px`). The desktop `@media` block **must exactly match** the design-tokens.json values.
+
+2. **Wireframes** — rendered at 1440px (desktop). They use the same values from design-tokens.json directly as hardcoded CSS. Since wireframes are desktop-only, they don't need a responsive scale.
+
+**This means:** at desktop viewport, the EDS page and the wireframe must produce identical typography, spacing, and proportions — because both read from the same source. If the desktop `@media` block in styles.css drifts from design-tokens.json, the EDS page will look different from the wireframe.
+
+### Responsive Type Scale
+
+`design-tokens.json` records one value per token (desktop). `styles.css` must derive a mobile-first scale:
+
+| Token | Mobile (base) | Tablet (≥600px) | Desktop (≥900px = design-tokens.json) |
+|-------|--------------|-----------------|--------------------------------------|
+| `--heading-font-size-xxl` | ~70% of desktop | ~85% of desktop | **design-tokens.json value** |
+| `--heading-font-size-xl` | ~70% | ~90% | **design-tokens.json value** |
+| `--body-font-size-m` | 2px smaller | — | **design-tokens.json value** |
+| `--body-font-size-s` | 2px smaller | — | **design-tokens.json value** |
+
+The exact mobile/tablet ratios are a design judgment, but the desktop values are non-negotiable — they must match design-tokens.json.
+
+### Additional Consistency Rules
 
 - Section vertical padding in `styles.css` must match what wireframes use (typically 80px)
 - Button padding/font-size/weight must match wireframe `.btn` values
