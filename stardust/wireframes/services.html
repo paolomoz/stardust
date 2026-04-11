@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Grief &amp; Co. — Services Wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-primary: #7B2D8E;
+      --color-primary-dark: #3D1549;
+      --color-accent: #2D6E4C;
+      --color-gold: #C9982E;
+      --color-magenta: #E5007D;
+      --color-lilac: #D4B8E0;
+      --bg: #F5F0E8;
+      --light: #FAF7F2;
+      --dark: #1A1A1A;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--dark); margin: 0; }
+    .annotation { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--color-primary); opacity: 0.6; margin-bottom: 12px; font-weight: 600; }
+    .placeholder-bar { background: var(--color-lilac); border-radius: 4px; height: 14px; margin: 6px 0; opacity: 0.5; }
+    .placeholder-img { background: var(--color-lilac); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-primary-dark); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.4; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+    .btn-secondary { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
+
+    /* Page hero */
+    .page-hero { background: var(--color-primary-dark); color: #fff; padding: 80px 48px; text-align: center; }
+    .page-hero h1 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 56px; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero p { font-size: 20px; color: var(--color-lilac); max-width: 600px; margin: 0 auto; }
+
+    /* Service detail */
+    .service-detail { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .service-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 80px; }
+    .service-row.reverse { direction: rtl; }
+    .service-row.reverse > * { direction: ltr; }
+    .service-row .service-img { height: 400px; border-radius: 8px; }
+    .service-row .service-content { }
+    .service-row .eyebrow { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; color: var(--color-gold); margin-bottom: 8px; }
+    .service-row h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 38px; text-transform: uppercase; margin-bottom: 16px; }
+    .service-row .features-list { list-style: none; margin: 24px 0; }
+    .service-row .features-list li { padding: 8px 0; border-bottom: 1px solid var(--color-lilac); font-size: 16px; display: flex; align-items: center; gap: 8px; }
+    .service-row .features-list li::before { content: '✦'; color: var(--color-gold); }
+
+    /* Process */
+    .process { background: var(--light); padding: 80px 48px; }
+    .process-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .process h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 48px; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .step { }
+    .step-number { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 48px; color: var(--color-primary); }
+    .step h3 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 20px; text-transform: uppercase; margin: 8px 0; }
+    .step p { font-size: 15px; color: #666; }
+
+    /* CTA */
+    .closing-cta { background: var(--color-primary); color: #fff; padding: 80px 48px; text-align: center; }
+    .closing-cta h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 16px; }
+    .closing-cta p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px; }
+
+    @media (max-width: 768px) {
+      .service-row { grid-template-columns: 1fr; }
+      .service-row.reverse { direction: ltr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .page-hero h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section data-section="page-hero" data-intent="page introduction" data-layout="full-bleed">
+    <div class="page-hero">
+      <div class="annotation" style="color:var(--color-gold);">Our Services</div>
+      <h1>Every Detail. Your Decision.</h1>
+      <p>Three ways to celebrate a life — each one as unique as the person it honors.</p>
+    </div>
+  </section>
+
+  <section data-section="service-living-wakes" data-intent="service detail" data-layout="split-media" data-media="image">
+    <div class="service-detail">
+      <div class="annotation">Service 1</div>
+      <div class="service-row">
+        <div class="service-img placeholder-img">Living wake — candlelit gathering</div>
+        <div class="service-content">
+          <div class="eyebrow">Flagship Experience</div>
+          <h2>Living Wakes</h2>
+          <p>A celebration held while the guest of honor is still alive to enjoy every toast, every story, every ugly-cry happy tear.</p>
+          <ul class="features-list">
+            <li>Custom venue styling &amp; decor</li>
+            <li>Curated playlist &amp; live music</li>
+            <li>Signature cocktail menu</li>
+            <li>Memory book &amp; Polaroid station</li>
+            <li>Video message booth</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="service-death-party" data-intent="service detail" data-layout="split-media" data-media="image">
+    <div class="service-detail" style="padding-top:0;">
+      <div class="annotation">Service 2</div>
+      <div class="service-row reverse">
+        <div class="service-img placeholder-img">Death party — neon-lit celebration</div>
+        <div class="service-content">
+          <div class="eyebrow">Plan Your Own</div>
+          <h2>Death Party Planning</h2>
+          <p>Design your funeral or memorial from scratch — music, food, dress code, readings, everything. Your life, your rules, your playlist.</p>
+          <ul class="features-list">
+            <li>Full ceremony design</li>
+            <li>Music &amp; readings curation</li>
+            <li>Catering &amp; cocktail planning</li>
+            <li>Dress code &amp; decor direction</li>
+            <li>Legacy letter writing workshop</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="service-grief-support" data-intent="service detail" data-layout="split-media" data-media="image">
+    <div class="service-detail" style="padding-top:0;">
+      <div class="annotation">Service 3</div>
+      <div class="service-row">
+        <div class="service-img placeholder-img">Grief support — intimate cocktail circle</div>
+        <div class="service-content">
+          <div class="eyebrow">After the Party</div>
+          <h2>Grief Support</h2>
+          <p>Post-loss support that doesn't look like a support group. Cocktail hours, storytelling nights, and creative workshops for people processing grief.</p>
+          <ul class="features-list">
+            <li>Monthly grief cocktail hours</li>
+            <li>Storytelling &amp; memory nights</li>
+            <li>Creative grief workshops</li>
+            <li>One-on-one grief companionship</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="process" data-intent="reduce friction" data-layout="contained" data-items="4">
+    <div class="process">
+      <div class="process-inner">
+        <div class="annotation">How It Works</div>
+        <h2>Four Steps to Your Celebration</h2>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">01</div>
+            <h3>Conversation</h3>
+            <p>We meet over cocktails and talk about what matters to you.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <h3>Design</h3>
+            <p>We build your celebration plan — every detail, your call.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <h3>Curate</h3>
+            <p>We source everything: music, flowers, food, readings, venue.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">04</div>
+            <h3>Celebrate</h3>
+            <p>We handle the logistics. You enjoy the party.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="closing-cta" data-intent="drive action" data-layout="full-bleed">
+    <div class="closing-cta">
+      <h2>Ready to Start Planning?</h2>
+      <p>It starts with a conversation. No pressure, no forms, no organ music. Just cocktails and honesty.</p>
+      <a href="#" class="btn" style="background:var(--color-gold);color:var(--dark);">Book a Consultation</a>
+    </div>
+  </section>
+
+  <script type="application/json" id="wireframe-meta">
+  {
+    "page": "Our Services",
+    "briefing": "services.md",
+    "mode": "branded",
+    "sections": ["page-hero", "service-living-wakes", "service-death-party", "service-grief-support", "process", "closing-cta"]
+  }
+  </script>
+</body>
+</html>

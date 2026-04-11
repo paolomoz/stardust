@@ -1,0 +1,215 @@
+{
+  "name": "Good Grief & Co.",
+  "philosophy": "Death deserves better than beige carpet and organ music. We help people plan their own funerals, living wakes, and death parties while they're still alive and opinionated about the playlist. Equal parts tender and irreverent, we believe grief is not the absence of joy — it's the proof that joy was there.",
+
+  "logo": {
+    "primary": null,
+    "variants": [],
+    "clearSpace": "Minimum clear space equal to the height of the ampersand in the logo",
+    "donts": [
+      "Never place the logo on a busy photographic background without a backing shape",
+      "Never render the logo in colors outside the brand palette",
+      "Never distort or rotate the logo"
+    ]
+  },
+
+  "colors": {
+    "primary": [
+      {
+        "name": "Amethyst",
+        "hex": "#7B2D8E",
+        "pantone": null,
+        "role": "Primary brand — hero backgrounds, headings, key UI elements"
+      },
+      {
+        "name": "Matte Black",
+        "hex": "#1A1A1A",
+        "pantone": null,
+        "role": "Foundation — body text, dark sections, nav backgrounds"
+      }
+    ],
+    "secondary": [
+      {
+        "name": "Emerald",
+        "hex": "#2D6E4C",
+        "role": "Accent — CTAs, iconography, success states"
+      },
+      {
+        "name": "Deep Gold",
+        "hex": "#C9982E",
+        "role": "Warmth — highlights, dividers, premium accents"
+      },
+      {
+        "name": "Hot Magenta",
+        "hex": "#E5007D",
+        "role": "Pop — hover states, callouts, emphasis moments"
+      }
+    ],
+    "web": [
+      { "name": "Bone", "hex": "#F5F0E8", "role": "Page background — warm neutral canvas" },
+      { "name": "Velvet Plum", "hex": "#3D1549", "role": "Dark sections — immersive backgrounds" },
+      { "name": "Soft Lilac", "hex": "#D4B8E0", "role": "Light accent — cards, hover tints, borders" },
+      { "name": "Warm White", "hex": "#FAF7F2", "role": "Alternate section background" }
+    ]
+  },
+
+  "typography": {
+    "heading": {
+      "family": "Oswald",
+      "weights": ["Bold", "SemiBold"],
+      "usage": "Page titles, hero headlines, section headings. Condensed serif-like impact. Always uppercase for H1, mixed case for H2–H4."
+    },
+    "subheading": {
+      "family": "Oswald",
+      "weight": "Medium",
+      "usage": "Section subtitles, card titles, pull quotes"
+    },
+    "body": {
+      "family": "Source Sans 3",
+      "weight": "Regular",
+      "usage": "Body copy, descriptions, form labels. Humanist warmth balances the editorial headlines."
+    },
+    "eyebrow": {
+      "family": "Source Sans 3",
+      "weight": "SemiBold",
+      "transform": "uppercase",
+      "usage": "Category labels, section identifiers, meta info. Letterspaced for editorial feel."
+    },
+    "button": {
+      "family": "Oswald",
+      "weight": "SemiBold",
+      "usage": "CTAs and navigation links. Uppercase, slightly letterspaced."
+    },
+    "rules": [
+      "Headlines use Oswald Bold uppercase for maximum editorial impact",
+      "Body text uses Source Sans 3 Regular at 18px/1.6 for readability",
+      "Never use more than two font sizes in a single content block",
+      "Pull quotes use Oswald Medium italic when available"
+    ]
+  },
+
+  "photography": {
+    "style": "Warm, saturated, intimate. Shot in the converted shotgun house — velvet textures, neon glow, candlelight. People laughing, toasting, crying happy tears. Polaroid wall aesthetic. Golden hour and moody interior lighting.",
+    "rules": [
+      "Always warm color grade — no cool/clinical tones",
+      "Favor candid moments over posed portraits",
+      "Include environmental details: velvet furniture, neon signs, cocktails, flowers",
+      "Depth of field should feel intimate — shallow focus on subjects, bokeh on neon/candles",
+      "Diversity in subjects: age, ethnicity, body type, relationship configuration"
+    ],
+    "donts": [
+      "No stark white or clinical lighting",
+      "No traditional funeral imagery — no caskets, hearses, or black veils",
+      "No stock-photo-perfect people in sterile environments",
+      "No desaturated or muted color palettes"
+    ],
+    "social": "Behind-the-scenes Polaroid style. Slightly imperfect framing. Warm flash photography at events. User-generated content encouraged."
+  },
+
+  "voice": {
+    "character": "Your wise, witty friend who brings champagne to the hard conversations. Warm but never saccharine. Direct but never cold. We talk about death the way we talk about life — with honesty, humor, and a cocktail in hand.",
+    "traits": ["Irreverent", "Warm", "Direct", "Celebratory", "Honest"],
+    "antiTraits": ["Morbid", "Somber", "Clinical", "Preachy", "Euphemistic"],
+    "examples": {
+      "do": [
+        { "text": "Plan your party. Yes, that one.", "context": "Concise, knowing, inviting — doesn't shy from the subject" },
+        { "text": "You have opinions about your funeral playlist. We're here for it.", "context": "Meets people where they are with humor and warmth" },
+        { "text": "Grief is just love with nowhere to go. Let's give it a dance floor.", "context": "Poetic but grounded — elevates without being precious" },
+        { "text": "We've helped 200+ people throw the party of a lifetime. Their lifetime.", "context": "Confident, slightly cheeky, backed by credibility" }
+      ],
+      "dont": [
+        { "text": "We provide end-of-life celebration facilitation services.", "context": "Corporate jargon strips all warmth and personality" },
+        { "text": "Don't be afraid of death! 💀🎉", "context": "Too flippant — trivializes the emotional weight" },
+        { "text": "In this difficult time, we are here for you.", "context": "Generic sympathy card language — exactly what we're replacing" },
+        { "text": "YOLO so plan your funeral NOW!", "context": "Crass urgency — disrespects the gravity of the decision" }
+      ]
+    },
+    "rules": [
+      "Never use the word 'passed' — say 'died' or 'dead' with respect",
+      "Never use funeral industry euphemisms ('remains', 'the deceased', 'interment')",
+      "Humor should punch up, never down",
+      "Always center the person, not the service",
+      "It's okay to be funny. It's not okay to be flippant."
+    ]
+  },
+
+  "tone": {
+    "description": "Tone shifts based on context: celebratory and bold on marketing pages, warm and steady during planning conversations, tender and present in grief support. The irreverence dials up for awareness content and dials down for active grief.",
+    "writingGoals": [
+      {
+        "goal": "To Normalize",
+        "description": "Make death planning feel as natural as wedding planning. Remove stigma through casual confidence."
+      },
+      {
+        "goal": "To Celebrate",
+        "description": "Frame end-of-life planning as an act of love and self-expression, not morbid obligation."
+      },
+      {
+        "goal": "To Empower",
+        "description": "Give people agency over their own story. Your life, your party, your rules."
+      }
+    ],
+    "cleverVsClear": {
+      "clever": "Headlines, taglines, social media, awareness campaigns — this is where personality lives loudest",
+      "clear": "Service descriptions, pricing, planning guides, grief resources — clarity is kindness here"
+    }
+  },
+
+  "contentPillars": [
+    {
+      "name": "Living Wakes",
+      "description": "Celebrations held while the guest of honor is still alive to enjoy them. The flagship experience."
+    },
+    {
+      "name": "Death Party Planning",
+      "description": "Helping people design their own funeral or memorial — music, food, dress code, readings, everything."
+    },
+    {
+      "name": "Grief Support",
+      "description": "Post-loss support that doesn't look like a support group. Cocktail hours, storytelling nights, creative workshops."
+    },
+    {
+      "name": "Death Positivity",
+      "description": "Education and advocacy content normalizing conversations about mortality, end-of-life wishes, and death culture."
+    }
+  ],
+
+  "personas": [
+    {
+      "name": "The Life-of-the-Party Planner",
+      "description": "50–70, knows exactly what songs they want played and has strong opinions about flower arrangements. Wants their send-off to feel like them, not like a template.",
+      "values": ["Self-expression", "Legacy", "Joy"],
+      "motto": "If I have to go, I'm going out on my terms.",
+      "stats": [
+        { "value": "62%", "description": "Have thought about their funeral but never discussed it" },
+        { "value": "3.2x", "description": "More likely to plan if framed as celebration vs. obligation" }
+      ]
+    },
+    {
+      "name": "The Loving Organizer",
+      "description": "35–55, planning for an aging parent or processing a recent loss. Wants guidance, not platitudes. Appreciates the irreverence because it cuts through the heaviness.",
+      "values": ["Care", "Honesty", "Connection"],
+      "motto": "I want to do this right — and 'right' shouldn't mean 'sad.'",
+      "stats": [
+        { "value": "78%", "description": "Say traditional funeral services felt impersonal" },
+        { "value": "45min", "description": "Average time spent on site before booking a consultation" }
+      ]
+    }
+  ],
+
+  "spacing": {
+    "scale": [
+      { "name": "XS", "value": "4px" },
+      { "name": "S", "value": "8px" },
+      { "name": "M", "value": "16px" },
+      { "name": "L", "value": "32px" },
+      { "name": "XL", "value": "64px" },
+      { "name": "XXL", "value": "96px" }
+    ],
+    "borderRadius": [
+      { "name": "None", "value": "0px" },
+      { "name": "Subtle", "value": "4px" },
+      { "name": "Card", "value": "8px" }
+    ]
+  }
+}

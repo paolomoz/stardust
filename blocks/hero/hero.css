@@ -5,15 +5,68 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 80px 24px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  opacity: 0.85;
+  z-index: 0;
 }
 
 .hero h1 {
-  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   color: var(--background-color);
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.05;
+}
+
+.hero p {
+  position: relative;
+  z-index: 1;
+  color: var(--color-lilac);
+  font-size: var(--body-font-size-m);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .button-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.hero a.button.primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.hero a.button.primary:hover {
+  background-color: var(--color-magenta);
+  border-color: var(--color-magenta);
+}
+
+.hero a.button.secondary {
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+.hero a.button.secondary:hover {
+  background-color: var(--background-color);
+  color: var(--dark-color);
 }
 
 .hero picture {
@@ -32,6 +85,7 @@
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 100px 32px;
+    min-height: 500px;
   }
 }

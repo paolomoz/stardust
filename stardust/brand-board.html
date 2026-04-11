@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Grief &amp; Co. — Brand Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amethyst: #7B2D8E;
+      --matte-black: #1A1A1A;
+      --emerald: #2D6E4C;
+      --deep-gold: #C9982E;
+      --hot-magenta: #E5007D;
+      --bone: #F5F0E8;
+      --velvet-plum: #3D1549;
+      --soft-lilac: #D4B8E0;
+      --warm-white: #FAF7F2;
+      --do-green: #7B997C;
+      --dont-red: #C8102E;
+    }
+
+    body {
+      font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+      background: var(--bone);
+      color: var(--matte-black);
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    /* Sticky Nav */
+    .brand-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--matte-black);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      overflow-x: auto;
+      border-bottom: 2px solid var(--amethyst);
+    }
+    .brand-nav .brand-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--deep-gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+    .brand-nav a {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--soft-lilac);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .brand-nav a:hover { color: var(--hot-magenta); }
+
+    /* Section base */
+    .section {
+      padding: 80px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-full {
+      padding: 80px 48px;
+      max-width: 100%;
+    }
+    .section-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--amethyst);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .section-desc {
+      max-width: 640px;
+      color: #555;
+      margin-bottom: 48px;
+    }
+
+    /* Hero / Philosophy */
+    .philosophy {
+      background: var(--velvet-plum);
+      color: #fff;
+      text-align: center;
+      padding: 120px 48px;
+    }
+    .philosophy .section-label { color: var(--deep-gold); }
+    .philosophy .section-title {
+      font-size: 56px;
+      color: #fff;
+      max-width: 900px;
+      margin: 0 auto 32px;
+    }
+    .philosophy .philosophy-text {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--soft-lilac);
+    }
+
+    /* Color Palette */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 24px;
+    }
+    .color-swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .color-swatch .swatch-block {
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+    }
+    .color-swatch .swatch-info {
+      padding: 16px;
+    }
+    .color-swatch .swatch-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .color-swatch .swatch-hex {
+      font-family: monospace;
+      font-size: 14px;
+      color: #888;
+    }
+    .color-swatch .swatch-role {
+      font-size: 14px;
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+    .color-group-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      text-transform: uppercase;
+      margin: 48px 0 16px;
+      color: var(--amethyst);
+    }
+    .color-group-title:first-of-type { margin-top: 0; }
+
+    /* Typography */
+    .type-specimen {
+      margin-bottom: 48px;
+      padding: 32px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .type-specimen .type-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--amethyst);
+      margin-bottom: 12px;
+    }
+    .type-specimen .type-sample-heading {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .type-specimen .type-sample-subheading {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .type-specimen .type-sample-body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      max-width: 600px;
+    }
+    .type-specimen .type-sample-eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .type-specimen .type-sample-button {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 14px 32px;
+      background: var(--amethyst);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+    .type-meta {
+      font-size: 14px;
+      color: #888;
+      margin-top: 8px;
+    }
+    .type-rules {
+      margin-top: 24px;
+      padding: 24px;
+      background: var(--warm-white);
+      border-radius: 8px;
+      border-left: 4px solid var(--deep-gold);
+    }
+    .type-rules li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* Photography */
+    .photo-direction {
+      background: var(--warm-white);
+      padding: 32px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      font-size: 18px;
+      line-height: 1.7;
+      border-left: 4px solid var(--amethyst);
+    }
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .do-col, .dont-col {
+      padding: 24px;
+      border-radius: 8px;
+    }
+    .do-col {
+      background: rgba(123, 153, 124, 0.1);
+      border: 2px solid var(--do-green);
+    }
+    .dont-col {
+      background: rgba(200, 16, 46, 0.08);
+      border: 2px solid var(--dont-red);
+    }
+    .do-col h4, .dont-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .do-col h4 { color: var(--do-green); }
+    .dont-col h4 { color: var(--dont-red); }
+    .do-col li, .dont-col li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* Voice */
+    .voice-hero {
+      background: var(--matte-black);
+      color: #fff;
+      padding: 80px 48px;
+      text-align: center;
+    }
+    .voice-hero .section-label { color: var(--deep-gold); }
+    .voice-hero .section-title { color: #fff; }
+    .voice-character {
+      max-width: 700px;
+      margin: 0 auto 48px;
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--soft-lilac);
+    }
+    .trait-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .trait-tag {
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .trait-tag.positive {
+      background: var(--amethyst);
+      color: #fff;
+    }
+    .trait-tag.negative {
+      background: transparent;
+      border: 2px solid #555;
+      color: #888;
+      text-decoration: line-through;
+    }
+    .voice-examples {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      text-align: left;
+    }
+    .voice-example {
+      padding: 24px;
+      border-radius: 8px;
+    }
+    .voice-example.do {
+      background: rgba(123, 153, 124, 0.15);
+      border-left: 4px solid var(--do-green);
+    }
+    .voice-example.dont {
+      background: rgba(200, 16, 46, 0.1);
+      border-left: 4px solid var(--dont-red);
+    }
+    .voice-example blockquote {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .voice-example .context {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+    .voice-rules {
+      max-width: 700px;
+      margin: 48px auto 0;
+      text-align: left;
+    }
+    .voice-rules li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: var(--soft-lilac);
+    }
+
+    /* Tone */
+    .tone-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .tone-card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--amethyst);
+    }
+    .tone-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--amethyst);
+    }
+    .tone-card p { font-size: 15px; color: #555; line-height: 1.6; }
+    .clever-clear {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .clever-clear > div {
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--warm-white);
+    }
+    .clever-clear h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--amethyst);
+    }
+    .clever-clear p { font-size: 15px; color: #555; }
+
+    /* Content Pillars */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .pillar-card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--deep-gold);
+    }
+    .pillar-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .pillar-card p { font-size: 15px; color: #555; line-height: 1.6; }
+
+    /* Personas */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .persona-card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--emerald);
+    }
+    .persona-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--amethyst);
+    }
+    .persona-card .persona-desc {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .persona-card .persona-motto {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--amethyst);
+      margin-bottom: 16px;
+      padding: 16px;
+      background: var(--warm-white);
+      border-radius: 4px;
+    }
+    .persona-values {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .persona-value {
+      padding: 4px 14px;
+      background: var(--soft-lilac);
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--velvet-plum);
+    }
+    .persona-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .persona-stat {
+      text-align: center;
+      padding: 12px;
+      background: var(--warm-white);
+      border-radius: 4px;
+    }
+    .persona-stat .stat-value {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--amethyst);
+    }
+    .persona-stat .stat-desc {
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* Spacing */
+    .spacing-scale {
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .spacing-block {
+      text-align: center;
+    }
+    .spacing-block .block-visual {
+      background: var(--amethyst);
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .spacing-block .block-label {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--amethyst);
+    }
+    .spacing-block .block-value {
+      font-family: monospace;
+      font-size: 12px;
+      color: #888;
+    }
+    .radius-samples {
+      display: flex;
+      gap: 24px;
+    }
+    .radius-sample {
+      width: 80px;
+      height: 80px;
+      background: var(--soft-lilac);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--velvet-plum);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .section, .section-full { padding: 48px 24px; }
+      .philosophy { padding: 80px 24px; }
+      .philosophy .section-title { font-size: 36px; }
+      .do-dont-grid, .voice-examples, .clever-clear, .pillar-grid, .persona-grid, .tone-cards {
+        grid-template-columns: 1fr;
+      }
+      .color-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Nav -->
+  <nav class="brand-nav">
+    <span class="brand-name">Good Grief &amp; Co.</span>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#photography">Photography</a>
+    <a href="#voice">Voice</a>
+    <a href="#tone">Tone</a>
+    <a href="#pillars">Pillars</a>
+    <a href="#personas">Personas</a>
+    <a href="#spacing">Spacing</a>
+  </nav>
+
+  <!-- Philosophy -->
+  <section id="philosophy" class="philosophy">
+    <div class="section-label">Brand Philosophy</div>
+    <h1 class="section-title">Death Deserves Better Than Beige Carpet and Organ Music</h1>
+    <p class="philosophy-text">We help people plan their own funerals, living wakes, and death parties while they're still alive and opinionated about the playlist. Equal parts tender and irreverent, we believe grief is not the absence of joy — it's the proof that joy was there.</p>
+  </section>
+
+  <!-- Colors -->
+  <section id="colors" class="section">
+    <div class="section-label">Color Palette</div>
+    <h2 class="section-title">Colors</h2>
+    <p class="section-desc">Saturated jewel tones against matte black. Rich, warm, and unapologetically alive.</p>
+
+    <h3 class="color-group-title">Primary</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#7B2D8E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amethyst</div>
+          <div class="swatch-hex">#7B2D8E</div>
+          <div class="swatch-role">Primary brand — hero backgrounds, headings, key UI</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1A1A1A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Matte Black</div>
+          <div class="swatch-hex">#1A1A1A</div>
+          <div class="swatch-role">Foundation — body text, dark sections, nav</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="color-group-title">Secondary</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#2D6E4C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Emerald</div>
+          <div class="swatch-hex">#2D6E4C</div>
+          <div class="swatch-role">Accent — CTAs, iconography, success states</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#C9982E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Gold</div>
+          <div class="swatch-hex">#C9982E</div>
+          <div class="swatch-role">Warmth — highlights, dividers, premium accents</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#E5007D;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Hot Magenta</div>
+          <div class="swatch-hex">#E5007D</div>
+          <div class="swatch-role">Pop — hover states, callouts, emphasis</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="color-group-title">Web / Functional</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#F5F0E8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Bone</div>
+          <div class="swatch-hex">#F5F0E8</div>
+          <div class="swatch-role">Page background — warm neutral canvas</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#3D1549;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Velvet Plum</div>
+          <div class="swatch-hex">#3D1549</div>
+          <div class="swatch-role">Dark sections — immersive backgrounds</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#D4B8E0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soft Lilac</div>
+          <div class="swatch-hex">#D4B8E0</div>
+          <div class="swatch-role">Light accent — cards, hover tints, borders</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#FAF7F2;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm White</div>
+          <div class="swatch-hex">#FAF7F2</div>
+          <div class="swatch-role">Alternate section background</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section id="typography" class="section">
+    <div class="section-label">Typography</div>
+    <h2 class="section-title">Type System</h2>
+    <p class="section-desc">Bold and editorial, like a fashion magazine covering mortality. Sharp condensed sans for headlines, humanist warmth for body.</p>
+
+    <div class="type-specimen">
+      <div class="type-label">Heading — Oswald Bold</div>
+      <div class="type-sample-heading">PLAN YOUR PARTY.<br>YES, THAT ONE.</div>
+      <div class="type-meta">Oswald Bold / 48px / Uppercase / Line-height 1.1</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Subheading — Oswald Medium</div>
+      <div class="type-sample-subheading">Grief is just love with nowhere to go. Let's give it a dance floor.</div>
+      <div class="type-meta">Oswald Medium / 28px / Mixed case / Line-height 1.2</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Body — Source Sans 3 Regular</div>
+      <div class="type-sample-body">We help people plan their own funerals, living wakes, and death parties while they're still alive and opinionated about the playlist. Because your send-off should sound like you, not like elevator music in a conference room.</div>
+      <div class="type-meta">Source Sans 3 Regular / 18px / Line-height 1.6</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Eyebrow — Source Sans 3 SemiBold</div>
+      <div class="type-sample-eyebrow">Our Services</div>
+      <div class="type-meta">Source Sans 3 SemiBold / 13px / Uppercase / Letter-spacing 3px</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Button — Oswald SemiBold</div>
+      <span class="type-sample-button">Start Planning</span>
+      <div class="type-meta" style="margin-top: 16px;">Oswald SemiBold / 16px / Uppercase / Letter-spacing 1.5px</div>
+    </div>
+
+    <div class="type-rules">
+      <h4 style="font-family:'Oswald';font-weight:600;font-size:16px;text-transform:uppercase;margin-bottom:12px;color:var(--amethyst);">Typographic Rules</h4>
+      <ul>
+        <li>Headlines use Oswald Bold uppercase for maximum editorial impact</li>
+        <li>Body text uses Source Sans 3 Regular at 18px/1.6 for readability</li>
+        <li>Never use more than two font sizes in a single content block</li>
+        <li>Pull quotes use Oswald Medium italic when available</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Photography -->
+  <section id="photography" class="section">
+    <div class="section-label">Photography &amp; Video</div>
+    <h2 class="section-title">Visual Direction</h2>
+
+    <div class="photo-direction">
+      Warm, saturated, intimate. Shot in the converted shotgun house — velvet textures, neon glow, candlelight. People laughing, toasting, crying happy tears. Polaroid wall aesthetic. Golden hour and moody interior lighting.
+    </div>
+
+    <div class="do-dont-grid">
+      <div class="do-col">
+        <h4>Do</h4>
+        <ul>
+          <li>Always warm color grade — no cool/clinical tones</li>
+          <li>Favor candid moments over posed portraits</li>
+          <li>Include environmental details: velvet furniture, neon signs, cocktails, flowers</li>
+          <li>Shallow focus on subjects, bokeh on neon/candles</li>
+          <li>Diversity in subjects: age, ethnicity, body type, relationship configuration</li>
+        </ul>
+      </div>
+      <div class="dont-col">
+        <h4>Don't</h4>
+        <ul>
+          <li>No stark white or clinical lighting</li>
+          <li>No traditional funeral imagery — no caskets, hearses, or black veils</li>
+          <li>No stock-photo-perfect people in sterile environments</li>
+          <li>No desaturated or muted color palettes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice -->
+  <section id="voice" class="voice-hero">
+    <div class="section-label">Brand Voice</div>
+    <h2 class="section-title">Voice &amp; Language</h2>
+    <p class="voice-character">Your wise, witty friend who brings champagne to the hard conversations. Warm but never saccharine. Direct but never cold. We talk about death the way we talk about life — with honesty, humor, and a cocktail in hand.</p>
+
+    <div class="trait-tags">
+      <span class="trait-tag positive">Irreverent</span>
+      <span class="trait-tag positive">Warm</span>
+      <span class="trait-tag positive">Direct</span>
+      <span class="trait-tag positive">Celebratory</span>
+      <span class="trait-tag positive">Honest</span>
+      <span class="trait-tag negative">Morbid</span>
+      <span class="trait-tag negative">Somber</span>
+      <span class="trait-tag negative">Clinical</span>
+      <span class="trait-tag negative">Preachy</span>
+      <span class="trait-tag negative">Euphemistic</span>
+    </div>
+
+    <div class="voice-examples">
+      <div class="voice-example do">
+        <blockquote>"Plan your party. Yes, that one."</blockquote>
+        <p class="context">Concise, knowing, inviting — doesn't shy from the subject</p>
+      </div>
+      <div class="voice-example dont">
+        <blockquote>"We provide end-of-life celebration facilitation services."</blockquote>
+        <p class="context">Corporate jargon strips all warmth and personality</p>
+      </div>
+      <div class="voice-example do">
+        <blockquote>"You have opinions about your funeral playlist. We're here for it."</blockquote>
+        <p class="context">Meets people where they are with humor and warmth</p>
+      </div>
+      <div class="voice-example dont">
+        <blockquote>"Don't be afraid of death! 💀🎉"</blockquote>
+        <p class="context">Too flippant — trivializes the emotional weight</p>
+      </div>
+      <div class="voice-example do">
+        <blockquote>"Grief is just love with nowhere to go. Let's give it a dance floor."</blockquote>
+        <p class="context">Poetic but grounded — elevates without being precious</p>
+      </div>
+      <div class="voice-example dont">
+        <blockquote>"In this difficult time, we are here for you."</blockquote>
+        <p class="context">Generic sympathy card language — exactly what we're replacing</p>
+      </div>
+      <div class="voice-example do">
+        <blockquote>"We've helped 200+ people throw the party of a lifetime. Their lifetime."</blockquote>
+        <p class="context">Confident, slightly cheeky, backed by credibility</p>
+      </div>
+      <div class="voice-example dont">
+        <blockquote>"YOLO so plan your funeral NOW!"</blockquote>
+        <p class="context">Crass urgency — disrespects the gravity of the decision</p>
+      </div>
+    </div>
+
+    <div class="voice-rules">
+      <h4 style="font-family:'Oswald';font-weight:600;font-size:16px;text-transform:uppercase;margin-bottom:12px;color:var(--deep-gold);">Hard Rules</h4>
+      <ul>
+        <li>Never use the word "passed" — say "died" or "dead" with respect</li>
+        <li>Never use funeral industry euphemisms ("remains", "the deceased", "interment")</li>
+        <li>Humor should punch up, never down</li>
+        <li>Always center the person, not the service</li>
+        <li>It's okay to be funny. It's not okay to be flippant.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Tone -->
+  <section id="tone" class="section">
+    <div class="section-label">Tone Adaptation</div>
+    <h2 class="section-title">Tone</h2>
+    <p class="section-desc">Tone shifts based on context: celebratory and bold on marketing pages, warm and steady during planning conversations, tender and present in grief support.</p>
+
+    <div class="tone-cards">
+      <div class="tone-card">
+        <h4>To Normalize</h4>
+        <p>Make death planning feel as natural as wedding planning. Remove stigma through casual confidence.</p>
+      </div>
+      <div class="tone-card">
+        <h4>To Celebrate</h4>
+        <p>Frame end-of-life planning as an act of love and self-expression, not morbid obligation.</p>
+      </div>
+      <div class="tone-card">
+        <h4>To Empower</h4>
+        <p>Give people agency over their own story. Your life, your party, your rules.</p>
+      </div>
+    </div>
+
+    <div class="clever-clear">
+      <div>
+        <h4>Be Clever</h4>
+        <p>Headlines, taglines, social media, awareness campaigns — this is where personality lives loudest.</p>
+      </div>
+      <div>
+        <h4>Be Clear</h4>
+        <p>Service descriptions, pricing, planning guides, grief resources — clarity is kindness here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Pillars -->
+  <section id="pillars" class="section">
+    <div class="section-label">Content Strategy</div>
+    <h2 class="section-title">Content Pillars</h2>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <h4>Living Wakes</h4>
+        <p>Celebrations held while the guest of honor is still alive to enjoy them. The flagship experience.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Death Party Planning</h4>
+        <p>Helping people design their own funeral or memorial — music, food, dress code, readings, everything.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Grief Support</h4>
+        <p>Post-loss support that doesn't look like a support group. Cocktail hours, storytelling nights, creative workshops.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Death Positivity</h4>
+        <p>Education and advocacy content normalizing conversations about mortality, end-of-life wishes, and death culture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personas -->
+  <section id="personas" class="section">
+    <div class="section-label">Audience</div>
+    <h2 class="section-title">Personas</h2>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <h4>The Life-of-the-Party Planner</h4>
+        <p class="persona-desc">50–70, knows exactly what songs they want played and has strong opinions about flower arrangements. Wants their send-off to feel like them, not like a template.</p>
+        <div class="persona-values">
+          <span class="persona-value">Self-expression</span>
+          <span class="persona-value">Legacy</span>
+          <span class="persona-value">Joy</span>
+        </div>
+        <div class="persona-motto">"If I have to go, I'm going out on my terms."</div>
+        <div class="persona-stats">
+          <div class="persona-stat">
+            <div class="stat-value">62%</div>
+            <div class="stat-desc">Have thought about their funeral but never discussed it</div>
+          </div>
+          <div class="persona-stat">
+            <div class="stat-value">3.2x</div>
+            <div class="stat-desc">More likely to plan if framed as celebration</div>
+          </div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <h4>The Loving Organizer</h4>
+        <p class="persona-desc">35–55, planning for an aging parent or processing a recent loss. Wants guidance, not platitudes. Appreciates the irreverence because it cuts through the heaviness.</p>
+        <div class="persona-values">
+          <span class="persona-value">Care</span>
+          <span class="persona-value">Honesty</span>
+          <span class="persona-value">Connection</span>
+        </div>
+        <div class="persona-motto">"I want to do this right — and 'right' shouldn't mean 'sad.'"</div>
+        <div class="persona-stats">
+          <div class="persona-stat">
+            <div class="stat-value">78%</div>
+            <div class="stat-desc">Say traditional funeral services felt impersonal</div>
+          </div>
+          <div class="persona-stat">
+            <div class="stat-value">45min</div>
+            <div class="stat-desc">Average time on site before booking a consultation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing -->
+  <section id="spacing" class="section">
+    <div class="section-label">Spacing &amp; Shape</div>
+    <h2 class="section-title">Spacing Scale</h2>
+
+    <div class="spacing-scale">
+      <div class="spacing-block">
+        <div class="block-visual" style="width:24px;height:4px;"></div>
+        <div class="block-label">XS</div>
+        <div class="block-value">4px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="block-visual" style="width:24px;height:8px;"></div>
+        <div class="block-label">S</div>
+        <div class="block-value">8px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="block-visual" style="width:24px;height:16px;"></div>
+        <div class="block-label">M</div>
+        <div class="block-value">16px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="block-visual" style="width:24px;height:32px;"></div>
+        <div class="block-label">L</div>
+        <div class="block-value">32px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="block-visual" style="width:24px;height:64px;"></div>
+        <div class="block-label">XL</div>
+        <div class="block-value">64px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="block-visual" style="width:24px;height:96px;"></div>
+        <div class="block-label">XXL</div>
+        <div class="block-value">96px</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Oswald';font-weight:600;font-size:20px;text-transform:uppercase;margin-bottom:16px;color:var(--amethyst);">Border Radius</h3>
+    <div class="radius-samples">
+      <div class="radius-sample" style="border-radius:0px;">
+        <span>None</span>
+        <span style="font-size:11px;opacity:0.7;">0px</span>
+      </div>
+      <div class="radius-sample" style="border-radius:4px;">
+        <span>Subtle</span>
+        <span style="font-size:11px;opacity:0.7;">4px</span>
+      </div>
+      <div class="radius-sample" style="border-radius:8px;">
+        <span>Card</span>
+        <span style="font-size:11px;opacity:0.7;">8px</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

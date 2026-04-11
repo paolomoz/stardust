@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Grief &amp; Co. — About Us Wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-primary: #7B2D8E;
+      --color-primary-dark: #3D1549;
+      --color-accent: #2D6E4C;
+      --color-gold: #C9982E;
+      --color-magenta: #E5007D;
+      --color-lilac: #D4B8E0;
+      --bg: #F5F0E8;
+      --light: #FAF7F2;
+      --dark: #1A1A1A;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--dark); margin: 0; }
+    .annotation { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--color-primary); opacity: 0.6; margin-bottom: 12px; font-weight: 600; }
+    .placeholder-bar { background: var(--color-lilac); border-radius: 4px; height: 14px; margin: 6px 0; opacity: 0.5; }
+    .placeholder-img { background: var(--color-lilac); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-primary-dark); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.4; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+
+    /* Hero */
+    .page-hero { background: var(--color-primary-dark); color: #fff; padding: 80px 48px; text-align: center; }
+    .page-hero h1 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 56px; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero p { font-size: 20px; color: var(--color-lilac); max-width: 600px; margin: 0 auto; }
+
+    /* Origin story */
+    .origin { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .origin-img { height: 450px; border-radius: 8px; }
+    .origin h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 38px; text-transform: uppercase; margin-bottom: 16px; }
+    .origin p { font-size: 18px; line-height: 1.7; color: #444; margin-bottom: 16px; }
+
+    /* The space */
+    .the-space { background: var(--light); padding: 80px 48px; }
+    .space-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .space-inner h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 16px; }
+    .space-inner > p { color: #666; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .space-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 200px 200px; gap: 16px; }
+    .space-gallery .gallery-img { border-radius: 8px; }
+    .space-gallery .gallery-img:first-child { grid-row: span 2; }
+
+    /* Team */
+    .team { padding: 80px 48px; max-width: 1200px; margin: 0 auto; text-align: center; }
+    .team h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 48px; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .team-member { }
+    .team-member .member-img { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 16px; }
+    .team-member h3 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 22px; text-transform: uppercase; }
+    .team-member .role { font-size: 14px; color: var(--color-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .team-member p { font-size: 15px; color: #666; margin-top: 12px; max-width: 280px; margin-left: auto; margin-right: auto; }
+
+    /* Values */
+    .values { background: var(--color-primary-dark); color: #fff; padding: 80px 48px; }
+    .values-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .values-inner h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 48px; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .value-card { padding: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; }
+    .value-card h3 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 24px; text-transform: uppercase; color: var(--color-gold); margin-bottom: 12px; }
+    .value-card p { font-size: 16px; color: var(--color-lilac); line-height: 1.6; }
+
+    /* CTA */
+    .closing-cta { background: var(--color-primary); color: #fff; padding: 80px 48px; text-align: center; }
+    .closing-cta h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 16px; }
+    .closing-cta p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px; }
+
+    @media (max-width: 768px) {
+      .origin-grid { grid-template-columns: 1fr; }
+      .space-gallery { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .space-gallery .gallery-img:first-child { grid-row: auto; }
+      .team-grid, .values-grid { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section data-section="page-hero" data-intent="page introduction" data-layout="full-bleed">
+    <div class="page-hero">
+      <div class="annotation" style="color:var(--color-gold);">About Us</div>
+      <h1>Death Deserves Better.<br>So Do You.</h1>
+      <p>We started Good Grief because the way we say goodbye should feel as personal as the way we lived.</p>
+    </div>
+  </section>
+
+  <section data-section="origin-story" data-intent="build trust through narrative" data-layout="split-media" data-media="image">
+    <div class="origin">
+      <div class="annotation">Our Story</div>
+      <div class="origin-grid">
+        <div class="origin-img placeholder-img">Founders in the studio — warm, candid</div>
+        <div>
+          <h2>How It Started</h2>
+          <p>It started with a bad funeral. The kind with fluorescent lighting, a generic playlist, and a room full of people who knew the person deserved better.</p>
+          <p>We thought: what if we could help people plan celebrations that actually feel like the person being celebrated? What if the planning itself could be joyful?</p>
+          <p>So we found a shotgun house in the Marigny, filled it with velvet furniture and neon signs, built a cocktail bar, and started helping people plan the party of a lifetime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="the-space" data-intent="show the environment" data-layout="contained" data-media="image" data-items="5">
+    <div class="the-space">
+      <div class="space-inner">
+        <div class="annotation">The Studio</div>
+        <h2>The Space</h2>
+        <p>A converted shotgun house in the Marigny. Velvet, neon, Polaroids, and a cocktail bar. It feels like someone's impossibly cool living room.</p>
+        <div class="space-gallery">
+          <div class="gallery-img placeholder-img" style="min-height:200px;">Main room — velvet &amp; neon</div>
+          <div class="gallery-img placeholder-img">Cocktail bar</div>
+          <div class="gallery-img placeholder-img">Polaroid wall</div>
+          <div class="gallery-img placeholder-img">Planning nook</div>
+          <div class="gallery-img placeholder-img">Garden courtyard</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="team" data-intent="humanize the brand" data-layout="contained" data-items="3">
+    <div class="team">
+      <div class="annotation">The Humans</div>
+      <h2>Meet the Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-img placeholder-img">Team member 1</div>
+          <h3>Team Member Name</h3>
+          <div class="role">Founder &amp; Lead Celebrant</div>
+          <p>Short bio — personality, background, why they do this work.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-img placeholder-img">Team member 2</div>
+          <h3>Team Member Name</h3>
+          <div class="role">Creative Director</div>
+          <p>Short bio — personality, background, why they do this work.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-img placeholder-img">Team member 3</div>
+          <h3>Team Member Name</h3>
+          <div class="role">Grief Companion</div>
+          <p>Short bio — personality, background, why they do this work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="values" data-intent="articulate philosophy" data-layout="full-bleed" data-items="3">
+    <div class="values">
+      <div class="values-inner">
+        <div class="annotation" style="color:var(--color-gold);">What We Believe</div>
+        <h2>Our Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Death Is Not the Enemy</h3>
+            <p>It's the one experience we all share. We believe talking about it openly makes living richer.</p>
+          </div>
+          <div class="value-card">
+            <h3>Your Story, Your Way</h3>
+            <p>No templates, no defaults, no "standard packages." Every celebration starts from scratch.</p>
+          </div>
+          <div class="value-card">
+            <h3>Joy Is the Point</h3>
+            <p>Grief and joy aren't opposites. The best celebrations hold both at once — and that's what makes them real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="closing-cta" data-intent="drive action" data-layout="full-bleed">
+    <div class="closing-cta">
+      <h2>Come Say Hello</h2>
+      <p>Visit the studio, meet the team, have a drink. No pressure — just a conversation about what matters to you.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary">Get in Touch</a>
+        <a href="#" class="btn" style="border:2px solid #fff;color:#fff;">Visit the Studio</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="wireframe-meta">
+  {
+    "page": "About Us",
+    "briefing": "about.md",
+    "mode": "branded",
+    "sections": ["page-hero", "origin-story", "the-space", "team", "values", "closing-cta"]
+  }
+  </script>
+</body>
+</html>

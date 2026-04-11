@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Grief &amp; Co. — Homepage Wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-primary: #7B2D8E;
+      --color-primary-dark: #3D1549;
+      --color-accent: #2D6E4C;
+      --color-gold: #C9982E;
+      --color-magenta: #E5007D;
+      --color-lilac: #D4B8E0;
+      --bg: #F5F0E8;
+      --light: #FAF7F2;
+      --dark: #1A1A1A;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--dark); margin: 0; }
+    .annotation { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--color-primary); opacity: 0.6; margin-bottom: 12px; font-weight: 600; }
+    .placeholder-bar { background: var(--color-lilac); border-radius: 4px; height: 14px; margin: 6px 0; opacity: 0.5; }
+    .placeholder-img { background: var(--color-lilac); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-primary-dark); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.4; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+    .btn-secondary { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
+
+    /* Hero */
+    .hero { background: var(--color-primary-dark); color: #fff; padding: 120px 48px 100px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); opacity: 0.8; }
+    .hero > * { position: relative; z-index: 1; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 64px; text-transform: uppercase; line-height: 1.05; max-width: 800px; margin: 0 auto 24px; }
+    .hero p { font-size: 20px; max-width: 600px; margin: 0 auto 40px; color: var(--color-lilac); line-height: 1.6; }
+    .hero .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* Social proof */
+    .social-proof { background: var(--dark); padding: 48px; text-align: center; }
+    .proof-stats { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .proof-stat { color: #fff; }
+    .proof-stat .number { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 48px; color: var(--color-gold); }
+    .proof-stat .label { font-size: 14px; color: var(--color-lilac); margin-top: 4px; }
+
+    /* Services preview */
+    .services-preview { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .services-preview h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; text-align: center; margin-bottom: 48px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .service-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .service-card .card-img { height: 200px; }
+    .service-card .card-body { padding: 24px; }
+    .service-card h3 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 22px; text-transform: uppercase; margin-bottom: 12px; }
+
+    /* Philosophy */
+    .philosophy { background: var(--color-primary); color: #fff; padding: 80px 48px; text-align: center; }
+    .philosophy blockquote { font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 36px; max-width: 800px; margin: 0 auto; line-height: 1.3; }
+    .philosophy cite { display: block; margin-top: 24px; font-size: 16px; color: var(--color-lilac); font-style: normal; }
+
+    /* Polaroid wall */
+    .polaroid-wall { padding: 80px 48px; max-width: 1200px; margin: 0 auto; text-align: center; }
+    .polaroid-wall h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; margin-bottom: 16px; }
+    .polaroid-wall > p { color: #666; margin-bottom: 48px; }
+    .polaroid-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .polaroid { background: #fff; padding: 12px 12px 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: rotate(var(--rot, 0deg)); }
+    .polaroid .photo { height: 180px; }
+
+    /* CTA */
+    .closing-cta { background: var(--color-primary-dark); color: #fff; padding: 80px 48px; text-align: center; }
+    .closing-cta h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 48px; text-transform: uppercase; margin-bottom: 16px; }
+    .closing-cta p { font-size: 18px; color: var(--color-lilac); max-width: 600px; margin: 0 auto 32px; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .polaroid-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section data-section="hero" data-intent="emotional hook" data-layout="full-bleed" data-media="image">
+    <div class="hero">
+      <div class="annotation">Hero</div>
+      <h1>Plan Your Party.<br>Yes, That One.</h1>
+      <p>We help you design the send-off you actually want — while you're still here to argue about the playlist.</p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">Start Planning</a>
+        <a href="#" class="btn btn-secondary" style="border-color:#fff;color:#fff;">Explore Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="social-proof" data-intent="build trust" data-layout="full-bleed">
+    <div class="social-proof">
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="number">200+</div>
+          <div class="label">Celebrations planned</div>
+        </div>
+        <div class="proof-stat">
+          <div class="number">100%</div>
+          <div class="label">Unique — no two alike</div>
+        </div>
+        <div class="proof-stat">
+          <div class="number">NOLA</div>
+          <div class="label">Born &amp; based</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="services-preview" data-intent="value proposition" data-layout="contained" data-items="3">
+    <div class="services-preview">
+      <div class="annotation">Services Preview</div>
+      <h2>What We Do</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-img placeholder-img">Living wake photo</div>
+          <div class="card-body">
+            <h3>Living Wakes</h3>
+            <div class="placeholder-bar" style="width:100%"></div>
+            <div class="placeholder-bar" style="width:85%"></div>
+            <div class="placeholder-bar" style="width:60%"></div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="card-img placeholder-img">Death party photo</div>
+          <div class="card-body">
+            <h3>Death Party Planning</h3>
+            <div class="placeholder-bar" style="width:95%"></div>
+            <div class="placeholder-bar" style="width:80%"></div>
+            <div class="placeholder-bar" style="width:70%"></div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="card-img placeholder-img">Grief support photo</div>
+          <div class="card-body">
+            <h3>Grief Support</h3>
+            <div class="placeholder-bar" style="width:100%"></div>
+            <div class="placeholder-bar" style="width:75%"></div>
+            <div class="placeholder-bar" style="width:55%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="philosophy" data-intent="emotional resonance" data-layout="full-bleed">
+    <div class="philosophy">
+      <div class="annotation" style="color:var(--color-gold);">Philosophy</div>
+      <blockquote>"Grief is just love with nowhere to go. Let's give it a dance floor."</blockquote>
+      <cite>— The Good Grief philosophy</cite>
+    </div>
+  </section>
+
+  <section data-section="polaroid-wall" data-intent="social proof + personality" data-layout="contained" data-items="8" data-media="image">
+    <div class="polaroid-wall">
+      <div class="annotation">The Wall</div>
+      <h2>The Wall of Love</h2>
+      <p>Every face on this wall chose to celebrate on their own terms.</p>
+      <div class="polaroid-grid">
+        <div class="polaroid" style="--rot:-2deg"><div class="photo placeholder-img">Polaroid 1</div></div>
+        <div class="polaroid" style="--rot:1deg"><div class="photo placeholder-img">Polaroid 2</div></div>
+        <div class="polaroid" style="--rot:-1deg"><div class="photo placeholder-img">Polaroid 3</div></div>
+        <div class="polaroid" style="--rot:3deg"><div class="photo placeholder-img">Polaroid 4</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="closing-cta" data-intent="drive action" data-layout="full-bleed">
+    <div class="closing-cta">
+      <div class="annotation" style="color:var(--color-gold);">Ready?</div>
+      <h2>Your Life. Your Party. Your Rules.</h2>
+      <p>It takes 30 minutes to start planning the celebration of a lifetime. Yours.</p>
+      <a href="#" class="btn btn-primary">Start Planning</a>
+    </div>
+  </section>
+
+  <script type="application/json" id="wireframe-meta">
+  {
+    "page": "Homepage",
+    "briefing": "homepage.md",
+    "mode": "branded",
+    "sections": ["hero", "social-proof", "services-preview", "philosophy", "polaroid-wall", "closing-cta"]
+  }
+  </script>
+</body>
+</html>

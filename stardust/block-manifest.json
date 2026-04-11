@@ -1,0 +1,34 @@
+{
+  "blocks": [
+    {
+      "name": "hero",
+      "status": "existing",
+      "wireframeSections": ["hero", "page-hero"],
+      "notes": "Existing boilerplate block. Update CSS for brand colors, gradient overlay, typography."
+    },
+    {
+      "name": "cards",
+      "status": "existing",
+      "wireframeSections": ["services-preview", "team", "values"],
+      "notes": "Existing boilerplate block. Update CSS for brand card styling, rounded corners, shadows."
+    },
+    {
+      "name": "columns",
+      "status": "existing",
+      "wireframeSections": ["service-living-wakes", "service-death-party", "service-grief-support", "origin-story", "process"],
+      "notes": "Existing boilerplate block. Update CSS for brand spacing and alignment."
+    }
+  ],
+  "sectionStyles": [
+    {
+      "name": "dark",
+      "wireframeSections": ["social-proof", "closing-cta", "values"],
+      "notes": "Section metadata: style=dark. Handled in styles.css."
+    },
+    {
+      "name": "highlight",
+      "wireframeSections": ["process", "the-space"],
+      "notes": "Section metadata: style=highlight. Light background variant."
+    }
+  ]
+}
