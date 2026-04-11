@@ -97,6 +97,19 @@ If the user already has some artifacts from outside the pipeline (e.g., they man
 - "I see you already have custom styles in styles.css. Want me to extract design tokens from your existing CSS so you can skip to experience design?"
 - "You have blocks beyond the boilerplate (accordion, testimonials). These will be available for the build stage."
 
+## Full Pipeline Run (End-to-End)
+
+When the user asks to run the full pipeline end-to-end (e.g., "run all stardust stages", "build the whole site", or provides a detailed brief with brand source + page requirements), execute each stage in sequence without waiting for approval at each gate:
+
+1. **`/stardust:brand`** — extract brand identity, render board, auto-approve
+2. **`/stardust:experience`** — create briefings from the user's brief, wireframe all pages, auto-approve
+3. **`/stardust:design-system`** — derive CSS tokens from approved wireframes + brand profile
+4. **`/stardust:build`** — build blocks, generate pages, start dev server
+
+Each stage skill has a "pipeline automation" note in its approval gate section — when running end-to-end, skip interactive approval loops and continue to the next stage.
+
+At the end, report the dev server URL(s) for the user to review all pages.
+
 ## Pipeline Reference
 
 Consult [artifact-map.md](reference/artifact-map.md) for the complete artifact specification including file formats, required fields, and detection logic.
