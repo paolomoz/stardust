@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe — About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-primary: #8B1A1A;
+      --color-secondary: #5C6B4F;
+      --color-accent: #C4714E;
+      --bg: #F5F0E8;
+      --dark: #1E1E1E;
+      --light: #FFF;
+      --muted: #6B6B6B;
+      --font-heading: 'Playfair Display', georgia, serif;
+      --font-body: 'Source Sans 3', sans-serif;
+    }
+
+    body { font-family: var(--font-body); background: var(--bg); color: var(--dark); line-height: 1.6; }
+
+    .annotation {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 8px;
+    }
+
+    .placeholder-img {
+      background: linear-gradient(135deg, #3a2a1a 0%, #5c3d2e 50%, #8B1A1A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(245, 240, 232, 0.5);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--bg);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* About Hero */
+    section[data-section="about-hero"] {
+      background: var(--dark);
+      color: var(--bg);
+      padding: 100px 32px 80px;
+      text-align: center;
+    }
+
+    section[data-section="about-hero"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    section[data-section="about-hero"] h1 {
+      font-family: var(--font-heading);
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="about-hero"] p {
+      font-size: 18px;
+      color: rgba(245, 240, 232, 0.75);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Origin Story */
+    section[data-section="origin-story"] {
+      padding: 80px 32px;
+    }
+
+    section[data-section="origin-story"] .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    section[data-section="origin-story"] .placeholder-img {
+      min-height: 450px;
+      border-radius: 8px;
+    }
+
+    section[data-section="origin-story"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    section[data-section="origin-story"] h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="origin-story"] p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    /* Values */
+    section[data-section="values"] {
+      background: var(--light);
+      padding: 80px 32px;
+    }
+
+    section[data-section="values"] .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    section[data-section="values"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    section[data-section="values"] h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      margin-bottom: 48px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      text-align: left;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+
+    .value-card p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Sourcing Detail */
+    section[data-section="sourcing-detail"] {
+      padding: 80px 32px;
+    }
+
+    section[data-section="sourcing-detail"] .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    section[data-section="sourcing-detail"] .placeholder-img {
+      min-height: 400px;
+      border-radius: 8px;
+    }
+
+    section[data-section="sourcing-detail"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    section[data-section="sourcing-detail"] h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="sourcing-detail"] p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .ingredient-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .ingredient-card {
+      padding: 20px;
+      background: var(--bg);
+      border-radius: 8px;
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .ingredient-card h4 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .ingredient-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Community */
+    section[data-section="community"] {
+      background: var(--dark);
+      color: var(--bg);
+      padding: 80px 32px;
+    }
+
+    section[data-section="community"] .inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    section[data-section="community"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 8px;
+    }
+
+    section[data-section="community"] h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      color: var(--bg);
+      margin-bottom: 16px;
+    }
+
+    section[data-section="community"] p {
+      font-size: 18px;
+      color: rgba(245, 240, 232, 0.8);
+      margin-bottom: 24px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .photo-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .photo-row .placeholder-img {
+      min-height: 200px;
+      border-radius: 8px;
+    }
+
+    /* Closing CTA */
+    section[data-section="closing-cta"] {
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    section[data-section="closing-cta"] h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="closing-cta"] p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      section[data-section="about-hero"] h1 { font-size: 40px; }
+      section[data-section="origin-story"] .split,
+      section[data-section="sourcing-detail"] .split { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .ingredient-grid { grid-template-columns: 1fr; }
+      .photo-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<script type="application/json" id="wireframe-meta">
+{
+  "page": "About Us",
+  "briefing": "about.md",
+  "mode": "branded",
+  "sections": ["about-hero", "origin-story", "values", "sourcing-detail", "community", "closing-cta"]
+}
+</script>
+
+<!-- ABOUT HERO -->
+<section data-section="about-hero" data-intent="set context" data-layout="contained">
+  <p class="annotation">About Hero — dark, centered</p>
+  <p class="eyebrow">Our Story</p>
+  <h1>About Us</h1>
+  <p>We couldn't find real Neapolitan pizza in Brooklyn. So we built an oven and learned.</p>
+</section>
+
+<!-- ORIGIN STORY -->
+<section data-section="origin-story" data-intent="emotional connection" data-layout="split-media" data-media="image">
+  <div class="split">
+    <div class="placeholder-img">photo: the original oven being built, founders at work</div>
+    <div>
+      <p class="annotation">Origin Story — split layout</p>
+      <p class="eyebrow">How It Started</p>
+      <h2>It Started with an Oven</h2>
+      <p>In 2018, in a backyard in Bushwick, we built our first wood-fired oven out of salvaged brick and iron. We weren't chefs. We were just two people who'd eaten real pizza in Naples and couldn't find anything like it back home.</p>
+      <p>We spent a year getting the dough wrong. Then one night, everything clicked — the fermentation, the heat, the timing. Sixty seconds. Charred edges, soft center, that specific leopard-spotted underside. We knew we had something.</p>
+      <p>Ferro &amp; Fiamma opened its doors in 2020. The oven is bigger now. The mission hasn't changed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section data-section="values" data-intent="build trust" data-layout="contained" data-items="3">
+  <div class="inner">
+    <p class="annotation">Values — 3-column grid</p>
+    <p class="eyebrow">What We Believe</p>
+    <h2>Three Things We Won't Compromise</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <h3>The Dough</h3>
+        <p>72 hours of cold fermentation. No shortcuts. The dough develops flavor, structure, and digestibility that you can't rush. Every batch is mixed by hand and given the time it needs.</p>
+      </div>
+      <div class="value-card">
+        <h3>The Source</h3>
+        <p>San Marzano DOP tomatoes from Campania. Fior di latte from a Brooklyn creamery we visit every week. Caputo 00 flour from Naples. We know every supplier by name.</p>
+      </div>
+      <div class="value-card">
+        <h3>The Fire</h3>
+        <p>Our oven burns oak and cherry wood to 900°F. Every pizza cooks in sixty seconds. The heat creates the char, the bubble, the flavor that defines real Neapolitan pizza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCING DETAIL -->
+<section data-section="sourcing-detail" data-intent="transparency" data-layout="split-media" data-media="image">
+  <div class="split">
+    <div>
+      <p class="annotation">Sourcing Detail — ingredient cards</p>
+      <p class="eyebrow">Where It Comes From</p>
+      <h2>Every Ingredient Has a Story</h2>
+      <p>We don't say "locally sourced" and leave it at that. Here's exactly where our key ingredients come from and why we chose them.</p>
+      <div class="ingredient-grid">
+        <div class="ingredient-card">
+          <h4>San Marzano DOP</h4>
+          <p>Agro Sarnese-Nocerino, Campania, Italy</p>
+        </div>
+        <div class="ingredient-card">
+          <h4>Fior di Latte</h4>
+          <p>Local creamery, Brooklyn, NY</p>
+        </div>
+        <div class="ingredient-card">
+          <h4>Caputo 00 Flour</h4>
+          <p>Mulino Caputo, Naples, Italy</p>
+        </div>
+        <div class="ingredient-card">
+          <h4>Olive Oil</h4>
+          <p>Small-batch estate, Puglia, Italy</p>
+        </div>
+      </div>
+    </div>
+    <div class="placeholder-img">photo: ingredients laid out — tomatoes, flour, mozzarella, oil</div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section data-section="community" data-intent="emotional connection" data-layout="full-bleed" data-media="image">
+  <div class="inner">
+    <p class="annotation" style="color: var(--color-accent);">Community — dark background + photo row</p>
+    <p class="eyebrow">The Neighborhood</p>
+    <h2>More Than a Pizzeria</h2>
+    <p>We're a block away from becoming your regular spot. The same faces every Tuesday. Kids growing up on our Margherita. That's the point.</p>
+    <div class="photo-row">
+      <div class="placeholder-img">photo: crowded restaurant, warm lighting</div>
+      <div class="placeholder-img">photo: staff behind counter, candid</div>
+      <div class="placeholder-img">photo: neighborhood street view with storefront</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section data-section="closing-cta" data-intent="drive action" data-layout="contained">
+  <p class="annotation">Closing CTA</p>
+  <h2>Come See for Yourself</h2>
+  <p>We're open seven days. The oven is always hot. Your table is waiting.</p>
+  <span class="btn-primary">View Our Menu</span>
+  <span class="btn-secondary" style="margin-left: 16px;">Find Us</span>
+</section>
+
+</body>
+</html>

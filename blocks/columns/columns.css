@@ -1,10 +1,7 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-}
-
-.columns img {
-  width: 100%;
+  gap: var(--spacing-xl);
 }
 
 .columns > div > div {
@@ -15,15 +12,29 @@
   order: 0;
 }
 
+.columns img {
+  width: 100%;
+}
+
 .columns > div > .columns-img-col img {
   display: block;
+  border-radius: var(--border-radius-lg);
+}
+
+.columns h2 {
+  margin-top: 0;
+}
+
+.columns p {
+  color: var(--text-color-muted);
+  line-height: 1.7;
 }
 
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: var(--spacing-3xl);
   }
 
   .columns > div > div {

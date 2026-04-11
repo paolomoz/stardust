@@ -5,8 +5,30 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 80px 24px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--dark-color);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(30 30 30 / 80%) 0%, rgb(139 26 26 / 25%) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero h1 {
@@ -14,11 +36,52 @@
   margin-left: auto;
   margin-right: auto;
   color: var(--background-color);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.hero h2,
+.hero h3,
+.hero h4,
+.hero h5,
+.hero h6 {
+  color: var(--color-accent);
+}
+
+.hero p {
+  color: rgb(245 240 232 / 80%);
+  font-size: var(--body-font-size-m);
+}
+
+.hero .button-wrapper {
+  margin-top: var(--spacing-l);
+}
+
+.hero a.button.primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--background-color);
+}
+
+.hero a.button.primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.hero a.button.secondary {
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+.hero a.button.secondary:hover {
+  background-color: var(--background-color);
+  color: var(--dark-color);
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   object-fit: cover;
   box-sizing: border-box;
@@ -32,6 +95,7 @@
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 120px 32px;
+    min-height: 80vh;
   }
 }

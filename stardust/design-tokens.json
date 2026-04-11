@@ -1,0 +1,42 @@
+{
+  "colors": {
+    "primary": { "property": "--color-primary", "value": "#8B1A1A" },
+    "primaryHover": { "property": "--color-primary-hover", "value": "#6E1515" },
+    "secondary": { "property": "--color-secondary", "value": "#5C6B4F" },
+    "accent": { "property": "--color-accent", "value": "#C4714E" },
+    "background": { "property": "--background-color", "value": "#F5F0E8" },
+    "light": { "property": "--light-color", "value": "#FFFFFF" },
+    "dark": { "property": "--dark-color", "value": "#1E1E1E" },
+    "text": { "property": "--text-color", "value": "#1E1E1E" },
+    "textMuted": { "property": "--text-color-muted", "value": "#6B6B6B" },
+    "link": { "property": "--link-color", "value": "#8B1A1A" },
+    "linkHover": { "property": "--link-hover-color", "value": "#6E1515" }
+  },
+  "typography": {
+    "headingFamily": { "property": "--heading-font-family", "value": "'Playfair Display', playfair-display-fallback, Georgia, serif" },
+    "bodyFamily": { "property": "--body-font-family", "value": "'Source Sans 3', source-sans-3-fallback, sans-serif" },
+    "bodySizeM": { "property": "--body-font-size-m", "value": "18px" },
+    "bodySizeS": { "property": "--body-font-size-s", "value": "16px" },
+    "bodySizeXs": { "property": "--body-font-size-xs", "value": "14px" },
+    "headingSizeXxl": { "property": "--heading-font-size-xxl", "value": "48px" },
+    "headingSizeXl": { "property": "--heading-font-size-xl", "value": "36px" },
+    "headingSizeL": { "property": "--heading-font-size-l", "value": "28px" },
+    "headingSizeM": { "property": "--heading-font-size-m", "value": "24px" },
+    "headingSizeS": { "property": "--heading-font-size-s", "value": "20px" },
+    "headingSizeXs": { "property": "--heading-font-size-xs", "value": "18px" }
+  },
+  "spacing": {
+    "xs": { "property": "--spacing-xs", "value": "4px" },
+    "s": { "property": "--spacing-s", "value": "8px" },
+    "m": { "property": "--spacing-m", "value": "16px" },
+    "l": { "property": "--spacing-l", "value": "24px" },
+    "xl": { "property": "--spacing-xl", "value": "32px" },
+    "2xl": { "property": "--spacing-2xl", "value": "48px" },
+    "3xl": { "property": "--spacing-3xl", "value": "64px" }
+  },
+  "borderRadius": {
+    "sm": { "property": "--border-radius-sm", "value": "0" },
+    "md": { "property": "--border-radius-md", "value": "4px" },
+    "lg": { "property": "--border-radius-lg", "value": "8px" }
+  }
+}

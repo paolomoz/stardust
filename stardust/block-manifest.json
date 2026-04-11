@@ -1,0 +1,29 @@
+{
+  "blocks": [
+    {
+      "name": "hero",
+      "status": "existing",
+      "wireframeSections": ["hero"],
+      "notes": "Existing boilerplate block. CSS update needed: brand colors, typography, min-height, overlay gradient, CTA placement."
+    },
+    {
+      "name": "cards",
+      "status": "existing",
+      "wireframeSections": ["featured-pizzas"],
+      "notes": "Existing boilerplate block. CSS update needed: brand card styling, warm cream background, Playfair headings."
+    },
+    {
+      "name": "columns",
+      "status": "existing",
+      "wireframeSections": ["sourcing", "origin-story", "sourcing-detail"],
+      "notes": "Existing boilerplate block. CSS update needed: brand spacing, rounded images, typography."
+    },
+    {
+      "name": "menu-list",
+      "status": "new",
+      "wireframeSections": ["pizzas", "small-plates", "drinks"],
+      "contentModel": "2 columns: item name + description, price",
+      "notes": "New block: styled menu items with name, description, optional tag, and price. List layout."
+    }
+  ]
+}

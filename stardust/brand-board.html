@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferro &amp; Fiamma — Brand Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fornace-red: #8B1A1A;
+      --charcoal: #1E1E1E;
+      --warm-cream: #F5F0E8;
+      --olive-grove: #5C6B4F;
+      --terracotta: #C4714E;
+      --marble-white: #FFFFFF;
+      --ash-grey: #6B6B6B;
+      --hover-red: #6E1515;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--warm-cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* Sticky Nav */
+    .brand-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--charcoal);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      overflow-x: auto;
+      border-bottom: 3px solid var(--fornace-red);
+    }
+
+    .brand-nav .nav-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--warm-cream);
+      font-size: 18px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-nav a {
+      color: var(--ash-grey);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .brand-nav a:hover { color: var(--warm-cream); }
+
+    /* Sections */
+    section { padding: 64px 32px; max-width: 1200px; margin: 0 auto; }
+    section + section { border-top: 1px solid rgba(30, 30, 30, 0.1); }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ash-grey);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    p { margin-bottom: 16px; max-width: 680px; }
+
+    /* Hero / Philosophy */
+    .hero {
+      background: var(--charcoal);
+      color: var(--warm-cream);
+      padding: 120px 32px;
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--warm-cream);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .hero .ampersand {
+      color: var(--fornace-red);
+    }
+
+    .hero .tagline {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--terracotta);
+      margin-bottom: 32px;
+    }
+
+    .hero .philosophy {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(245, 240, 232, 0.85);
+    }
+
+    /* Color Palette */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .color-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--marble-white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .color-swatch {
+      height: 120px;
+      width: 100%;
+    }
+
+    .color-info {
+      padding: 16px;
+    }
+
+    .color-info .color-name {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .color-info .color-hex {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--ash-grey);
+      margin-bottom: 8px;
+    }
+
+    .color-info .color-role {
+      font-size: 13px;
+      color: var(--ash-grey);
+      line-height: 1.4;
+    }
+
+    /* Typography */
+    .type-specimen {
+      margin-bottom: 40px;
+      padding: 32px;
+      background: var(--marble-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .type-specimen .specimen-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ash-grey);
+      margin-bottom: 12px;
+    }
+
+    .type-specimen .specimen-sample { margin-bottom: 12px; }
+
+    .type-specimen .specimen-details {
+      font-size: 13px;
+      color: var(--ash-grey);
+      line-height: 1.5;
+    }
+
+    .type-rules {
+      margin-top: 32px;
+      padding: 24px;
+      background: var(--charcoal);
+      color: var(--warm-cream);
+      border-radius: 8px;
+    }
+
+    .type-rules h3 { color: var(--warm-cream); }
+
+    .type-rules ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .type-rules li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+      font-size: 14px;
+    }
+
+    .type-rules li:last-child { border-bottom: none; }
+
+    .type-rules li::before {
+      content: "→ ";
+      color: var(--terracotta);
+    }
+
+    /* Photography */
+    .photo-direction {
+      padding: 32px;
+      background: var(--marble-white);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .rules-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rules-list li {
+      padding: 8px 0;
+      font-size: 15px;
+      border-bottom: 1px solid rgba(30, 30, 30, 0.06);
+    }
+
+    .rules-list li:last-child { border-bottom: none; }
+
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .do-column h3 { color: var(--olive-grove); }
+    .dont-column h3 { color: var(--fornace-red); }
+
+    .do-column li::before { content: "✓ "; color: var(--olive-grove); font-weight: 700; }
+    .dont-column li::before { content: "✗ "; color: var(--fornace-red); font-weight: 700; }
+
+    /* Voice */
+    .voice-hero {
+      background: var(--charcoal);
+      color: var(--warm-cream);
+      padding: 64px 32px;
+      text-align: center;
+      max-width: 100%;
+      border-radius: 0;
+    }
+
+    .voice-hero h2 { color: var(--warm-cream); }
+
+    .voice-hero .voice-character {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto 32px;
+      color: rgba(245, 240, 232, 0.9);
+      line-height: 1.6;
+    }
+
+    .traits-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .trait-tag {
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .trait-tag.positive {
+      background: var(--olive-grove);
+      color: var(--warm-cream);
+    }
+
+    .trait-tag.negative {
+      background: transparent;
+      border: 1px solid rgba(245, 240, 232, 0.3);
+      color: rgba(245, 240, 232, 0.5);
+      text-decoration: line-through;
+    }
+
+    .voice-examples {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .voice-example {
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--marble-white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .voice-example.do { border-left: 4px solid var(--olive-grove); }
+    .voice-example.dont { border-left: 4px solid var(--fornace-red); }
+
+    .voice-example .example-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .voice-example.do .example-label { color: var(--olive-grove); }
+    .voice-example.dont .example-label { color: var(--fornace-red); }
+
+    .voice-example blockquote {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      color: var(--charcoal);
+    }
+
+    .voice-example .example-context {
+      font-size: 13px;
+      color: var(--ash-grey);
+    }
+
+    .voice-rules {
+      margin-top: 32px;
+    }
+
+    .voice-rules li {
+      padding: 8px 0;
+      font-size: 15px;
+      border-bottom: 1px solid rgba(30, 30, 30, 0.06);
+    }
+
+    .voice-rules li:last-child { border-bottom: none; }
+
+    /* Tone */
+    .tone-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .tone-card {
+      padding: 32px;
+      background: var(--marble-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .tone-card h3 { color: var(--fornace-red); }
+
+    .clever-clear {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .clever-clear > div {
+      padding: 24px;
+      background: var(--marble-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* Content Pillars */
+    .pillar-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .pillar-card {
+      padding: 32px;
+      background: var(--marble-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--fornace-red);
+    }
+
+    .pillar-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    /* Personas */
+    .persona-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .persona-card {
+      padding: 32px;
+      background: var(--marble-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .persona-card h3 { color: var(--fornace-red); }
+
+    .persona-card .motto {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ash-grey);
+      margin-bottom: 16px;
+    }
+
+    .persona-values {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .persona-value {
+      padding: 4px 12px;
+      background: var(--warm-cream);
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .persona-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(30, 30, 30, 0.08);
+    }
+
+    .persona-stat .stat-value {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--fornace-red);
+    }
+
+    .persona-stat .stat-desc {
+      font-size: 14px;
+      color: var(--ash-grey);
+    }
+
+    /* Spacing */
+    .spacing-blocks {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .spacing-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spacing-visual {
+      background: var(--fornace-red);
+      border-radius: 4px;
+    }
+
+    .spacing-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ash-grey);
+      text-align: center;
+    }
+
+    .radius-samples {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .radius-sample {
+      width: 80px;
+      height: 80px;
+      background: var(--fornace-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .radius-sample span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--warm-cream);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 40px; }
+      .voice-examples, .do-dont-grid, .clever-clear { grid-template-columns: 1fr; }
+      .pillar-cards { grid-template-columns: 1fr; }
+      section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="brand-nav">
+  <span class="nav-brand">Ferro &amp; Fiamma</span>
+  <a href="#philosophy">Philosophy</a>
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#photography">Photography</a>
+  <a href="#voice">Voice</a>
+  <a href="#tone">Tone</a>
+  <a href="#pillars">Pillars</a>
+  <a href="#personas">Personas</a>
+  <a href="#spacing">Spacing</a>
+</nav>
+
+<!-- Philosophy -->
+<section class="hero" id="philosophy">
+  <h1>Ferro <span class="ampersand">&amp;</span> Fiamma</h1>
+  <p class="tagline">Iron &amp; Flame</p>
+  <p class="philosophy">Old-school Naples meets industrial Brooklyn. We are obsessive about sourcing — San Marzano DOP tomatoes, fior di latte from a local creamery, 72-hour sourdough fermentation. Every pizza is wood-fired to charred perfection. No shortcuts, no compromises, just fire and iron.</p>
+</section>
+
+<!-- Color Palette -->
+<section id="colors">
+  <p class="section-label">Visual Identity</p>
+  <h2>Color Palette</h2>
+
+  <h3>Primary</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #8B1A1A;"></div>
+      <div class="color-info">
+        <div class="color-name">Fornace Red</div>
+        <div class="color-hex">#8B1A1A</div>
+        <div class="color-role">Primary brand — headlines, CTAs, key accents. The deep red of a wood-fired oven interior.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1E1E1E;"></div>
+      <div class="color-info">
+        <div class="color-name">Charcoal</div>
+        <div class="color-hex">#1E1E1E</div>
+        <div class="color-role">Text, dark backgrounds, footer. The char on the crust.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F5F0E8;"></div>
+      <div class="color-info">
+        <div class="color-name">Warm Cream</div>
+        <div class="color-hex">#F5F0E8</div>
+        <div class="color-role">Page backgrounds, light sections. The color of fresh dough.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px;">Secondary</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #5C6B4F;"></div>
+      <div class="color-info">
+        <div class="color-name">Olive Grove</div>
+        <div class="color-hex">#5C6B4F</div>
+        <div class="color-role">Accent — badges, secondary buttons, subtle highlights. Fresh basil and olive oil.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #C4714E;"></div>
+      <div class="color-info">
+        <div class="color-name">Terracotta</div>
+        <div class="color-hex">#C4714E</div>
+        <div class="color-role">Warm accent — highlights, hover states, decorative elements.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px;">Web &amp; Functional</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #8B1A1A;"></div>
+      <div class="color-info">
+        <div class="color-name">Link Red</div>
+        <div class="color-hex">#8B1A1A</div>
+        <div class="color-role">Text links — matches primary brand</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #6E1515;"></div>
+      <div class="color-info">
+        <div class="color-name">Hover Red</div>
+        <div class="color-hex">#6E1515</div>
+        <div class="color-role">Link hover state</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #eee;"></div>
+      <div class="color-info">
+        <div class="color-name">Marble White</div>
+        <div class="color-hex">#FFFFFF</div>
+        <div class="color-role">Card backgrounds, contrast panels</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #6B6B6B;"></div>
+      <div class="color-info">
+        <div class="color-name">Ash Grey</div>
+        <div class="color-hex">#6B6B6B</div>
+        <div class="color-role">Secondary text, captions, metadata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Typography -->
+<section id="typography">
+  <p class="section-label">Visual Identity</p>
+  <h2>Typography</h2>
+
+  <div class="type-specimen">
+    <div class="specimen-label">Heading — Playfair Display Bold / Black</div>
+    <div class="specimen-sample" style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 48px; line-height: 1.2; color: #1E1E1E;">
+      Fire and Iron
+    </div>
+    <div class="specimen-details">
+      Page titles, hero headlines, section headings. Evokes old Italian signage.<br>
+      Weights: Bold (700), Black (900) &middot; Line height: 1.2
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="specimen-label">Subheading — Playfair Display Regular</div>
+    <div class="specimen-sample" style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 28px; line-height: 1.3; color: #1E1E1E;">
+      From the Oven to Your Table
+    </div>
+    <div class="specimen-details">
+      Section subtitles, card headings, menu category names.<br>
+      Weight: Regular (400) &middot; Line height: 1.3
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="specimen-label">Body — Source Sans 3 Regular</div>
+    <div class="specimen-sample" style="font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 16px; line-height: 1.6; color: #1E1E1E;">
+      Every pizza starts with 72 hours of patience. Our sourdough is mixed, folded, and cold-fermented until it develops the complex flavor and airy structure that defines true Neapolitan crust. Then it meets our wood-fired oven at 900°F — sixty seconds of controlled chaos that transforms dough into something alive.
+    </div>
+    <div class="specimen-details">
+      Body copy, descriptions, paragraphs. Clean and legible.<br>
+      Weight: Regular (400) &middot; Size: 16px minimum &middot; Line height: 1.6
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="specimen-label">Eyebrow — Source Sans 3 SemiBold Uppercase</div>
+    <div class="specimen-sample" style="font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #6B6B6B;">
+      From the Oven &middot; Our Story &middot; The Menu
+    </div>
+    <div class="specimen-details">
+      Section labels, category tags, overlines.<br>
+      Weight: SemiBold (600) &middot; Transform: uppercase &middot; Letter-spacing: 0.12em
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="specimen-label">Button — Source Sans 3 SemiBold</div>
+    <div class="specimen-sample">
+      <span style="display: inline-block; font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 16px; padding: 12px 32px; background: #8B1A1A; color: #F5F0E8; border-radius: 4px; margin-right: 16px;">Order Now</span>
+      <span style="display: inline-block; font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 16px; padding: 12px 32px; background: transparent; color: #8B1A1A; border: 2px solid #8B1A1A; border-radius: 4px;">View Menu</span>
+    </div>
+    <div class="specimen-details" style="margin-top: 16px;">
+      CTA buttons, nav links.<br>
+      Weight: SemiBold (600)
+    </div>
+  </div>
+
+  <div class="type-rules">
+    <h3>Typographic Rules</h3>
+    <ul>
+      <li>Headings always use Playfair Display — never Source Sans 3</li>
+      <li>Body text minimum 16px / 1rem for readability</li>
+      <li>Letter-spacing on eyebrows: 0.12em</li>
+      <li>Line height: 1.2 for headings, 1.6 for body</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Photography -->
+<section id="photography">
+  <p class="section-label">Visual Direction</p>
+  <h2>Photography &amp; Imagery</h2>
+
+  <div class="photo-direction">
+    <h3>Style Direction</h3>
+    <p>Moody, warm, high-contrast. Close-up food shots with shallow depth of field. Warm tungsten lighting with deep shadows. Industrial textures — exposed brick, marble counters, weathered steel. Authentic kitchen action, not staged perfection.</p>
+  </div>
+
+  <div class="do-dont-grid">
+    <div class="do-column">
+      <h3>Do</h3>
+      <ul class="rules-list">
+        <li>Always warm white balance — no cool/blue tones</li>
+        <li>Show texture: bubbling cheese, charred crust, flour-dusted surfaces</li>
+        <li>Include environmental shots: the oven mouth glowing, hands stretching dough</li>
+        <li>People shots are candid — staff at work, guests mid-bite, never posed</li>
+        <li>Depth of field: subject sharp, background soft and warm</li>
+      </ul>
+    </div>
+    <div class="dont-column">
+      <h3>Don't</h3>
+      <ul class="rules-list">
+        <li>No sterile overhead flat-lays</li>
+        <li>No bright, evenly-lit food photography</li>
+        <li>No stock photo aesthetic — nothing that looks mass-produced</li>
+        <li>No cold blue or fluorescent lighting</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="photo-direction" style="margin-top: 24px;">
+    <h3>Social Media</h3>
+    <p>Instagram-first: close-ups of the pizza-making process, oven shots, ingredient details. Stories show behind-the-scenes kitchen moments.</p>
+  </div>
+</section>
+
+<!-- Voice -->
+<section class="voice-hero" id="voice">
+  <p class="section-label" style="color: var(--ash-grey);">Brand Voice</p>
+  <h2>Voice &amp; Character</h2>
+  <p class="voice-character">"Confident, warm, and unpretentious. We know our craft inside out but never lecture. Like your favorite Italian uncle who takes food seriously but doesn't take himself seriously."</p>
+
+  <div class="traits-grid">
+    <span class="trait-tag positive">Passionate</span>
+    <span class="trait-tag positive">Knowledgeable</span>
+    <span class="trait-tag positive">Warm</span>
+    <span class="trait-tag positive">Direct</span>
+    <span class="trait-tag positive">Authentic</span>
+  </div>
+  <div class="traits-grid">
+    <span class="trait-tag negative">Pretentious</span>
+    <span class="trait-tag negative">Fussy</span>
+    <span class="trait-tag negative">Corporate</span>
+    <span class="trait-tag negative">Trendy</span>
+    <span class="trait-tag negative">Apologetic</span>
+  </div>
+</section>
+
+<section>
+  <h3>Voice Examples</h3>
+  <div class="voice-examples">
+    <div class="voice-example do">
+      <div class="example-label">Do</div>
+      <blockquote>"72 hours. That's how long our dough ferments before it ever sees the oven."</blockquote>
+      <p class="example-context">Leads with the compelling detail, lets the craft speak for itself</p>
+    </div>
+    <div class="voice-example dont">
+      <div class="example-label">Don't</div>
+      <blockquote>"We are proud to offer an artisanal dining experience featuring locally-sourced ingredients."</blockquote>
+      <p class="example-context">Corporate buzzwords — 'artisanal', 'dining experience', 'locally-sourced' are empty calories</p>
+    </div>
+    <div class="voice-example do">
+      <div class="example-label">Do</div>
+      <blockquote>"San Marzano DOP. Not San Marzano style. Not San Marzano inspired. The real thing."</blockquote>
+      <p class="example-context">Direct, confident, makes the sourcing standard clear without being preachy</p>
+    </div>
+    <div class="voice-example dont">
+      <div class="example-label">Don't</div>
+      <blockquote>"Our award-winning chef has crafted a menu that celebrates the rich tapestry of Neapolitan tradition."</blockquote>
+      <p class="example-context">Overwrought and pretentious — we show, we don't brag</p>
+    </div>
+    <div class="voice-example do">
+      <div class="example-label">Do</div>
+      <blockquote>"Wood-fired at 900°F. Sixty seconds. That's all it takes when the dough is right."</blockquote>
+      <p class="example-context">Short punchy sentences convey mastery and confidence</p>
+    </div>
+    <div class="voice-example dont">
+      <div class="example-label">Don't</div>
+      <blockquote>"Pizza is life! Come get your slice!!!"</blockquote>
+      <p class="example-context">Too casual, too many exclamation marks — we're warm, not wacky</p>
+    </div>
+    <div class="voice-example do">
+      <div class="example-label">Do</div>
+      <blockquote>"Come hungry. Leave happy. It's not complicated."</blockquote>
+      <p class="example-context">Warm, inviting, no-nonsense</p>
+    </div>
+  </div>
+
+  <div class="voice-rules" style="margin-top: 32px;">
+    <h3>Hard Rules</h3>
+    <ul class="rules-list">
+      <li>No more than one exclamation mark per page</li>
+      <li>Never use 'artisanal', 'curated', or 'elevated'</li>
+      <li>Italian terms are fine when they're the real name (DOP, fior di latte, Margherita) — never for decoration</li>
+      <li>Short sentences. Let the periods do the work.</li>
+      <li>Always concrete over abstract — '900°F for 60 seconds' beats 'perfectly cooked'</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Tone -->
+<section id="tone">
+  <p class="section-label">Brand Voice</p>
+  <h2>Tone Adaptation</h2>
+  <p>Tone shifts by context but always stays warm and grounded. On the homepage we're inviting and confident. On the menu we're direct and appetizing. On About Us we're storytelling — personal, a little nostalgic, deeply passionate.</p>
+
+  <div class="tone-cards">
+    <div class="tone-card">
+      <h3>To Invite</h3>
+      <p>Make people hungry and curious. Lead with sensory details — the smell of the oven, the sound of the crust, the sight of bubbling mozzarella.</p>
+    </div>
+    <div class="tone-card">
+      <h3>To Inform</h3>
+      <p>Share the craft without lecturing. Our sourcing, our process, our standards — stated plainly, not defensively.</p>
+    </div>
+    <div class="tone-card">
+      <h3>To Connect</h3>
+      <p>Build a relationship. We're a neighborhood place. We know your name, your order, your kids.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px;">Clever vs. Clear</h3>
+  <div class="clever-clear">
+    <div>
+      <h3 style="color: var(--terracotta);">Be Clever</h3>
+      <p>Menu item descriptions can have personality. Section headings can be evocative ('From the Oven' not 'Pizza Menu').</p>
+    </div>
+    <div>
+      <h3 style="color: var(--olive-grove);">Be Clear</h3>
+      <p>Hours, location, allergen info, ordering instructions — always crystal clear, never buried in prose.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Content Pillars -->
+<section id="pillars">
+  <p class="section-label">Content Strategy</p>
+  <h2>Content Pillars</h2>
+
+  <div class="pillar-cards">
+    <div class="pillar-card">
+      <h3>The Craft</h3>
+      <p>Our process: 72-hour fermentation, wood-fired technique, handmade from scratch daily.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>The Source</h3>
+      <p>Where our ingredients come from: San Marzano DOP, local creamery fior di latte, small-batch olive oil.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>The Place</h3>
+      <p>Brooklyn neighborhood culture — the regulars, the block, the community table.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Personas -->
+<section id="personas">
+  <p class="section-label">Audience</p>
+  <h2>Personas</h2>
+
+  <div class="persona-cards">
+    <div class="persona-card">
+      <h3>The Purist</h3>
+      <p class="motto">"If the Margherita isn't right, nothing else matters."</p>
+      <p>Knows the difference between Neapolitan and New York style. Orders the Margherita to test a new spot. Cares about sourcing, fermentation, char level.</p>
+      <div class="persona-values">
+        <span class="persona-value">Authenticity</span>
+        <span class="persona-value">Quality ingredients</span>
+        <span class="persona-value">Traditional technique</span>
+      </div>
+      <div class="persona-stat">
+        <span class="stat-value">35%</span>
+        <span class="stat-desc">of our regulars — they came for the craft and stayed</span>
+      </div>
+    </div>
+    <div class="persona-card">
+      <h3>The Neighbor</h3>
+      <p class="motto">"Our Tuesday night spot."</p>
+      <p>Lives on the block. Comes in twice a week. Orders the same thing every time. Knows the staff by name.</p>
+      <div class="persona-values">
+        <span class="persona-value">Convenience</span>
+        <span class="persona-value">Consistency</span>
+        <span class="persona-value">Community</span>
+      </div>
+      <div class="persona-stat">
+        <span class="stat-value">50%</span>
+        <span class="stat-desc">of revenue — loyal neighborhood regulars</span>
+      </div>
+    </div>
+    <div class="persona-card">
+      <h3>The Explorer</h3>
+      <p class="motto">"Have you tried that new pizza place in Brooklyn?"</p>
+      <p>Found us on Instagram or a food blog. Wants to try the specials, photograph everything, tell their friends.</p>
+      <div class="persona-values">
+        <span class="persona-value">Discovery</span>
+        <span class="persona-value">Visual appeal</span>
+        <span class="persona-value">Shareable experiences</span>
+      </div>
+      <div class="persona-stat">
+        <span class="stat-value">15%</span>
+        <span class="stat-desc">of traffic — discovery-driven, high social share rate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacing -->
+<section id="spacing">
+  <p class="section-label">Layout</p>
+  <h2>Spacing &amp; Shape</h2>
+
+  <h3>Spacing Scale</h3>
+  <div class="spacing-blocks">
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 4px; height: 4px;"></div>
+      <span class="spacing-label">XS<br>4px</span>
+    </div>
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 8px; height: 8px;"></div>
+      <span class="spacing-label">S<br>8px</span>
+    </div>
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 16px; height: 16px;"></div>
+      <span class="spacing-label">M<br>16px</span>
+    </div>
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 24px; height: 24px;"></div>
+      <span class="spacing-label">L<br>24px</span>
+    </div>
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 32px; height: 32px;"></div>
+      <span class="spacing-label">XL<br>32px</span>
+    </div>
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 48px; height: 48px;"></div>
+      <span class="spacing-label">XXL<br>48px</span>
+    </div>
+    <div class="spacing-block">
+      <div class="spacing-visual" style="width: 64px; height: 64px;"></div>
+      <span class="spacing-label">XXXL<br>64px</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 48px;">Border Radius</h3>
+  <div class="radius-samples">
+    <div>
+      <div class="radius-sample" style="border-radius: 0;"><span>0</span></div>
+      <p class="spacing-label" style="margin-top: 8px;">None</p>
+    </div>
+    <div>
+      <div class="radius-sample" style="border-radius: 4px;"><span>4px</span></div>
+      <p class="spacing-label" style="margin-top: 8px;">Subtle</p>
+    </div>
+    <div>
+      <div class="radius-sample" style="border-radius: 8px;"><span>8px</span></div>
+      <p class="spacing-label" style="margin-top: 8px;">Card</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

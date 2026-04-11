@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe — Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-primary: #8B1A1A;
+      --color-secondary: #5C6B4F;
+      --color-accent: #C4714E;
+      --bg: #F5F0E8;
+      --dark: #1E1E1E;
+      --light: #FFF;
+      --muted: #6B6B6B;
+      --font-heading: 'Playfair Display', georgia, serif;
+      --font-body: 'Source Sans 3', sans-serif;
+    }
+
+    body { font-family: var(--font-body); background: var(--bg); color: var(--dark); line-height: 1.6; }
+
+    .annotation {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 8px;
+      font-family: var(--font-body);
+    }
+
+    .placeholder-bar {
+      background: rgba(30, 30, 30, 0.12);
+      border-radius: 3px;
+      height: 14px;
+      margin: 6px 0;
+    }
+
+    .placeholder-img {
+      background: linear-gradient(135deg, #3a2a1a 0%, #5c3d2e 50%, #8B1A1A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(245, 240, 232, 0.5);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      min-height: 200px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--bg);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* Hero */
+    section[data-section="hero"] {
+      background: var(--dark);
+      color: var(--bg);
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section[data-section="hero"] .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(30,30,30,0.85) 0%, rgba(139,26,26,0.3) 100%);
+    }
+
+    section[data-section="hero"] .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #2a1a0e 0%, #1E1E1E 100%);
+    }
+
+    section[data-section="hero"] .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    section[data-section="hero"] h1 {
+      font-family: var(--font-heading);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="hero"] .tagline {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+
+    section[data-section="hero"] .hero-body {
+      font-size: 18px;
+      color: rgba(245, 240, 232, 0.8);
+      margin-bottom: 32px;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section[data-section="hero"] .btn-primary { background: var(--color-primary); color: var(--bg); }
+    section[data-section="hero"] .btn-secondary { border-color: var(--bg); color: var(--bg); margin-left: 16px; }
+
+    /* Craft Intro */
+    section[data-section="craft-intro"] {
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    section[data-section="craft-intro"] .inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    section[data-section="craft-intro"] h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="craft-intro"] .stats {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      margin-top: 40px;
+    }
+
+    section[data-section="craft-intro"] .stat-number {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--color-primary);
+    }
+
+    section[data-section="craft-intro"] .stat-label {
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Featured */
+    section[data-section="featured-pizzas"] {
+      background: var(--light);
+      padding: 80px 32px;
+    }
+
+    section[data-section="featured-pizzas"] .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section[data-section="featured-pizzas"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    section[data-section="featured-pizzas"] h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .card .placeholder-img { min-height: 240px; border-radius: 0; }
+
+    .card .card-body {
+      padding: 24px;
+    }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card .card-desc {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    /* Sourcing */
+    section[data-section="sourcing"] {
+      padding: 80px 32px;
+    }
+
+    section[data-section="sourcing"] .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    section[data-section="sourcing"] .placeholder-img {
+      min-height: 400px;
+      border-radius: 8px;
+    }
+
+    section[data-section="sourcing"] .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    section[data-section="sourcing"] h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    section[data-section="sourcing"] .source-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    section[data-section="sourcing"] .source-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+      font-size: 16px;
+    }
+
+    section[data-section="sourcing"] .source-list .source-name {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    /* CTA */
+    section[data-section="closing-cta"] {
+      background: var(--dark);
+      color: var(--bg);
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    section[data-section="closing-cta"] h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      color: var(--bg);
+      margin-bottom: 16px;
+    }
+
+    section[data-section="closing-cta"] p {
+      font-size: 18px;
+      color: rgba(245, 240, 232, 0.8);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section[data-section="closing-cta"] .btn-primary {
+      background: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      section[data-section="hero"] h1 { font-size: 40px; }
+      .card-grid { grid-template-columns: 1fr; }
+      section[data-section="sourcing"] .split { grid-template-columns: 1fr; }
+      section[data-section="craft-intro"] .stats { flex-direction: column; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<script type="application/json" id="wireframe-meta">
+{
+  "page": "Homepage",
+  "briefing": "homepage.md",
+  "mode": "branded",
+  "sections": ["hero", "craft-intro", "featured-pizzas", "sourcing", "closing-cta"]
+}
+</script>
+
+<!-- HERO -->
+<section data-section="hero" data-intent="emotional hook" data-layout="full-bleed" data-media="image">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="annotation">Hero — full-bleed background image of oven/pizza</p>
+    <h1>Ferro &amp; Fiamma</h1>
+    <p class="tagline">Fire and Iron. Since Brooklyn.</p>
+    <p class="hero-body">Wood-fired Neapolitan pizza. 72-hour sourdough. San Marzano DOP. No shortcuts.</p>
+    <div>
+      <span class="btn-primary">View Our Menu</span>
+      <span class="btn-secondary">Find Us</span>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT INTRO -->
+<section data-section="craft-intro" data-intent="build credibility" data-layout="contained">
+  <div class="inner">
+    <p class="annotation">Craft Statement — centered text with stats</p>
+    <h2>72 Hours of Patience</h2>
+    <p>Every pizza starts with time. Our sourdough ferments for three days before it ever sees the oven. Then it meets 900 degrees of wood-fired heat for sixty seconds of controlled chaos.</p>
+    <div class="stats">
+      <div>
+        <div class="stat-number">72h</div>
+        <div class="stat-label">Fermentation</div>
+      </div>
+      <div>
+        <div class="stat-number">900°</div>
+        <div class="stat-label">Wood-fired</div>
+      </div>
+      <div>
+        <div class="stat-number">60s</div>
+        <div class="stat-label">Per pizza</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PIZZAS -->
+<section data-section="featured-pizzas" data-intent="showcase product" data-layout="contained" data-items="3">
+  <div class="inner">
+    <p class="annotation">Featured Pizzas — 3-card grid</p>
+    <p class="eyebrow">From the Oven</p>
+    <h2>What We Make</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="placeholder-img">pizza photo — margherita</div>
+        <div class="card-body">
+          <h3>Margherita</h3>
+          <p class="card-desc">San Marzano DOP, fior di latte, fresh basil, extra virgin olive oil. The standard.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="placeholder-img">pizza photo — diavola</div>
+        <div class="card-body">
+          <h3>Diavola</h3>
+          <p class="card-desc">San Marzano DOP, fior di latte, spicy soppressata, Calabrian chili oil.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="placeholder-img">pizza photo — bianca</div>
+        <div class="card-body">
+          <h3>Bianca</h3>
+          <p class="card-desc">Fior di latte, ricotta, garlic, fresh arugula, lemon zest. No red sauce.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCING -->
+<section data-section="sourcing" data-intent="build trust" data-layout="split-media" data-media="image">
+  <div class="split">
+    <div class="placeholder-img">close-up: san marzano tomatoes, mozzarella, flour</div>
+    <div>
+      <p class="annotation">Sourcing Story — split layout with image</p>
+      <p class="eyebrow">The Source</p>
+      <h2>We Know Where It Comes From</h2>
+      <p>Every ingredient has a name and an origin. We don't just say "locally sourced" — we tell you who, what, and where.</p>
+      <ul class="source-list">
+        <li><span class="source-name">San Marzano DOP</span> — Agro Sarnese-Nocerino, Campania</li>
+        <li><span class="source-name">Fior di Latte</span> — Local Brooklyn creamery</li>
+        <li><span class="source-name">Extra Virgin Olive Oil</span> — Small-batch, Puglia</li>
+        <li><span class="source-name">Caputo 00 Flour</span> — Naples, Italy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section data-section="closing-cta" data-intent="drive action" data-layout="full-bleed">
+  <p class="annotation" style="color: var(--color-accent);">Closing CTA — dark background</p>
+  <h2>Come Hungry. Leave Happy.</h2>
+  <p>We're open seven days. Walk-ins welcome. Your table is waiting.</p>
+  <span class="btn-primary">Find Us</span>
+</section>
+
+</body>
+</html>

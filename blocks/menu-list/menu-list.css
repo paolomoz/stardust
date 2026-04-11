@@ -1,0 +1,51 @@
+.menu-list > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-l);
+  padding: var(--spacing-l) 0;
+  border-bottom: 1px solid rgb(30 30 30 / 8%);
+  align-items: start;
+}
+
+.menu-list > div:last-child {
+  border-bottom: none;
+}
+
+.menu-list .menu-list-details h3 {
+  font-size: var(--heading-font-size-s);
+  margin-top: 0;
+  margin-bottom: var(--spacing-xs);
+}
+
+.menu-list .menu-list-details p {
+  color: var(--text-color-muted);
+  font-size: var(--body-font-size-s);
+  margin: 0;
+  max-width: 600px;
+}
+
+.menu-list .menu-list-details .menu-list-tag {
+  display: inline-block;
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary);
+  background: rgb(92 107 79 / 10%);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-top: var(--spacing-s);
+}
+
+.menu-list .menu-list-price {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.menu-list .menu-list-price p {
+  margin: 0;
+}

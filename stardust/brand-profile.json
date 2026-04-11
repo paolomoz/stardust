@@ -1,0 +1,218 @@
+{
+  "name": "Ferro & Fiamma",
+  "philosophy": "Old-school Naples meets industrial Brooklyn. We are obsessive about sourcing — San Marzano DOP tomatoes, fior di latte from a local creamery, 72-hour sourdough fermentation. Every pizza is wood-fired to charred perfection. No shortcuts, no compromises, just fire and iron.",
+
+  "logo": {
+    "primary": null,
+    "variants": [],
+    "clearSpace": "Maintain clear space equal to the height of the ampersand on all sides",
+    "donts": [
+      "Never place the logo on busy photographic backgrounds without a solid backing",
+      "Never distort, rotate, or recolor the logo outside approved palette"
+    ]
+  },
+
+  "colors": {
+    "primary": [
+      {
+        "name": "Fornace Red",
+        "hex": "#8B1A1A",
+        "pantone": null,
+        "role": "Primary brand — headlines, CTAs, key accents. The deep red of a wood-fired oven interior."
+      },
+      {
+        "name": "Charcoal",
+        "hex": "#1E1E1E",
+        "pantone": null,
+        "role": "Text, dark backgrounds, footer. The char on the crust."
+      },
+      {
+        "name": "Warm Cream",
+        "hex": "#F5F0E8",
+        "pantone": null,
+        "role": "Page backgrounds, light sections. The color of fresh dough."
+      }
+    ],
+    "secondary": [
+      {
+        "name": "Olive Grove",
+        "hex": "#5C6B4F",
+        "role": "Accent — badges, secondary buttons, subtle highlights. Fresh basil and olive oil."
+      },
+      {
+        "name": "Terracotta",
+        "hex": "#C4714E",
+        "role": "Warm accent — highlights, hover states, decorative elements."
+      }
+    ],
+    "web": [
+      { "name": "Link Red", "hex": "#8B1A1A", "role": "Text links — matches primary brand" },
+      { "name": "Hover Red", "hex": "#6E1515", "role": "Link hover state" },
+      { "name": "Marble White", "hex": "#FFFFFF", "role": "Card backgrounds, contrast panels" },
+      { "name": "Ash Grey", "hex": "#6B6B6B", "role": "Secondary text, captions, metadata" }
+    ]
+  },
+
+  "typography": {
+    "heading": {
+      "family": "Playfair Display",
+      "weights": ["Bold", "Black"],
+      "usage": "Page titles, hero headlines, section headings. Evokes old Italian signage."
+    },
+    "subheading": {
+      "family": "Playfair Display",
+      "weight": "Regular",
+      "usage": "Section subtitles, card headings, menu category names"
+    },
+    "body": {
+      "family": "Source Sans 3",
+      "weight": "Regular",
+      "usage": "Body copy, descriptions, paragraphs. Clean and legible."
+    },
+    "eyebrow": {
+      "family": "Source Sans 3",
+      "weight": "SemiBold",
+      "transform": "uppercase",
+      "usage": "Section labels, category tags, overlines. Spaced at 0.12em."
+    },
+    "button": {
+      "family": "Source Sans 3",
+      "weight": "SemiBold",
+      "usage": "CTA buttons, nav links"
+    },
+    "rules": [
+      "Headings always use Playfair Display — never Source Sans 3",
+      "Body text minimum 16px / 1rem for readability",
+      "Letter-spacing on eyebrows: 0.12em",
+      "Line height: 1.2 for headings, 1.6 for body"
+    ]
+  },
+
+  "photography": {
+    "style": "Moody, warm, high-contrast. Close-up food shots with shallow depth of field. Warm tungsten lighting with deep shadows. Industrial textures — exposed brick, marble counters, weathered steel. Authentic kitchen action, not staged perfection.",
+    "rules": [
+      "Always warm white balance — no cool/blue tones",
+      "Show texture: bubbling cheese, charred crust, flour-dusted surfaces",
+      "Include environmental shots: the oven mouth glowing, hands stretching dough",
+      "People shots are candid — staff at work, guests mid-bite, never posed",
+      "Depth of field: subject sharp, background soft and warm"
+    ],
+    "donts": [
+      "No sterile overhead flat-lays",
+      "No bright, evenly-lit food photography",
+      "No stock photo aesthetic — nothing that looks mass-produced",
+      "No cold blue or fluorescent lighting"
+    ],
+    "social": "Instagram-first: close-ups of the pizza-making process, oven shots, ingredient details. Stories show behind-the-scenes kitchen moments."
+  },
+
+  "voice": {
+    "character": "Confident, warm, and unpretentious. We know our craft inside out but never lecture. Like your favorite Italian uncle who takes food seriously but doesn't take himself seriously.",
+    "traits": ["Passionate", "Knowledgeable", "Warm", "Direct", "Authentic"],
+    "antiTraits": ["Pretentious", "Fussy", "Corporate", "Trendy", "Apologetic"],
+    "examples": {
+      "do": [
+        { "text": "72 hours. That's how long our dough ferments before it ever sees the oven.", "context": "Leads with the compelling detail, lets the craft speak for itself" },
+        { "text": "San Marzano DOP. Not San Marzano style. Not San Marzano inspired. The real thing.", "context": "Direct, confident, makes the sourcing standard clear without being preachy" },
+        { "text": "Wood-fired at 900°F. Sixty seconds. That's all it takes when the dough is right.", "context": "Short punchy sentences convey mastery and confidence" },
+        { "text": "Come hungry. Leave happy. It's not complicated.", "context": "Warm, inviting, no-nonsense" }
+      ],
+      "dont": [
+        { "text": "We are proud to offer an artisanal dining experience featuring locally-sourced ingredients.", "context": "Corporate buzzwords — 'artisanal', 'dining experience', 'locally-sourced' are empty calories" },
+        { "text": "Our award-winning chef has crafted a menu that celebrates the rich tapestry of Neapolitan tradition.", "context": "Overwrought and pretentious — we show, we don't brag" },
+        { "text": "Pizza is life! 🍕🔥 Come get your slice!!!", "context": "Too casual, too many exclamation marks, emoji-heavy — we're warm, not wacky" }
+      ]
+    },
+    "rules": [
+      "No more than one exclamation mark per page",
+      "Never use 'artisanal', 'curated', or 'elevated'",
+      "Italian terms are fine when they're the real name (DOP, fior di latte, Margherita) — never for decoration",
+      "Short sentences. Let the periods do the work.",
+      "Always concrete over abstract — '900°F for 60 seconds' beats 'perfectly cooked'"
+    ]
+  },
+
+  "tone": {
+    "description": "Tone shifts by context but always stays warm and grounded. On the homepage we're inviting and confident. On the menu we're direct and appetizing. On About Us we're storytelling — personal, a little nostalgic, deeply passionate.",
+    "writingGoals": [
+      {
+        "goal": "To Invite",
+        "description": "Make people hungry and curious. Lead with sensory details — the smell of the oven, the sound of the crust, the sight of bubbling mozzarella."
+      },
+      {
+        "goal": "To Inform",
+        "description": "Share the craft without lecturing. Our sourcing, our process, our standards — stated plainly, not defensively."
+      },
+      {
+        "goal": "To Connect",
+        "description": "Build a relationship. We're a neighborhood place. We know your name, your order, your kids."
+      }
+    ],
+    "cleverVsClear": {
+      "clever": "Menu item descriptions can have personality. Section headings can be evocative ('From the Oven' not 'Pizza Menu').",
+      "clear": "Hours, location, allergen info, ordering instructions — always crystal clear, never buried in prose."
+    }
+  },
+
+  "contentPillars": [
+    {
+      "name": "The Craft",
+      "description": "Our process: 72-hour fermentation, wood-fired technique, handmade from scratch daily"
+    },
+    {
+      "name": "The Source",
+      "description": "Where our ingredients come from: San Marzano DOP, local creamery fior di latte, small-batch olive oil"
+    },
+    {
+      "name": "The Place",
+      "description": "Brooklyn neighborhood culture — the regulars, the block, the community table"
+    }
+  ],
+
+  "personas": [
+    {
+      "name": "The Purist",
+      "description": "Knows the difference between Neapolitan and New York style. Orders the Margherita to test a new spot. Cares about sourcing, fermentation, char level.",
+      "values": ["Authenticity", "Quality ingredients", "Traditional technique"],
+      "motto": "If the Margherita isn't right, nothing else matters.",
+      "stats": [
+        { "value": "35%", "description": "of our regulars — they came for the craft and stayed" }
+      ]
+    },
+    {
+      "name": "The Neighbor",
+      "description": "Lives on the block. Comes in twice a week. Orders the same thing every time. Knows the staff by name.",
+      "values": ["Convenience", "Consistency", "Community"],
+      "motto": "Our Tuesday night spot.",
+      "stats": [
+        { "value": "50%", "description": "of revenue — loyal neighborhood regulars" }
+      ]
+    },
+    {
+      "name": "The Explorer",
+      "description": "Found us on Instagram or a food blog. Wants to try the specials, photograph everything, tell their friends.",
+      "values": ["Discovery", "Visual appeal", "Shareable experiences"],
+      "motto": "Have you tried that new pizza place in Brooklyn?",
+      "stats": [
+        { "value": "15%", "description": "of traffic — discovery-driven, high social share rate" }
+      ]
+    }
+  ],
+
+  "spacing": {
+    "scale": [
+      { "name": "XS", "value": "4px" },
+      { "name": "S", "value": "8px" },
+      { "name": "M", "value": "16px" },
+      { "name": "L", "value": "24px" },
+      { "name": "XL", "value": "32px" },
+      { "name": "XXL", "value": "48px" },
+      { "name": "XXXL", "value": "64px" }
+    ],
+    "borderRadius": [
+      { "name": "None", "value": "0" },
+      { "name": "Subtle", "value": "4px" },
+      { "name": "Card", "value": "8px" }
+    ]
+  }
+}
