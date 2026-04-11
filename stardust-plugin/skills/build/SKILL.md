@@ -62,6 +62,26 @@ This applies equally to:
 
 The block JS generates specific DOM structures and class names. Read the JS to understand what classes and elements exist, then write CSS that targets them with brand-appropriate styling. Cross-reference the wireframe section that maps to each block to understand the design intent (typography, spacing, visual weight, layout).
 
+### Disable `buildHeroBlock` Auto-Blocking for Custom Heroes
+
+The boilerplate `scripts.js` contains a `buildHeroBlock()` function that auto-detects the first `<h1>` and first `<picture>` on the page and **moves them** into a new `.hero` block prepended to `<main>`. This silently destroys custom hero blocks like `hero-split` or `hero-centered` — their h1 and picture vanish from the DOM before the block's `decorate()` function runs.
+
+**Fix:** In `scripts.js`, update the guard clause in `buildHeroBlock` to match any block whose class starts with `hero`:
+
+```js
+// Before (only checks .hero):
+if (h1.closest('.hero') || picture.closest('.hero')) {
+  return;
+}
+
+// After (catches hero-split, hero-centered, etc.):
+if (h1.closest('[class^="hero"]') || picture.closest('[class^="hero"]')) {
+  return;
+}
+```
+
+**Apply this fix immediately after creating any custom hero block.** If you skip this, the hero will render without its headline and image — the auto-blocker steals them before your code runs.
+
 ### Full-Bleed Block Pattern
 
 `decorateBlock()` in `aem.js` wraps every block in a `{block}-wrapper` div. The DOM chain is: `.section.{block}-container > div.{block}-wrapper > div.{block}.block`. The wrapper inherits `max-width: var(--content-max-width)` from `main > .section > div`. Blocks that need to extend edge-to-edge (heroes, CTA bands, full-width backgrounds) must override this on the container and wrapper:
