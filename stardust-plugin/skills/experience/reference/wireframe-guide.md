@@ -76,6 +76,62 @@ Each wireframe includes a JSON metadata block linking to its briefing:
 6. **No real copy.** Section labels (e.g., "Hero", "Features") appear as small annotations above or beside the section, not as content.
 7. **Responsive.** Wireframes should be viewport-responsive — stack to single column on narrow viewports.
 
+## Content Reuse & Fragments (Multi-Page Sites)
+
+For multi-page sites, pages should be connected through shared content — not just navigation links. Content reuse means the same card, quote, or highlight appears on multiple pages, authored once and embedded everywhere.
+
+### Fragment Data Attributes
+
+Mark reusable content sections with fragment attributes so the Build stage can implement them as shared fragments:
+
+```html
+<!-- On the SOURCE page (where content is authored): -->
+<section data-section="recipe-grid" data-fragment="recipe-card" data-fragment-role="source">
+
+<!-- On CONSUMING pages (where content is reused): -->
+<section data-section="recipe-teaser" data-fragment="recipe-card" data-fragment-role="reuse" data-fragment-source="/recipes">
+```
+
+**Fragment attributes:**
+- `data-fragment` — fragment type identifier (e.g., "recipe-card", "testimonial-card", "capability-highlight")
+- `data-fragment-role` — either "source" (canonical home) or "reuse" (consuming page)
+- `data-fragment-source` — path to the source page (only on reuse sections)
+
+### Fragment Manifest in Metadata
+
+The wireframe metadata block should include a `fragments` map documenting which content types are shared across pages:
+
+```json
+{
+  "page": "Homepage",
+  "briefing": "homepage.md",
+  "mode": "branded",
+  "sections": ["hero", "capabilities-tease", "recipe-showcase", "stories-teaser", "closing-cta"],
+  "fragments": {
+    "capability-highlight": { "source": "/capabilities", "reusedOn": ["/"] },
+    "recipe-card": { "source": "/recipes", "reusedOn": ["/", "/capabilities", "/stories"] },
+    "testimonial-card": { "source": "/stories", "reusedOn": ["/", "/capabilities", "/recipes"] }
+  }
+}
+```
+
+### Common Fragment Patterns
+
+| Fragment Type | Source Page | Typical Reuse |
+|---|---|---|
+| Recipe cards (image, title, meta) | Recipes page | Homepage, product pages |
+| Testimonial quotes (stars, quote, author) | Stories/testimonials page | Homepage, product pages, recipe pages |
+| Capability highlights (stat, label, description) | Capabilities/product page | Homepage, recipe pages, stories pages |
+| CTA banner (headline, button) | Shared across all | Every page (closing CTA) |
+
+### Design Rules for Reused Content
+
+1. **The homepage is a hub.** It should pull excerpts from every major content page — capabilities, recipes, stories — with clear CTAs to explore more.
+2. **Inner pages cross-link to at least two other pages.** Each inner page should include at least one reused content section from a sibling page, plus a link to a third.
+3. **Reused sections are excerpts, not duplicates.** Show 3-4 items from a source that has 6+. This creates a "see more" motivation.
+4. **Every reused section has a cross-link CTA.** A "See All Recipes" button, "Read Their Stories" link, or "Explore Capabilities" button connects to the source page.
+5. **Annotate reused sections.** Use HTML comments and annotation labels to make the reuse relationship visible in the wireframe: `<!-- Recipe teaser — content reused from /recipes -->`.
+
 ## Reference
 
 See the project's `.superpowers/brainstorm/*/content/visual-wireframe.html` for a dual-mode example (grey + branded side by side).

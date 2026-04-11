@@ -32,12 +32,27 @@ Help the designer express their page vision through briefings (what + why) and v
 
 **Reminder:** The agent helps draft briefings but the designer owns the content. Always present the draft and wait for approval before writing the file.
 
+## Phase 1.5: Content Reuse Map (Multi-Page Sites Only)
+
+Before wireframing, plan how pages connect through shared content. This is not just cross-links — it's **content reuse**: the same recipe card, testimonial quote, or capability highlight appears on multiple pages, authored once.
+
+1. Identify the main content types each page owns (e.g., recipes page owns recipe cards, stories page owns testimonials)
+2. Map where each content type gets reused as excerpts on other pages
+3. Add a `# Content Reuse Map` section to `stardust/briefings/_site.md` — see [briefing-format.md](reference/briefing-format.md) for the table format
+4. Present the map to the designer for approval before wireframing
+
+**Key principles:**
+- The **homepage is a hub** — it should pull excerpts from every major content page
+- **Inner pages cross-link to at least 2 siblings** through reused content sections (not just nav links)
+- Reused sections show **3-4 items** from a source that has more, creating "see more" motivation
+- Every reused section includes a **CTA to the source page**
+
 ## Phase 2: Wireframe
 
 For each page with an approved briefing:
 
 1. Read the page briefing from `stardust/briefings/{page}.md`
-2. Read the site briefing from `stardust/briefings/_site.md` if it exists
+2. Read the site briefing from `stardust/briefings/_site.md` if it exists (including the Content Reuse Map)
 3. Run `/impeccable shape` — this conducts UX discovery for the page:
    - What sections does this page need?
    - What's the visual hierarchy?
@@ -50,7 +65,8 @@ For each page with an approved briefing:
    - Check wireframe mode: grey (no design-tokens.json) or branded (design-tokens.json exists)
    - Follow the rendering rules in [wireframe-guide.md](reference/wireframe-guide.md)
    - Each section gets `data-section`, `data-intent`, `data-layout` attributes
-   - Include the JSON metadata block linking to the briefing
+   - For multi-page sites: add `data-fragment`, `data-fragment-role`, and `data-fragment-source` attributes to reusable content sections — see [wireframe-guide.md](reference/wireframe-guide.md) Content Reuse & Fragments section
+   - Include the JSON metadata block linking to the briefing (with `fragments` map for multi-page sites)
    - Write to `stardust/wireframes/{page}.html`
 
 6. Serve the wireframe for designer review:

@@ -52,6 +52,20 @@ pages: [homepage, products, about, contact]
 
 # Content Hierarchy
 [Which page is most important? How do pages relate to each other?]
+
+# Content Reuse Map
+[Define which content types are shared across pages. Each entry names the fragment type, which page owns it, and where it gets reused.]
+
+| Fragment | Source Page | Reused On | Purpose |
+|----------|------------|-----------|---------|
+| [e.g. recipe-card] | [/recipes] | [/, /capabilities] | [Inspire use, cross-link to recipes] |
+| [e.g. testimonial-card] | [/stories] | [/, /capabilities, /recipes] | [Social proof, cross-link to stories] |
+
+Rules:
+- The homepage should pull excerpts from every major content page
+- Each inner page should include at least one reused section from a sibling page
+- Reused content is an excerpt (3-4 items), not a full duplicate — it creates "see more" motivation
+- Every reused section includes a CTA linking to the source page
 ```
 
 Page briefings inherit context from the site briefing. They don't need to repeat shared information.
