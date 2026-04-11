@@ -17,6 +17,7 @@
         "email": "mottadel@adobe.com"
       },
       "source": "./",
+      "skills": "./skills/",
       "category": "design",
       "tags": ["aem", "eds", "edge-delivery", "brand", "design-system", "pipeline"]
     }

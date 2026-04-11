@@ -1,0 +1,5 @@
+{
+  "name": "stardust",
+  "description": "Skill-based pipeline for creating AEM Edge Delivery Services websites from brand guidelines.",
+  "skills": "./skills/"
+}
