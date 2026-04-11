@@ -138,6 +138,30 @@ For each wireframe that has all its blocks built:
 
 This rule applies equally to page drafts (`drafts/*.plain.html`) and fragment files (`nav.plain.html`, `footer.plain.html`).
 
+**Section Metadata placement:** `section-metadata` must be the **last child inside** the section div it styles — never a standalone sibling div. The `decorateSections` function in `aem.js` looks for `.section-metadata` within each section wrapper. If it's a separate top-level `<div>`, it becomes its own section and renders as visible text.
+
+**Correct (inside the section):**
+```html
+<div>
+  <h2>Heading</h2>
+  <p>Content</p>
+  <div class="section-metadata">
+    <div><div>style</div><div>dark</div></div>
+  </div>
+</div>
+```
+
+**Wrong (standalone sibling — renders as visible text):**
+```html
+<div>
+  <h2>Heading</h2>
+  <p>Content</p>
+</div>
+<div class="section-metadata">
+  <div><div>style</div><div>dark</div></div>
+</div>
+```
+
 ### Placeholder Images
 
 Generate placeholder images for all `<picture>` elements referenced in draft pages:
