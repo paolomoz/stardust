@@ -249,10 +249,15 @@ Button styles are determined by wrapping elements:
 
 ### Placeholder Images
 
-Generate placeholder images for all `<picture>` elements referenced in draft pages:
-- Use Python/Pillow, ImageMagick, or similar to create branded gradient images
-- Use brand colors from `brand-profile.json` for warm, on-brand gradients
-- Hero images: 1600x800px, content images: 800x600px, card images: 600x450px
+Generate placeholder images that match the wireframe placeholder style — **flat solid colors with centered uppercase label text**, not gradients. This keeps visual consistency between wireframes and draft pages so the designer can evaluate layout and spacing without distraction.
+
+Use Python/Pillow or similar to create images:
+- **Colors must match the wireframe palette:** use the same CSS custom property values from the wireframe `:root` block. Typical mapping:
+  - Product/lifestyle/general images: `--cool` color (light blue-gray, e.g., `#dce0e7`)
+  - Food/recipe images: `--warm` color (light cream, e.g., `#f6ece4`)
+  - Dark/dramatic backgrounds: `--navy` color (e.g., `#333f48`)
+- **Label text:** centered, uppercase, 13px, using a muted version of the background color (e.g., `#a2aaad` on cool, `rgba(255,255,255,0.3)` on dark). Label describes the image intent (e.g., "VX1 PRODUCT IMAGE", "FOOD PHOTO")
+- **Size:** all placeholders at 1600x900px (the `?width=` query param in `srcset` handles resizing)
 - Save as both `.png` and `.webp` in `drafts/`
 - Image filenames must match the `src`/`srcset` references in the HTML
 
