@@ -24,14 +24,57 @@ The designer provides ONE of:
 
 ### If guidelines URL or PDF provided:
 
-1. Use `brand-extractor` (from eds-site-builder) to analyze the guidelines and extract structured tokens
-2. Read the extraction output and map it to the brand profile schema — consult [brand-profile-schema.md](reference/brand-profile-schema.md) for the full schema
-3. Write the structured data to `stardust/brand-profile.json`
-4. Pay special attention to extracting:
-   - **Voice examples** — do/don't copy pairs. These are critical for content generation. Extract as many as available.
-   - **Photography direction** — style rules, composition guidance, subject matter. Feeds image generation.
-   - **Logo variants** — save all variants to `icons/`. SVG preferred, optimized PNG as fallback.
-   - **Color roles** — don't just extract hex values, capture what each color is FOR (CTAs, headings, backgrounds)
+**Always use a real browser (Playwright or equivalent) to extract brand signals from a URL. Do NOT rely on WebFetch or raw HTML — it misses JS-rendered copy, computed styles, and the visual identity cues that actually make a brand recognizable.**
+
+WebFetch inference produces generic brand profiles ("Inter body, pill buttons, deep blue accent") that could describe any product. The goal here is *specificity* — the quirks that make the brand itself, not a generic version of its category.
+
+#### 1. Drive a real browser
+
+Use Playwright (Chromium, viewport 1440×900, deviceScaleFactor 2) to load the URL, wait for network idle + ~1.5s, then both:
+
+- **Take screenshots** — a hero clip (1440×900) and a full-page screenshot. Save to a scratch dir.
+- **Evaluate computed styles in the page context** and capture:
+  - `:root` / `html` CSS custom properties (brand often exposes design tokens here)
+  - `<body>` computed `background-color`, `color`, `font-family`
+  - All unique `font-family` values in use (walk `body, body *`)
+  - First 10 headings: tag, text, `font-family`, `font-weight`, `font-size`, `line-height`, `letter-spacing`, `color`
+  - First `<p>` body sample with the same style props — note `color` carefully (Arc uses `rgba(0,0,0,0.65)`, not pure ink)
+  - `<em>`, `<i>`, or `[class*="italic"]` elements — the italic display accent often lives here and is brand-specific (Exposure VAR, etc.)
+  - First 8 CTAs (`a[class*="button"]`, `button`, `[class*="cta"]`): text, `background-color`, `color`, `border-radius`, `padding`, `font-family`, `font-weight`. Capture **multiple CTA variants** — primary/inverted/inked patterns matter.
+  - Section background colors (walk `section, header, main > div`) — surface a variant cream, a variant ink, or an off-white you'd otherwise miss
+  - `<img>` and `<svg>` with logo/brand/hero classes — source paths
+  - Meta tags, especially `theme-color` (the brand's official color), `description`, `og:*`
+  - Hero copy text (first 6 h1/h2/p contents)
+
+#### 2. Identify identity traits, not just tokens
+
+After extraction, explicitly look for and record:
+
+- **Signature border-radius** — brands often pick a specific non-round value (10px, 14px). Record it as `componentStyle.borderRadius.default`.
+- **Body text opacity** — is body copy at full ink or softened (e.g. 65%)? This is a recurring brand trait.
+- **Display metrics** — if headings run tight (`line-height < 1.0`, `letter-spacing < -0.03em`), capture both values verbatim. These feel-of-type details are what separate a real brand from a generic clone.
+- **Multiple CTA patterns** — if you see inked-black, branded-color, and inverted buttons, record all three with their exact styles.
+- **Color variants for context** — capture "cream on blue" as a separate color if the value differs from "cream on cream" (e.g. `#FFFADD` vs `#FFFCEC`).
+- **Visual motifs beyond logos/colors** — look at the screenshot and name them: dashed dividers, aurora gradients, squiggle separators, noise textures, hand-drawn elements. Add a `motifs` array to the brand profile with `name`, `description`, `usage`. These motifs are what signal the brand before a word is read.
+
+#### 3. Voice examples from live copy
+
+Pull real copy from the rendered page (hero headlines, CTAs, micro-copy) for `voice.examples.do`. Real examples beat invented ones. Note rhetorical devices — em-dashes, rhythmic triplets, single-word italic accents — and call them out in `voice.rules`.
+
+#### 4. PDFs and non-URL sources
+
+If the input is a PDF or uploaded asset, use `brand-extractor` (from eds-site-builder) as a fallback. Playwright is the primary path only for URLs.
+
+#### 5. Write the profile
+
+Map everything to the brand profile schema — consult [brand-profile-schema.md](reference/brand-profile-schema.md). Include an `extraction` block recording `method`, `source`, `capturedAt`, and screenshot paths so future runs can verify against ground truth.
+
+Pay special attention to:
+- **Voice examples** — do/don't copy pairs. Critical for content generation. Extract from live copy.
+- **Photography direction** — style rules, composition, subject matter. Feeds image generation.
+- **Logo variants** — save all variants to `icons/`. SVG preferred, optimized PNG fallback.
+- **Color roles** — don't just capture hex, capture what each color is FOR (CTAs, headings, backgrounds, on-blue text).
+- **Motifs** — the non-obvious visual gestures. Without these the board reads as a generic palette.
 
 ### If no guidelines (conversational):
 
@@ -42,11 +85,18 @@ The designer provides ONE of:
 
 ## Phase 2: Design Personality
 
-1. Run `/impeccable teach` — this interviews the designer about the project's brand, users, and aesthetic
-2. Feed it context from the brand profile you just extracted (colors, voice, personas)
-3. `/teach` produces `.impeccable.md` at the project root — this is the design context for all future quality gates
+`.impeccable.md` captures the designer's *taste* — references, pet peeves, which rules to bend — signal that can't be inferred from the brand profile alone. It's produced by an interactive interview and used as a quality gate by downstream skills.
 
-If `.impeccable.md` already exists (designer ran /teach separately), skip this phase.
+**`/impeccable teach` is a slash command — you (the assistant) cannot invoke it directly.** Instead:
+
+1. If `.impeccable.md` already exists, skip this phase.
+2. Otherwise, pause and recommend to the designer:
+   > Before we render the brand board, run `/impeccable teach` in the prompt. It will interview you about design personality (references, do's and don'ts, taste) and write `.impeccable.md`. Downstream quality gates read this file.
+   >
+   > This is optional but recommended. You can also skip it — we can always run `/impeccable teach` later and re-refine. Reply "skip" to continue without it, or run the command now and then ask me to continue.
+3. Wait for the designer to either run `/impeccable teach` (then resume) or explicitly say "skip". Do not invent `.impeccable.md` content from the brand profile — that provides no signal beyond what's already captured.
+
+**Pipeline automation:** When invoked as part of a full end-to-end pipeline run, skip this phase without prompting. The designer can run `/impeccable teach` later and re-refine.
 
 ## Phase 3: Render Brand Board
 

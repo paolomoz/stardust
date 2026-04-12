@@ -36,13 +36,50 @@
     ],
     "web": [
       { "name": "string", "hex": "string", "role": "string — e.g. 'Links', 'Offer text'" }
+    ],
+    "gradients": [
+      {
+        "name": "string — e.g. 'Aurora'",
+        "stops": ["string — color descriptions or hex"],
+        "usage": "string — where and when to apply"
+      }
     ]
   },
+
+  "componentStyle": {
+    "borderRadius": {
+      "default": "string — e.g. '10px'. The brand's signature corner — often a non-round value",
+      "usage": "string — why this specific value"
+    },
+    "maxWidth": "string — e.g. '1280px'",
+    "pagePadding": "string — e.g. '32px'",
+    "navbarHeight": "string — e.g. '64px'",
+    "buttons": {
+      "patterns": [
+        {
+          "name": "string — e.g. 'Primary (inked)', 'Primary (branded)', 'Inverted'",
+          "style": "string — exact bg/text/radius/padding recipe",
+          "example": "string — label text"
+        }
+      ],
+      "dualCTA": "string|null — whether the brand shows multiple primary CTAs side-by-side (e.g. Mac + Windows)"
+    }
+  },
+
+  "motifs": [
+    {
+      "name": "string — e.g. 'Dashed cream divider', 'Aurora haze', 'Wavy squiggle', 'Noise texture'",
+      "description": "string — what it looks like and what it evokes",
+      "usage": "string — where to place it, where NOT to"
+    }
+  ],
 
   "typography": {
     "heading": {
       "family": "string — font family name",
       "weights": ["string — e.g. 'Book', 'Medium', 'Bold'"],
+      "lineHeight": "number|null — e.g. 0.93. Capture verbatim if the brand runs display tight",
+      "letterSpacing": "string|null — e.g. '-0.04em'. Capture verbatim for display type",
       "usage": "string — when to use"
     },
     "subheading": {
@@ -53,7 +90,13 @@
     "body": {
       "family": "string",
       "weight": "string",
+      "opacity": "number|null — e.g. 0.65. Many brands soften body ink below full opacity; record if true",
       "usage": "string"
+    },
+    "accent": {
+      "family": "string — italic serif or other display accent used on single words within sans headlines",
+      "weight": "string",
+      "usage": "string — which contexts and at what dose ('one word per headline max')"
     },
     "eyebrow": {
       "family": "string",
@@ -131,6 +174,13 @@
     "borderRadius": [
       { "name": "string", "value": "string" }
     ]
+  },
+
+  "extraction": {
+    "method": "string — e.g. 'Playwright (Chromium, 1440×900, 2x DPR) — computed styles + fullpage screenshot'",
+    "source": "string — URL or file path",
+    "capturedAt": "string — ISO date",
+    "screenshots": ["string — paths to screenshot files"]
   }
 }
 ```
