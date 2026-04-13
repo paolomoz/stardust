@@ -42,15 +42,29 @@ To check if `styles/styles.css` has custom properties (not just boilerplate), lo
 
 To check for non-boilerplate blocks, compare `blocks/` contents against the standard set: cards, columns, footer, fragment, header, hero. Any additional blocks are custom.
 
+## Soft-Gate Model
+
+The non-EDS skills (`brand`, `briefings`, `wireframes`, `design`) never block
+on missing inputs. If a user invokes any of them with gaps upstream, the skill
+synthesizes plausible defaults and stamps a provenance comment on the produced
+artifact. You recommend the ideal next step, but the user is free to skip
+around — they will see the provenance notes when they open the artifacts.
+
+The EDS skills (`eds-design`, `eds-build`, `eds-refine`) stay strict and do
+require their inputs. Your recommendations for those still gate.
+
 ## Step 2: Determine Pipeline State
 
-Brand and briefings are **independent prerequisites**. Either can run first, or both in parallel. Wireframes are **optional** (grey, structural). Design requires brand + briefings (and optionally wireframes).
+Brand, briefings, wireframes, and design can each run in any order. The ideal
+path is brand → briefings → wireframes → design, but any skill can run with
+upstream gaps — inputs will be synthesized and provenance stamped. Your job is
+to recommend the most useful next step, not to enforce a sequence.
 
 ### Design phase
 
 | State | Condition | Next Step |
 |---|---|---|
-| **Fresh project** | Nothing in `stardust/` | Run `/stardust:brand` or `/stardust:briefings` — either first is fine |
+| **Fresh project** | Nothing in `stardust/` | Recommended: `/stardust:brand` or `/stardust:briefings` first — but any skill can be invoked; missing inputs will be synthesized with provenance. |
 | **Brand in progress** | brand_profile but no brand_board | Complete brand: render the board |
 | **Brand only** | brand artifacts present, no briefings | Run `/stardust:briefings` |
 | **Briefings only** | briefings present, no brand | Run `/stardust:brand` |
