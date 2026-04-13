@@ -7,11 +7,31 @@ description: "Capture page intent as structured briefings — from a one-line pr
 
 Help the user express their page vision as briefings that capture business intent. A briefing can be as lightweight as a single sentence of intent, or as detailed as final copy and image direction — the user chooses the fidelity.
 
-## MANDATORY PREPARATION
+## Pre-flight
 
-Read `.impeccable.md` if it exists — it informs tone when drafting with the user. It is **not required**: briefings can be authored before any brand or design-personality work.
+Run the procedure in [`../_shared/preflight.md`](../_shared/preflight.md) first.
 
-Do **not** block on `stardust/brand-profile.json`. Briefings are intentionally independent from brand extraction — either can happen first, or they can run in parallel. The downstream wireframes stage is where brand and briefings finally meet.
+## Contract
+
+**Needs (reads if present):**
+- User description of pages to plan
+- `.impeccable.md` (tone hints)
+- `stardust/brand-profile.json` (voice; not required)
+
+**Produces:**
+- `stardust/briefings/_site.md` (multi-page only)
+- `stardust/briefings/{page}.md` (one per page; **sole source of truth for page copy**)
+
+**If missing:**
+- No input at all → ask the user which pages they need and start with the most important one.
+- No brand-profile.json → briefings still proceed; tone defaults to neutral-technical.
+
+## Copy Ownership
+
+Briefings own page copy. If the user wants final words baked in, put them in
+`# Copy` per section. Design will use those strings verbatim and will never
+rewrite them. Briefings without `# Copy` are valid — downstream skills
+synthesize on-brand copy and stamp provenance.
 
 ---
 
@@ -34,6 +54,8 @@ If briefings already exist, read `stardust/briefings/` and confirm which pages a
 2. Draft the briefing at the requested fidelity. The agent helps draft; the user owns the content.
 3. Present the draft and wait for approval before writing the file.
 4. Write approved briefings to `stardust/briefings/{page}.md`.
+
+If the briefing was synthesized from a one-line prompt (not authored in a full conversation), stamp a provenance comment at the top of the file per [`../_shared/skill-contract.md`](../_shared/skill-contract.md).
 
 ## Phase 2.5: Content Reuse Map (Multi-Page Sites Only)
 
