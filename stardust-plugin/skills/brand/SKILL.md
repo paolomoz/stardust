@@ -7,9 +7,25 @@ description: "Extract brand identity from guidelines (PDF, URL, or conversation)
 
 Extract brand identity from guidelines and produce a visual brand board for designer approval.
 
-## MANDATORY PREPARATION
+## Pre-flight
 
-This skill is part of the stardust pipeline. Check for `.impeccable.md` — if it exists, read it for existing design context. If it doesn't exist, this skill will create it.
+Run the procedure in [`../_shared/preflight.md`](../_shared/preflight.md) first.
+`.impeccable.md` is optional input; if absent this skill may create it.
+
+## Contract
+
+**Needs (reads if present):**
+- Brand URL, PDF, or conversational description from the user
+- `.impeccable.md` (design personality, if any)
+
+**Produces:**
+- `stardust/brand-profile.json`
+- `stardust/brand-board.html`
+- `.impeccable.md` (created or updated)
+
+**If missing:**
+- No URL/PDF/description → ask the user one conversational prompt ("tell me about the brand in a sentence"), synthesize a neutral brand-profile shape (system fonts, mono palette, straight voice), and stamp provenance per [`../_shared/skill-contract.md`](../_shared/skill-contract.md).
+- No `.impeccable.md` → create a minimal one and stamp provenance at the top.
 
 ---
 
@@ -68,6 +84,8 @@ If the input is a PDF or uploaded asset, use `brand-extractor` (from eds-site-bu
 #### 5. Write the profile
 
 Map everything to the brand profile schema — consult [brand-profile-schema.md](reference/brand-profile-schema.md). Include an `extraction` block recording `method`, `source`, `capturedAt`, and screenshot paths so future runs can verify against ground truth.
+
+If any input was synthesized (no URL/PDF/description), add a `"_provenance"` key at the top of the JSON per [`../_shared/skill-contract.md`](../_shared/skill-contract.md).
 
 Pay special attention to:
 - **Voice examples** — do/don't copy pairs. Critical for content generation. Extract from live copy.
