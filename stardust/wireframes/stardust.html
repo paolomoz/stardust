@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stardust — Wireframe (Grey)</title>
+<script type="application/json" id="wireframe-meta">
+{
+  "page": "Stardust",
+  "briefing": "stardust.md",
+  "mode": "grey",
+  "sections": ["hero", "positioning", "pipeline", "how-it-works", "portability", "output", "closing-cta"]
+}
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, sans-serif;
+    background: #f5f5f5;
+    color: #555;
+    line-height: 1.4;
+  }
+  .section {
+    position: relative;
+    padding: 80px 48px;
+    border-bottom: 1px dashed #ccc;
+  }
+  .section[data-surface="alt"] { background: #ececec; }
+  .section-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    background: #f5f5f5;
+    padding: 2px 8px;
+    border: 1px solid #ddd;
+  }
+  .container { max-width: 1120px; margin: 0 auto; }
+
+  /* primitives */
+  .bar { background: #d0d0d0; border-radius: 3px; height: 14px; margin: 8px 0; }
+  .bar.h1 { height: 44px; width: 70%; background: #bbb; }
+  .bar.h2 { height: 30px; width: 55%; background: #bbb; }
+  .bar.h3 { height: 22px; width: 40%; background: #c4c4c4; }
+  .bar.sub { height: 18px; width: 60%; background: #c8c8c8; }
+  .bar.body { height: 12px; width: 100%; background: #d8d8d8; }
+  .bar.body.short { width: 80%; }
+  .bar.body.shorter { width: 55%; }
+  .bar.eyebrow { height: 10px; width: 120px; background: #bbb; margin-bottom: 16px; }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 4px;
+    background: #555;
+    color: #eee;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    margin-right: 12px;
+  }
+  .btn.secondary {
+    background: transparent;
+    border: 1px solid #888;
+    color: #666;
+  }
+  .cta-row { margin-top: 28px; }
+
+  .media {
+    background: #dadada;
+    border: 1px dashed #b5b5b5;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .hero { padding: 120px 48px 100px; }
+  .hero .media { height: 320px; margin-top: 48px; }
+
+  /* Positioning */
+  .positioning .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .positioning .media { height: 260px; }
+
+  /* Pipeline */
+  .pipeline .flow {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .pipeline .node {
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    padding: 16px 10px;
+    text-align: center;
+    position: relative;
+  }
+  .pipeline .node .num {
+    font-size: 10px;
+    color: #999;
+    letter-spacing: 0.1em;
+  }
+  .pipeline .node .bar { margin: 8px auto 4px; width: 70%; height: 10px; }
+  .pipeline .node .bar.small { height: 8px; width: 50%; }
+  .pipeline .phase-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    padding: 3px 8px;
+    background: #e6e6e6;
+    border: 1px solid #d0d0d0;
+    margin-right: 8px;
+  }
+  .pipeline .phases { margin-top: 20px; }
+
+  /* How it works */
+  .how .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .terminal {
+    background: #2a2a2a;
+    border-radius: 6px;
+    padding: 20px;
+    min-height: 280px;
+    color: #bbb;
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+  }
+  .terminal .line { margin: 6px 0; color: #888; }
+  .terminal .line.prompt::before { content: "▸ "; color: #666; }
+  .terminal .bar { background: #444; height: 10px; display: inline-block; vertical-align: middle; }
+
+  /* Portability */
+  .portability .hosts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .portability .host {
+    background: #e5e5e5;
+    border: 1px solid #ccc;
+    padding: 24px 16px;
+    text-align: center;
+  }
+  .portability .host.active { background: #d0d0d0; border-color: #aaa; }
+  .portability .host .badge {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #777;
+    text-transform: uppercase;
+  }
+
+  /* Output */
+  .output .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .output .tree {
+    background: #2a2a2a;
+    color: #bbb;
+    padding: 20px 24px;
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    border-radius: 6px;
+    min-height: 260px;
+  }
+  .output .tree div { margin: 4px 0; color: #888; }
+
+  /* Closing CTA */
+  .closing {
+    text-align: center;
+    padding: 120px 48px;
+  }
+  .closing .install-box {
+    background: #2a2a2a;
+    color: #bbb;
+    padding: 22px 28px;
+    border-radius: 6px;
+    font-family: ui-monospace, monospace;
+    max-width: 640px;
+    margin: 36px auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .closing .install-box .bar { background: #555; height: 12px; width: 70%; margin: 0; }
+  .closing .install-box .copy-btn {
+    background: #555; color: #ddd; font-size: 11px;
+    padding: 6px 14px; border-radius: 3px;
+  }
+
+  /* annotation style */
+  .note {
+    font-size: 12px;
+    color: #777;
+    font-style: italic;
+    margin: 6px 0 10px;
+    padding-left: 10px;
+    border-left: 2px solid #c8c8c8;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #666;
+    background: #e2e2e2;
+    border: 1px solid #ccc;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .caption {
+    font-size: 11px;
+    color: #888;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 900px) {
+    .positioning .grid,
+    .how .grid,
+    .output .grid { grid-template-columns: 1fr; }
+    .pipeline .flow { grid-template-columns: repeat(2, 1fr); }
+    .portability .hosts { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="section hero" data-section="hero" data-intent="emotional hook + positioning" data-layout="full-bleed" data-media="none">
+  <div class="section-label">Hero</div>
+  <div class="container">
+    <div class="bar eyebrow"></div>
+    <div class="note">Eyebrow — short kicker (e.g. "a SLICC sibling", product category, or deadpan one-liner).</div>
+    <div class="bar h1"></div>
+    <div class="bar h1" style="width:55%"></div>
+    <div class="note">Headline — two lines. Strike-through rewrite motif lands here (once per page, hero only).</div>
+    <div class="bar sub" style="margin-top:24px"></div>
+    <div class="bar sub" style="width:48%"></div>
+    <div class="note">Subhead — one or two sentences: what Stardust is, who it's for, why it's real.</div>
+    <div class="cta-row">
+      <span class="btn">Primary CTA — Install</span>
+      <span class="btn secondary">Secondary — GitHub</span>
+    </div>
+    <div class="caption">Primary = Cherry install CTA. Secondary = ghost link to repo.</div>
+    <div class="media" aria-label="hero visual placeholder">HERO VISUAL / PIPELINE DIAGRAM 16:9</div>
+    <div class="caption">Visual anchor — candidates: pipeline flow diagram, terminal screenshot mid-skill, or product shot. Design stage decides.</div>
+  </div>
+</section>
+
+<!-- Positioning -->
+<section class="section positioning" data-section="positioning" data-intent="explain what stardust is (and isn't)" data-layout="split-media" data-surface="alt">
+  <div class="section-label">Positioning</div>
+  <div class="container grid">
+    <div>
+      <div class="bar eyebrow"></div>
+      <div class="note">Eyebrow — "What Stardust is" or similar frame.</div>
+      <div class="bar h2"></div>
+      <div class="note">Section headline — reframes the category: not a site generator, a set of skills from need to site.</div>
+      <div class="bar body"></div>
+      <div class="bar body"></div>
+      <div class="bar body short"></div>
+      <div class="bar body"></div>
+      <div class="bar body shorter"></div>
+      <div class="note">Body — 4–6 lines. Covers: skills not one-shot, helps invent brand when missing, each step inspectable/re-runnable.</div>
+    </div>
+    <div>
+      <div class="media" style="height:260px" aria-label="positioning visual">NEED → WEBSITE DIAGRAM</div>
+      <div class="caption">Diagram: fuzzy "need" on the left → concrete EDS site on the right, with the 7 skills as waypoints.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Pipeline (the 7 skills) -->
+<section class="section pipeline" data-section="pipeline" data-intent="show the skill-by-skill flow" data-layout="contained" data-items="7">
+  <div class="section-label">Pipeline — 7 skills</div>
+  <div class="container">
+    <div class="bar h2"></div>
+    <div class="note">Section headline — "The pipeline" or "Seven skills, two phases".</div>
+    <div class="bar sub"></div>
+    <div class="note">Subhead — one line: design phase is EDS-agnostic, EDS phase turns designs into a real boilerplate project.</div>
+    <div class="phases">
+      <span class="phase-tag">Design phase — skills 1–4</span>
+      <span class="phase-tag">EDS phase — skills 5–7</span>
+    </div>
+    <div class="flow">
+      <div class="node"><div class="num">01 · brand</div><div class="bar"></div><div class="bar small"></div><div class="caption">extract / invent</div></div>
+      <div class="node"><div class="num">02 · briefings</div><div class="bar"></div><div class="bar small"></div><div class="caption">page intent</div></div>
+      <div class="node"><div class="num">03 · wireframes</div><div class="bar"></div><div class="bar small"></div><div class="caption">grey structure</div></div>
+      <div class="node"><div class="num">04 · design</div><div class="bar"></div><div class="bar small"></div><div class="caption">branded HTML</div></div>
+      <div class="node"><div class="num">05 · eds-design</div><div class="bar"></div><div class="bar small"></div><div class="caption">CSS tokens</div></div>
+      <div class="node"><div class="num">06 · eds-build</div><div class="bar"></div><div class="bar small"></div><div class="caption">blocks + pages</div></div>
+      <div class="node"><div class="num">07 · eds-refine</div><div class="bar"></div><div class="bar small"></div><div class="caption">polish + ship</div></div>
+    </div>
+    <div class="caption" style="margin-top:20px">Each node represents an invocable skill. Labels here are structural only — final icons / visuals added in design stage.</div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section how" data-section="how-it-works" data-intent="demonstrate inspectable, re-runnable skill invocation" data-layout="split-media" data-surface="alt" data-media="terminal">
+  <div class="section-label">How it works</div>
+  <div class="container grid">
+    <div>
+      <div class="bar eyebrow"></div>
+      <div class="note">Eyebrow — "How it works" or "Drive the pipeline".</div>
+      <div class="bar h2"></div>
+      <div class="note">Headline — each step is a skill you invoke on demand, not a black-box generator.</div>
+      <div class="bar body"></div>
+      <div class="bar body short"></div>
+      <div class="bar body"></div>
+      <div class="bar body shorter"></div>
+      <div class="note">Body — explains: inspect artifacts between steps, re-run any step, branch off if the brand already exists.</div>
+    </div>
+    <div class="terminal" aria-label="terminal example">
+      <div class="line prompt">/stardust:brand <span class="bar" style="width:160px"></span></div>
+      <div class="line"><span class="bar" style="width:220px"></span></div>
+      <div class="line"><span class="bar" style="width:280px"></span></div>
+      <div class="line prompt">/stardust:briefings</div>
+      <div class="line"><span class="bar" style="width:240px"></span></div>
+      <div class="line prompt">/stardust:wireframes</div>
+      <div class="line"><span class="bar" style="width:200px"></span></div>
+      <div class="line"><span class="bar" style="width:260px"></span></div>
+      <div class="line prompt">/stardust:design</div>
+      <div class="line"><span class="bar" style="width:180px"></span></div>
+    </div>
+    <div class="caption" style="grid-column: 2; margin-top: -28px">Terminal mock — shows skill invocations and their output artifacts scrolling. Copy is illustrative only.</div>
+  </div>
+</section>
+
+<!-- Portability -->
+<section class="section portability" data-section="portability" data-intent="runs wherever skills run" data-layout="contained" data-items="4">
+  <div class="section-label">Portability</div>
+  <div class="container">
+    <div class="bar h2"></div>
+    <div class="note">Headline — "Runs where skills run" / portable across agent hosts.</div>
+    <div class="bar sub"></div>
+    <div class="note">Subhead — Claude Code today; SLICC and others next. The skills are the product, the host is interchangeable.</div>
+    <div class="hosts">
+      <div class="host active">
+        <div class="bar" style="margin:0 auto 10px; width:60%"></div>
+        <div class="caption">Claude Code</div>
+        <div class="badge">AVAILABLE</div>
+      </div>
+      <div class="host">
+        <div class="bar" style="margin:0 auto 10px; width:60%"></div>
+        <div class="caption">SLICC</div>
+        <div class="badge">NEXT</div>
+      </div>
+      <div class="host">
+        <div class="bar" style="margin:0 auto 10px; width:60%"></div>
+        <div class="caption">Other agent host</div>
+        <div class="badge">ROADMAP</div>
+      </div>
+      <div class="host">
+        <div class="bar" style="margin:0 auto 10px; width:60%"></div>
+        <div class="caption">Other agent host</div>
+        <div class="badge">ROADMAP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Output -->
+<section class="section output" data-section="output" data-intent="prove: real EDS boilerplate, no lock-in" data-layout="split-media" data-surface="alt" data-media="code">
+  <div class="section-label">Output</div>
+  <div class="container grid">
+    <div>
+      <div class="bar eyebrow"></div>
+      <div class="note">Eyebrow — "The output" or "What you get".</div>
+      <div class="bar h2"></div>
+      <div class="note">Headline — a real aem-boilerplate project. Lintable, deployable, no lock-in.</div>
+      <div class="bar body"></div>
+      <div class="bar body short"></div>
+      <div class="bar body"></div>
+      <div class="note">Body — describes the generated repo: blocks, styles, scripts, plus the stardust/ folder with all pipeline artifacts preserved.</div>
+      <div class="cta-row">
+        <span class="btn secondary">View sample repo</span>
+      </div>
+    </div>
+    <div class="tree" aria-label="project file tree">
+      <div>my-site/</div>
+      <div>├── <span style="opacity:.7">blocks/</span></div>
+      <div>├── <span style="opacity:.7">styles/</span></div>
+      <div>├── <span style="opacity:.7">scripts/</span></div>
+      <div>├── <span style="opacity:.7">stardust/</span></div>
+      <div>│   ├── brand-profile.json</div>
+      <div>│   ├── briefings/</div>
+      <div>│   ├── wireframes/</div>
+      <div>│   └── designs/</div>
+      <div>└── <span style="opacity:.7">drafts/</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="section closing" data-section="closing-cta" data-intent="drive install" data-layout="full-bleed">
+  <div class="section-label">Closing CTA</div>
+  <div class="container">
+    <div class="bar h1" style="margin: 0 auto; width:55%"></div>
+    <div class="note" style="text-align:center; border:none; max-width:640px; margin:8px auto">Closing headline — mechanical, one line: "Install Stardust" or similar.</div>
+    <div class="bar sub" style="margin: 16px auto; width:40%"></div>
+    <div class="note" style="text-align:center; border:none; max-width:640px; margin:0 auto">Subhead — one sentence restating the install pre-req (Claude Code) and what happens after install.</div>
+    <div class="install-box">
+      <div class="bar"></div>
+      <span class="copy-btn">COPY</span>
+    </div>
+    <div class="caption">Install command — monospace one-liner: <code>claude plugin install paolomoz/stardust</code> (or adobe/skills at launch).</div>
+    <div style="margin-top:20px">
+      <span class="btn secondary">GitHub</span>
+    </div>
+    <div class="caption">Secondary — link to the repo / issues.</div>
+  </div>
+</section>
+
+</body>
+</html>
