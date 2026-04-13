@@ -1,6 +1,6 @@
 ---
 name: briefings
-description: "Capture page intent as structured briefings — intent, audience, key messages, CTAs, tone, page copy (headlines, hero, section copy), imagery direction, plus site-level information architecture and multi-page content reuse maps. Sole source of truth for page copy. Independent of brand extraction: can be authored before or after /stardust:brand. Use when the user wants to plan pages, write briefings, define audience or CTAs, plan imagery, map shared sections across pages, when the user asks to change, refine, or refactor any file under `stardust/briefings/**` (including `_site.md`), or when /stardust recommends the briefings stage."
+description: "Create, refine, review, critique, or iterate on page briefings under `stardust/briefings/**` (including `_site.md`) — intent, audience, key messages, CTAs, tone, page copy (headlines, hero, section copy), imagery direction, plus site-level information architecture and multi-page content reuse maps. Sole source of truth for page copy. Independent of brand extraction: can be authored before or after /stardust:brand. Use when the user wants to plan pages, write briefings, define audience or CTAs, plan imagery, map shared sections across pages, when the user asks to change, refine, refactor, review, improve, or suggest changes to any file under `stardust/briefings/**`, or when /stardust recommends the briefings stage."
 ---
 
 # Briefings

@@ -1,6 +1,6 @@
 ---
 name: eds-design
-description: "Derive the EDS CSS design system from approved designs — type scale, spacing scale, responsive breakpoints, custom properties, font declarations, base styles, and the aem.js structural contract rules. Produces `stardust/design-tokens.json` and the EDS `styles/styles.css` / `styles/lazy-styles.css` / `styles/fonts.css`. Use when designs are approved and you need to translate them into EDS CSS, when the user asks to change, refine, or refactor `stardust/design-tokens.json` or any file under `styles/**` or `fonts/**` (tokens, global CSS, font declarations, base styles, responsive breakpoints), or when /stardust recommends the eds-design stage."
+description: "Create, refine, review, critique, or iterate on the EDS CSS design system at `stardust/design-tokens.json` and `styles/**` / `fonts/**` — type scale, spacing scale, responsive breakpoints, custom properties, font declarations, base styles, and the aem.js structural contract rules. Derived from approved designs; produces `styles/styles.css` / `styles/lazy-styles.css` / `styles/fonts.css`. Use when designs are approved and you need to translate them into EDS CSS, when the user asks to change, refine, refactor, review, improve, or suggest changes to `stardust/design-tokens.json` or any file under `styles/**` or `fonts/**` (tokens, global CSS, font declarations, base styles, responsive breakpoints), or when /stardust recommends the eds-design stage."
 ---
 
 # Design System Generation

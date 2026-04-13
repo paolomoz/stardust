@@ -1,6 +1,6 @@
 ---
 name: brand
-description: "Extract and maintain the full brand identity — philosophy, logo, colors, typography, componentStyle, motifs, photography direction, voice, tone, content pillars, personas, spacing — from guidelines (PDF, URL, or conversation) into a structured brand profile and a visual brand board. Use when starting a new EDS website project, when the user provides brand guidelines, when the user asks to change, refine, or refactor any aspect of brand identity (visual tokens, voice, tone, personas, content pillars, motifs, photography) or any file under `stardust/brand-profile.json` / `stardust/brand-board.html`, or when /stardust recommends the brand stage."
+description: "Create, extract, refine, review, critique, or iterate on the brand identity at `stardust/brand-profile.json` and `stardust/brand-board.html` — philosophy, logo, colors, typography, componentStyle, motifs, photography direction, voice, tone, content pillars, personas, spacing. Ingests guidelines (PDF, URL, or conversation) or iterates on an existing profile. Use when starting a new EDS website project, when the user provides brand guidelines, when the user asks to change, refine, refactor, review, improve, or suggest changes to any aspect of brand identity or any file under `stardust/brand-profile.json` / `stardust/brand-board.html`, or when /stardust recommends the brand stage."
 ---
 
 # Brand Extraction
