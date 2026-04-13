@@ -69,6 +69,40 @@ Each wireframe includes a JSON metadata block linking to its briefing:
 6. **No real copy.** Section labels (e.g., "Hero", "Features") appear as small annotations above or beside the section, not as content.
 7. **Responsive.** Wireframes should be viewport-responsive — stack to single column on narrow viewports.
 
+## Annotations — Required
+
+Grey bars alone don't convey what each block is *for*. Every content block must be paired with a short annotation so a reviewer can evaluate the flow without guessing.
+
+Use three annotation styles:
+
+- **`.note`** — italic grey caption with a left border, placed next to a bar or group of bars. Describes what the block represents (e.g., "Eyebrow — short kicker above the headline", "Body — 4–6 lines covering skills-not-one-shot, inspectable, re-runnable").
+- **`.caption`** — small grey line below a media placeholder, CTA group, or card. Describes content direction or candidate treatments (e.g., "Diagram: fuzzy 'need' on the left → concrete EDS site on the right").
+- **Inline labels on repeated items** — pipeline nodes, host tiles, and card grids should carry a short label identifying *which* item they are (e.g., "01 · brand", "Claude Code · AVAILABLE"), not just "item 1 / 2 / 3".
+
+Annotations are **structural direction**, not final copy. They tell the reviewer "this is what the block is for" so they can judge whether the section belongs, in what order, at what weight. They are removed in `/stardust:design` when real copy takes over.
+
+Minimum annotation density: every major block (headline group, body group, media, CTA row) gets at least one `.note` or `.caption`. If a block is self-evident from its shape alone (e.g., a section label pill), no annotation needed.
+
+### Annotation CSS
+
+Include these styles in every wireframe so annotations render consistently:
+
+```css
+.note {
+  font-size: 12px;
+  color: #777;
+  font-style: italic;
+  margin: 6px 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid #c8c8c8;
+}
+.caption {
+  font-size: 11px;
+  color: #888;
+  margin-top: 6px;
+}
+```
+
 ## Content Reuse & Fragments (Multi-Page Sites)
 
 For multi-page sites, pages should be connected through shared content — not just navigation links. Content reuse means the same card, quote, or highlight appears on multiple pages, authored once and embedded everywhere.
