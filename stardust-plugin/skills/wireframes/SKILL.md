@@ -9,11 +9,23 @@ Turn approved briefings into **grey, structural** wireframes — boxes, bars, sh
 
 This stage is **optional**. A user who already has a clear structural vision can skip straight to `/stardust:design`.
 
-## MANDATORY PREPARATION
+## Pre-flight
 
-1. Read `stardust/briefings/` — at least one `{page}.md` must exist. If none, stop and tell the user: "Wireframes need at least one briefing. Run `/stardust:briefings` first."
-2. Do **not** require or read `stardust/brand-profile.json`. Wireframes at this stage are intentionally pre-brand.
-3. Read `.impeccable.md` if it exists — informs tone when drafting section intents.
+Run the procedure in [`../_shared/preflight.md`](../_shared/preflight.md) first.
+
+## Contract
+
+**Needs (reads if present):**
+- `stardust/briefings/{page}.md` (one or more)
+- `.impeccable.md` (tone for annotations)
+
+**Produces:**
+- `stardust/wireframes/{page}.html` (grey, annotated)
+
+**If missing:**
+- No briefings → prompt the user for a one-line page intent, synthesize a minimal briefing, stamp provenance on both the briefing and the wireframe, and proceed.
+- No `.impeccable.md` → annotations use neutral-technical tone.
+- Brand is intentionally not read at this stage.
 
 ---
 
@@ -43,6 +55,8 @@ Render each wireframe as visual HTML in grey mode:
 - For multi-page sites: add `data-fragment`, `data-fragment-role`, and `data-fragment-source` attributes to reusable content sections — see [wireframe-guide.md](reference/wireframe-guide.md) Content Reuse & Fragments section.
 - Include the JSON metadata block linking to the briefing (with `fragments` map for multi-page sites).
 - Write to `stardust/wireframes/{page}.html`.
+
+If the upstream briefing was synthesized (provenance comment present, or generated during this pre-flight), carry forward a provenance block on the wireframe per [`../_shared/skill-contract.md`](../_shared/skill-contract.md).
 
 Follow the full rendering rules in [wireframe-guide.md](reference/wireframe-guide.md).
 
