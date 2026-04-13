@@ -1,6 +1,6 @@
 ---
 name: wireframes
-description: "Render low-fidelity grey wireframes from briefings — structure, hierarchy, section order, spatial relationships, annotations, section metadata (`data-section`/`data-intent`/`data-layout`), and multi-page fragment/reuse mapping (`data-fragment*`). No brand required. Optional stage: users can skip to /stardust:design if they want to go straight to branded layout. Use when the user wants to validate page structure before visual design, annotate a wireframe, mark reusable fragments across pages, when the user asks to change, refine, or refactor any file under `stardust/wireframes/**`, or when /stardust recommends the wireframes stage."
+description: "Create, refine, review, critique, or iterate on low-fidelity grey wireframes under `stardust/wireframes/**` — structure, hierarchy, section order, spatial relationships, annotations, section metadata (`data-section`/`data-intent`/`data-layout`), and multi-page fragment/reuse mapping (`data-fragment*`). Rendered from briefings. No brand required. Optional stage: users can skip to /stardust:design if they want to go straight to branded layout. Use when the user wants to validate page structure before visual design, annotate a wireframe, mark reusable fragments across pages, when the user asks to change, refine, refactor, review, improve, or suggest changes to any file under `stardust/wireframes/**`, or when /stardust recommends the wireframes stage."
 ---
 
 # Wireframes
