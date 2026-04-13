@@ -1,6 +1,6 @@
 ---
 name: eds-refine
-description: "Designer-driven refinement and publishing of EDS pages. Translates natural feedback into impeccable commands, handles DA content pipeline and deployment. Use after /stardust:eds-build is complete, when the designer wants to polish, audit, lint, or publish existing EDS pages and blocks, or when the user asks for PageSpeed/accessibility/linting fixes on a built EDS site."
+description: "Designer-driven refinement and publishing of built EDS pages. Translates natural designer feedback (bolder, quieter, delight, animate, polish, colorize, typeset, distill, arrange, harden, audit) into the matching impeccable commands, runs verification against wireframe intent, and handles the Document Authoring (DA) content pipeline plus preview/production deployment. Use after /stardust:eds-build is complete, when the designer wants to polish, audit, lint, or publish existing EDS pages and blocks, when the user gives refinement feedback on a built page (e.g. 'make this bolder', 'too busy', 'add some delight', 'the colors feel off', 'typography needs work'), when they ask for PageSpeed/accessibility/linting fixes, or when they want to push content to DA or publish to preview/production."
 ---
 
 # EDS Refine

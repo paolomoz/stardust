@@ -1,6 +1,6 @@
 ---
 name: design
-description: "Design in the browser — render branded, high-fidelity HTML designs per page using the brand and (optionally) grey wireframes. EDS-independent. Iterate directly in the rendered page until the user approves. Use when the user is ready to design visuals, when the user asks to change, refine, or refactor any file under `stardust/designs/**` (visual styling, tokens, layout, typography — note that page copy is owned by /stardust:briefings), or when /stardust recommends the design stage."
+description: "Design in the browser — render branded, high-fidelity HTML designs per page using the brand and (optionally) grey wireframes. Owns visual design decisions: type scale, spacing, proportions, button sizing, visual weight, section rhythm, layout, typography, and imagery placement. EDS-independent. Iterate directly in the rendered page until the user approves. Use when the user is ready to design visuals, when the user asks to change, refine, or refactor visual styling, proportions, or layout on any file under `stardust/designs/**` (page copy is owned by /stardust:briefings; brand voice/identity by /stardust:brand), or when /stardust recommends the design stage."
 ---
 
 # Design

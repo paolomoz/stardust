@@ -1,6 +1,6 @@
 ---
 name: eds-build
-description: "Map approved designs to EDS blocks, build blocks via CDD, generate pages with real content. The main EDS construction stage. Use when designs are approved and the EDS design system has been generated, when the user asks to change, refine, or refactor any file under `blocks/**` or any EDS page content under `drafts/**` (block JS/CSS, block DOM, page composition), or when /stardust recommends the eds-build stage."
+description: "Map approved designs to EDS blocks, plan the `stardust/block-manifest.json`, build blocks via CDD, generate pages with real content from briefings, and author nav/footer fragments (`nav.plain.html`, `footer.plain.html`). The main EDS construction stage. Use when designs are approved and the EDS design system has been generated, when the user asks to plan or re-plan the block manifest, map wireframe sections to EDS blocks, change, refine, or refactor any file under `blocks/**`, `drafts/**`, or `nav.plain.html` / `footer.plain.html`, generate page content from briefings, or when /stardust recommends the eds-build stage."
 ---
 
 # EDS Build
