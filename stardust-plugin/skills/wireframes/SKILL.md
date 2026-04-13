@@ -1,6 +1,6 @@
 ---
 name: wireframes
-description: "Render low-fidelity grey wireframes from briefings — structure, hierarchy, section order, spatial relationships only. No brand required. Optional stage: users can skip to /stardust:design if they want to go straight to branded layout. Use when the user wants to validate page structure before visual design, or when /stardust recommends the wireframes stage."
+description: "Render low-fidelity grey wireframes from briefings — structure, hierarchy, section order, spatial relationships only. No brand required. Optional stage: users can skip to /stardust:design if they want to go straight to branded layout. Use when the user wants to validate page structure before visual design, when the user asks to change, refine, or refactor any file under `stardust/wireframes/**` (structure, section order, spatial layout), or when /stardust recommends the wireframes stage."
 ---
 
 # Wireframes

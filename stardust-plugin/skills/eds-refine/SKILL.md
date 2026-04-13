@@ -1,6 +1,6 @@
 ---
 name: eds-refine
-description: "Designer-driven refinement and publishing of EDS pages. Translates natural feedback into impeccable commands, handles DA content pipeline and deployment. Use after /stardust:eds-build is complete, or when the designer wants to polish and publish their pages."
+description: "Designer-driven refinement and publishing of EDS pages. Translates natural feedback into impeccable commands, handles DA content pipeline and deployment. Use after /stardust:eds-build is complete, when the designer wants to polish, audit, lint, or publish existing EDS pages and blocks, or when the user asks for PageSpeed/accessibility/linting fixes on a built EDS site."
 ---
 
 # EDS Refine

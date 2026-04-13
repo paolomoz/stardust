@@ -1,6 +1,6 @@
 ---
 name: eds-design
-description: "Derive the EDS CSS design system from approved designs — extract type scale, spacing, and visual rules from design CSS, generate custom properties, font declarations, base styles. Use when designs are approved and you need to translate them into EDS CSS, or when /stardust recommends the eds-design stage."
+description: "Derive the EDS CSS design system from approved designs — extract type scale, spacing, and visual rules from design CSS, generate custom properties, font declarations, base styles. Use when designs are approved and you need to translate them into EDS CSS, when the user asks to change, refine, or refactor any file under `styles/**` or `fonts/**` (tokens, global CSS, font declarations, base styles), or when /stardust recommends the eds-design stage."
 ---
 
 # Design System Generation

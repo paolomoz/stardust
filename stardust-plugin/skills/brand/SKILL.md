@@ -1,6 +1,6 @@
 ---
 name: brand
-description: "Extract brand identity from guidelines (PDF, URL, or conversation) into structured tokens and a visual brand board. Use when starting a new EDS website project, when the user provides brand guidelines, or when /stardust recommends the brand stage."
+description: "Extract brand identity from guidelines (PDF, URL, or conversation) into structured tokens and a visual brand board. Use when starting a new EDS website project, when the user provides brand guidelines, when the user asks to change, refine, or refactor `stardust/brand-profile.json` or `stardust/brand-board.html`, or when /stardust recommends the brand stage."
 ---
 
 # Brand Extraction

@@ -1,6 +1,6 @@
 ---
 name: stardust
-description: "Navigate the stardust pipeline — assess project state and recommend the next step for building an AEM EDS website. Use when the user wants to check progress, doesn't know what to do next, or says /stardust."
+description: "Navigate the stardust pipeline — assess project state and recommend the next step for building an AEM EDS website. Use when the user wants to check progress, doesn't know what to do next, asks a general question about Stardust artifacts or the pipeline without naming a specific stage, or says /stardust."
 ---
 
 # Stardust Navigator
