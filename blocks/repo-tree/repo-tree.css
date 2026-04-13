@@ -1,0 +1,51 @@
+.repo-tree {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.repo-tree-body .eyebrow {
+  margin-bottom: var(--spacing-l);
+}
+
+.repo-tree-cta {
+  margin-top: var(--spacing-l);
+}
+
+.repo-tree-cta p {
+  margin: 0;
+}
+
+.repo-tree-tree {
+  background: #141414;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  padding: var(--spacing-xl);
+  font-family: var(--mono-font-family);
+  font-size: 13px;
+  line-height: 1.8;
+  color: #9a9a9a;
+  white-space: pre;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.repo-tree-tree .dir {
+  color: var(--color-soft-ink);
+}
+
+.repo-tree-tree .star {
+  color: var(--color-mint);
+}
+
+.repo-tree-tree .comment {
+  color: #555;
+}
+
+@media (width >= 900px) {
+  .repo-tree {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+}

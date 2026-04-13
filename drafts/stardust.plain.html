@@ -1,0 +1,288 @@
+<div>
+  <div class="hero-pipeline">
+    <div>
+      <div>eyebrow</div>
+      <div>A SLICC sibling · Claude Code plugin</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>
+        <p>Brief in. <s>Code.</s></p>
+        <p>AEM site out.</p>
+      </div>
+    </div>
+    <div>
+      <div>lede</div>
+      <div>Describe the brand. Approve the designs. Ship the site.</div>
+    </div>
+    <div>
+      <div>ctas</div>
+      <div>
+        <p><strong><a href="#install">Install Stardust →</a></strong></p>
+        <p><em><a href="https://github.com/paolomoz/stardust">View on GitHub</a></em></p>
+      </div>
+    </div>
+    <div>
+      <div>steps</div>
+      <div>01 brand, 02 briefings, 03 wireframes, 04 design | 05 eds-design, 06 eds-build, 07 eds-refine</div>
+    </div>
+    <div>
+      <div>phases</div>
+      <div>Design phase — platform-agnostic | EDS phase — aem-boilerplate</div>
+    </div>
+  </div>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>dark</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="need-to-site">
+    <div>
+      <div>eyebrow</div>
+      <div>What it is</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>A pipeline you drive.</div>
+    </div>
+    <div>
+      <div>body</div>
+      <div>
+        <p>Stardust is a set of skills you invoke in order. Each one turns a decision into an artifact — a brand profile, a briefing, a wireframe, a design, a block — and writes it to disk where you can read it, edit it, re-run it.</p>
+        <p>Skip a step, re-run a step, branch off where it makes sense. The pipeline bends around the project, not the other way round.</p>
+        <p>Every output is a file you can open.</p>
+      </div>
+    </div>
+    <div>
+      <div>need</div>
+      <div>a website need</div>
+    </div>
+    <div>
+      <div>site</div>
+      <div>shipped EDS site</div>
+    </div>
+    <div>
+      <div>waypoints</div>
+      <div>brand, briefings, wireframes, design, eds-design, eds-build, eds-refine</div>
+    </div>
+    <div>
+      <div>caption</div>
+      <div>Seven waypoints. You stop at any of them.</div>
+    </div>
+  </div>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>cream</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="pipeline-flow">
+    <div>
+      <div>eyebrow</div>
+      <div>The pipeline</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>Seven skills, two phases.</div>
+    </div>
+    <div>
+      <div>sub</div>
+      <div>The design phase is platform-agnostic — it'd port to a different SSG tomorrow. The EDS phase turns approved designs into a real aem-boilerplate project: lintable, deployable, no lock-in.</div>
+    </div>
+    <div>
+      <div>phases</div>
+      <div>Design phase · 01 – 04 | EDS phase · 05 – 07</div>
+    </div>
+    <div>
+      <div>nodes</div>
+      <div>
+        <ul>
+          <li>01 · /stardust:brand | Brand | Extract from a live URL, or invent one from scratch.</li>
+          <li>02 · /stardust:briefings | Briefings | One per page: intent, audience, key messages, tone.</li>
+          <li>03 · /stardust:wireframes | Wireframes | Grey, annotated structure. No colors, no type. Just shape.</li>
+          <li>04 · /stardust:design | Design | Branded HTML. Real fonts, real copy, iterated in the browser.</li>
+          <li>05 · /stardust:eds-design | EDS design | Design tokens, boilerplate CSS, block styling scaffolds.</li>
+          <li>06 · /stardust:eds-build | EDS build | Blocks and pages, wired into the aem-boilerplate project.</li>
+          <li>07 · /stardust:eds-refine | EDS refine | Lint, audit, PageSpeed. The boring part done on purpose.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <h2 id="pipeline" style="display:none"></h2>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>dark</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="terminal-demo">
+    <div>
+      <div>eyebrow</div>
+      <div>Drive it</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>Each step is a skill. You invoke it when you want it.</div>
+    </div>
+    <div>
+      <div>body</div>
+      <div>
+        <p>Open Claude Code. Type <code>/stardust:brand</code>. Read the output. Edit the file. Type <code>/stardust:briefings</code>. Keep going.</p>
+        <p>Every skill writes to <code>stardust/</code> in your repo. Inspect between steps. Re-run any of them. The pipeline resumes from whatever it finds on disk.</p>
+        <p>No magic. No one-shot. A pipeline that halts where you halt it.</p>
+      </div>
+    </div>
+    <div>
+      <div>script</div>
+      <div>
+        <ul>
+          <li>▸ /stardust:brand https://sliccy.com</li>
+          <li>extracted 11 colors, 4 type roles, 5 motifs</li>
+          <li>wrote `stardust/brand-profile.json`</li>
+          <li>▸ /stardust:briefings</li>
+          <li>1 page: `stardust/briefings/stardust.md`</li>
+          <li>▸ /stardust:wireframes</li>
+          <li>7 sections, grey mode, annotated</li>
+          <li>wrote `stardust/wireframes/stardust.html`</li>
+          <li>▸ /stardust:design</li>
+          <li>serving → localhost:3000/stardust/designs/stardust.html</li>
+          <li>awaiting feedback…</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <h2 id="how" style="display:none"></h2>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>dark</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="host-grid">
+    <div>
+      <div>eyebrow</div>
+      <div>Portability</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>Works with your harness.</div>
+    </div>
+    <div>
+      <div>lede</div>
+      <div>Skills are the product — the host is interchangeable. Stardust rides the same portability story as Impeccable: Claude Code, Codex, Cursor, Gemini CLI. Plus SLICC, where it was born.</div>
+    </div>
+    <div>
+      <div>hosts</div>
+      <div>
+        <ul>
+          <li>Claude Code | Available | active</li>
+          <li>SLICC | Next</li>
+          <li>Codex | Roadmap</li>
+          <li>Cursor | Roadmap</li>
+          <li>Gemini CLI | Roadmap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>cream</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="repo-tree">
+    <div>
+      <div>eyebrow</div>
+      <div>The output</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>A real aem-boilerplate project.</div>
+    </div>
+    <div>
+      <div>body</div>
+      <div>
+        <p>No custom framework, no proprietary runtime, no vendor runtime tax. Stardust writes into an ordinary <code>aem-boilerplate</code> repo — the one you'd have started with anyway.</p>
+        <p>Every intermediate artifact stays on disk in <code>stardust/</code>. Review it, rewrite it, throw it away. The project still ships without Stardust installed.</p>
+      </div>
+    </div>
+    <div>
+      <div>cta</div>
+      <div>
+        <p><em><a href="https://github.com/paolomoz/stardust">View sample repo →</a></em></p>
+      </div>
+    </div>
+    <div>
+      <div>tree</div>
+      <div>
+        <ul>
+          <li>[my-site/]</li>
+          <li>├── [blocks/]        # generated + yours to edit</li>
+          <li>├── [styles/]        # tokens + global CSS</li>
+          <li>├── [scripts/]       # aem.js, scripts.js, delayed.js</li>
+          <li>├── [stardust/]      # all pipeline artifacts</li>
+          <li>│   ├── *brand-profile.json*</li>
+          <li>│   ├── [briefings/]</li>
+          <li>│   ├── [wireframes/]</li>
+          <li>│   └── [designs/]</li>
+          <li>├── [drafts/]        # static HTML for the dev server</li>
+          <li>└── [.hlxignore]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>dark</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="install-cta">
+    <div>
+      <div>eyebrow</div>
+      <div>Chmod +x everything</div>
+    </div>
+    <div>
+      <div>headline</div>
+      <div>Install Stardust.</div>
+    </div>
+    <div>
+      <div>lede</div>
+      <div>Needs Claude Code. One command, seven skills, an <code>aem-boilerplate</code> project at the other end.</div>
+    </div>
+    <div>
+      <div>command</div>
+      <div>claude plugin install paolomoz/stardust</div>
+    </div>
+    <div>
+      <div>fine</div>
+      <div>Switching to adobe/skills at launch.</div>
+    </div>
+    <div>
+      <div>cta</div>
+      <div>
+        <p><em><a href="https://github.com/paolomoz/stardust">GitHub · issues · stars</a></em></p>
+      </div>
+    </div>
+  </div>
+  <h2 id="install" style="display:none"></h2>
+  <div class="section-metadata">
+    <div>
+      <div>style</div>
+      <div>cta-band</div>
+    </div>
+  </div>
+</div>

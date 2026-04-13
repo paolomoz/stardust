@@ -1,0 +1,67 @@
+.host-grid-header h2 {
+  max-width: 18ch;
+}
+
+.host-grid-lede {
+  font-size: var(--body-font-size-l);
+  margin-top: var(--spacing-m);
+  max-width: 58ch;
+}
+
+.host-grid-hosts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-m);
+  margin-top: var(--spacing-2xl);
+}
+
+.host-grid-host {
+  border: 1px solid var(--color-hairline-cream);
+  border-radius: var(--radius);
+  padding: var(--spacing-xl) var(--spacing-m);
+  text-align: center;
+  background: #fff;
+  position: relative;
+}
+
+.host-grid-host.active {
+  border-color: var(--color-cherry);
+  box-shadow: inset 0 0 0 1px var(--color-cherry);
+}
+
+.host-grid-host .name {
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-s);
+}
+
+.host-grid-host .badge {
+  display: inline-block;
+  font-family: var(--mono-font-family);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: #f1efe9;
+  color: var(--color-muted-cream);
+}
+
+.host-grid-host.active .badge {
+  background: var(--color-cherry);
+  color: #fff;
+}
+
+@media (width >= 600px) {
+  .host-grid-hosts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .host-grid-hosts {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

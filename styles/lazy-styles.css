@@ -1,1 +1,95 @@
-/* add global styles that can be loaded post LCP here */
+/*
+ * Section variants — applied via section-metadata "style" values.
+ * decorateSections() appends the style token as a class on main > .section.
+ */
+
+/* Cream — bright relief surface, alternates with dark default */
+main .section.cream {
+  background-color: var(--color-cream);
+  color: var(--color-deep-ink);
+}
+
+main .section.cream h1,
+main .section.cream h2,
+main .section.cream h3,
+main .section.cream h4,
+main .section.cream h5,
+main .section.cream h6 {
+  color: var(--color-deep-ink);
+}
+
+main .section.cream a:any-link {
+  color: var(--color-cherry);
+}
+
+main .section.cream a:hover {
+  color: var(--color-deep-ink);
+}
+
+main .section.cream a.button.secondary {
+  color: var(--color-deep-ink);
+  border-color: var(--color-hairline-cream);
+}
+
+main .section.cream a.button.secondary:hover {
+  border-color: var(--color-deep-ink);
+  color: var(--color-deep-ink);
+}
+
+main .section.cream code,
+main .section.cream pre code {
+  color: var(--color-deep-ink);
+}
+
+main .section.cream pre {
+  background-color: #f1efe9;
+  border-color: var(--color-hairline-cream);
+  color: var(--color-deep-ink);
+}
+
+/* Dark explicit — forces dark where needed after a cream section */
+main .section.dark {
+  background-color: var(--color-cone);
+  color: var(--color-soft-ink);
+}
+
+/* Highlight — subtle inset on dark */
+main .section.highlight {
+  background-color: #141414;
+  color: var(--color-soft-ink);
+  border-block: 1px solid var(--color-hairline);
+}
+
+/* CTA band — closing / install surfaces */
+main .section.cta-band {
+  background-color: var(--color-cone);
+  color: var(--color-soft-ink);
+  text-align: center;
+}
+
+main .section.cta-band h1,
+main .section.cta-band h2 {
+  margin-inline: auto;
+  max-width: 18ch;
+}
+
+main .section.cta-band p {
+  margin-inline: auto;
+}
+
+/* Eyebrow label — Space Mono uppercase marker */
+.eyebrow,
+main .section p.eyebrow {
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 var(--spacing-l);
+  max-width: none;
+}
+
+main .section.cream .eyebrow {
+  color: var(--color-muted-cream);
+}

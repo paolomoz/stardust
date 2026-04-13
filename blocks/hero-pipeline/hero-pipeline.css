@@ -1,0 +1,183 @@
+/* Hero — full-bleed dark section with headline stack + pipeline diagram */
+
+.hero-pipeline-container {
+  padding-top: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .hero-pipeline-container > div {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-pipeline {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--section-padding-inline) var(--spacing-xl);
+}
+
+.hero-pipeline-content {
+  max-width: 100%;
+}
+
+.hero-pipeline h1 {
+  max-width: 16ch;
+  margin: 0 0 var(--spacing-xl);
+  font-weight: 300;
+}
+
+.hero-pipeline h1 .line {
+  display: block;
+}
+
+.hero-pipeline h1 s {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 400;
+  font-size: 0.75em;
+  color: var(--color-cherry);
+  opacity: 0.85;
+  text-decoration: line-through;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--color-cherry);
+}
+
+.hero-pipeline h1 em {
+  font-family: var(--accent-font-family, 'Permanent Marker'), cursive;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-mint);
+  letter-spacing: 0;
+}
+
+.hero-pipeline .lede {
+  font-size: var(--body-font-size-l);
+  opacity: 0.85;
+  max-width: 58ch;
+  color: var(--color-soft-ink);
+}
+
+.hero-pipeline .lede code {
+  color: var(--color-mint);
+}
+
+.hero-pipeline-ctas {
+  display: flex;
+  gap: var(--spacing-m);
+  margin-top: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.hero-pipeline-ctas p {
+  margin: 0;
+}
+
+/* Diagram */
+.hero-pipeline-art {
+  margin-top: var(--spacing-2xl);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(1200px 400px at 30% -10%, rgb(224 36 79 / 10%), transparent 60%),
+    radial-gradient(800px 300px at 90% 110%, rgb(51 230 160 / 6%), transparent 60%),
+    #0a0a0a;
+  padding: var(--spacing-xl) var(--spacing-l);
+  overflow: hidden;
+}
+
+.hero-pipeline-diagram {
+  display: grid;
+  grid-template-columns: repeat(var(--step-count, 7), 1fr);
+  align-items: center;
+  font-family: var(--mono-font-family);
+  font-size: 12px;
+  color: var(--color-soft-ink);
+}
+
+.hero-pipeline-step {
+  position: relative;
+  padding: var(--spacing-l) 10px;
+  text-align: center;
+}
+
+.hero-pipeline-step .num {
+  display: block;
+  font-size: 11px;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.hero-pipeline-step .name {
+  display: block;
+  color: var(--color-soft-ink);
+}
+
+.hero-pipeline-step.eds .name {
+  color: var(--color-mint);
+}
+
+.hero-pipeline-step::after {
+  content: "→";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-hairline);
+  font-size: 16px;
+}
+
+.hero-pipeline-step:last-child::after {
+  content: "";
+}
+
+.hero-pipeline-phases {
+  margin-top: var(--spacing-l);
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  gap: var(--spacing-m);
+  font-family: var(--mono-font-family);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero-pipeline-phases > div {
+  padding: 8px 12px;
+  border: 1px dashed var(--color-hairline);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.hero-pipeline-phases > div.eds {
+  color: var(--color-mint);
+  border-color: rgb(51 230 160 / 30%);
+}
+
+@media (width >= 900px) {
+  .hero-pipeline {
+    padding: 112px var(--section-padding-inline) var(--spacing-2xl);
+  }
+
+  .hero-pipeline-art {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    margin-top: 96px;
+  }
+}
+
+/* Small screens: stack diagram in two rows */
+@media (width < 600px) {
+  .hero-pipeline-diagram {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-s);
+  }
+
+  .hero-pipeline-step::after {
+    content: "";
+  }
+
+  .hero-pipeline-phases {
+    grid-template-columns: 1fr;
+  }
+}

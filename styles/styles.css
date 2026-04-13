@@ -1,83 +1,136 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * Stardust / SLICC — global styles
+ * Derived from stardust/brand-profile.json and stardust/designs/stardust.html.
+ * All values flow: design -> design-tokens.json -> this file.
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* Brand colors */
+  --color-cone: #0c0c0c;           /* primary surface — page background */
+  --color-cream: #faf9f7;          /* cream relief surface */
+  --color-cherry: #e0244f;         /* primary CTA fill */
+  --color-soft-ink: #f0f0f0;       /* body text on dark */
+  --color-deep-ink: #1a1a1a;       /* body text on cream */
+  --color-hairline: #333;          /* borders / dividers on dark */
+  --color-hairline-cream: #e0ddd6; /* borders on cream */
+  --color-mint: #33e6a0;           /* links, code accents */
+  --color-mint-hover: #2de896;
+  --color-highlight: #ff9a00;
+  --color-muted: #999;
+  --color-muted-cream: #7a7a7a;
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* Semantic mappings (EDS conventions) */
+  --background-color: var(--color-cone);
+  --light-color: var(--color-cream);
+  --dark-color: var(--color-deep-ink);
+  --text-color: var(--color-soft-ink);
+  --link-color: var(--color-mint);
+  --link-hover-color: var(--color-mint-hover);
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* Typography */
+  --heading-font-family: 'Space Grotesk', space-grotesk-fallback, system-ui, sans-serif;
+  --body-font-family: 'Space Grotesk', space-grotesk-fallback, system-ui, sans-serif;
+  --mono-font-family: 'Space Mono', space-mono-fallback, ui-monospace, monospace;
+  --accent-font-family: 'Permanent Marker', cursive;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* Body sizes — mobile base */
+  --body-font-size-l: 18px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 13px;
 
-  /* nav height */
+  /* Heading sizes — mobile base (~70% of desktop) */
+  --heading-font-size-xxl: 44px;  /* hero */
+  --heading-font-size-xl: 36px;
+  --heading-font-size-l: 30px;    /* section h2 */
+  --heading-font-size-m: 22px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 18px;
+
+  /* Line heights + tracking */
+  --line-height-heading: 1.05;
+  --line-height-body: 1.55;
+  --letter-spacing-heading: -0.02em;
+  --letter-spacing-eyebrow: 0.12em;
+
+  /* Spacing scale */
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 96px;
+
+  /* Section rhythm */
+  --section-padding-block: 80px;
+  --section-padding-inline: 24px;
+
+  /* Layout */
+  --content-max-width: 1200px;
   --nav-height: 64px;
+
+  /* Surfaces */
+  --radius: 8px;
+  --radius-sm: 6px;
+
+  /* Button proportions (design authority) */
+  --btn-padding: 14px 28px;
+  --btn-font-size: 14px;
+  --btn-font-family: var(--mono-font-family);
+  --btn-font-weight: 400;
+  --btn-letter-spacing: 0.02em;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+@media (width >= 600px) {
+  :root {
+    --heading-font-size-xxl: 64px;
+    --heading-font-size-xl: 48px;
+    --heading-font-size-l: 36px;
+    --section-padding-inline: 32px;
+  }
 }
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
+    /* Desktop — matches stardust/design-tokens.json */
+    --heading-font-size-xxl: 88px;
+    --heading-font-size-xl: 56px;
+    --heading-font-size-l: 40px;
+    --heading-font-size-m: 26px;
+    --heading-font-size-s: 22px;
+    --heading-font-size-xs: 20px;
+    --body-font-size-l: 22px;
     --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --body-font-size-s: 15px;
+    --body-font-size-xs: 13px;
+    --section-padding-block: 128px;
+    --section-padding-inline: 48px;
   }
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* --- aem.js framework contract — do not modify --- */
 body {
   display: none;
   margin: 0;
+  padding: 0;
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
 }
 
 body.appear {
@@ -98,26 +151,54 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+/* --- end framework contract --- */
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
-  scroll-margin: 40px;
+  font-weight: 300;
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-heading);
+  margin: 0 0 var(--spacing-l);
+  color: inherit;
+  scroll-margin: calc(var(--nav-height) + 16px);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 300;
+}
+
+h2 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h5 {
+  font-size: var(--heading-font-size-xs);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+}
 
 p,
 dl,
@@ -125,25 +206,44 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0 0 var(--spacing-m);
 }
+
+p { max-width: 64ch; }
 
 code,
-pre {
-  font-size: var(--body-font-size-s);
+pre,
+kbd,
+samp {
+  font-family: var(--mono-font-family);
+  font-size: 0.92em;
+  color: var(--color-mint);
 }
 
 pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
+  padding: var(--spacing-m);
+  border-radius: var(--radius);
+  background-color: #141414;
+  color: var(--color-soft-ink);
   overflow-x: auto;
   white-space: pre;
+  border: 1px solid var(--color-hairline);
 }
 
-main > div {
-  margin: 40px 16px;
+pre code { color: inherit; }
+
+/* Links */
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+  overflow-wrap: break-word;
+  transition: color 120ms ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 input,
@@ -153,21 +253,11 @@ button {
   font: inherit;
 }
 
-/* links */
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-  overflow-wrap: break-word;
-}
-
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
-}
-
-/* buttons */
+/* Buttons
+   decorateButtons() wraps single-link paragraphs: <p.button-wrapper><a.button>.
+   <strong> -> .primary, <em> -> .secondary, <strong><em> -> .accent */
 p.button-wrapper {
-  margin: 12px 0;
+  margin: var(--spacing-m) 0;
 }
 
 a.button:any-link,
@@ -176,108 +266,85 @@ button.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-s);
   max-width: 100%;
   margin: 0;
+  padding: var(--btn-padding);
   border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
+  border-radius: var(--radius);
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+  line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
 a.button[aria-disabled="true"],
 button.button:disabled {
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.5;
 }
 
+/* Primary — Cherry fill, Space Mono label */
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  background-color: var(--color-cherry);
+  border-color: var(--color-cherry);
+  color: #fff;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  transform: translateY(-1px);
+  background-color: #c81f45;
+  border-color: #c81f45;
+  color: #fff;
+  text-decoration: none;
 }
 
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
+/* Secondary — ghost on dark, becomes ghost on cream via lazy-styles */
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
   background-color: transparent;
-  color: var(--text-color);
+  border-color: var(--color-hairline);
+  color: var(--color-soft-ink);
+  font-family: var(--body-font-family);
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+  border-color: var(--color-soft-ink);
+  color: var(--color-soft-ink);
+  text-decoration: none;
 }
 
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
+/* Accent — reserved, mint on dark */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  background-color: var(--color-mint);
+  border-color: var(--color-mint);
+  color: var(--color-cone);
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  background-color: var(--color-mint-hover);
+  border-color: var(--color-mint-hover);
+  color: var(--color-cone);
+  text-decoration: none;
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
+/* Media */
 main img {
   max-width: 100%;
   width: auto;
@@ -286,40 +353,27 @@ main img {
 
 .icon {
   display: inline-block;
-  height: 24px;
   width: 24px;
+  height: 24px;
 }
 
-.icon img {
-  height: 100%;
+.icon img,
+.icon svg {
   width: 100%;
+  height: 100%;
 }
 
-/* sections */
+/* Sections — decorateSections() wraps content in main > .section > div */
 main > .section {
-  margin: 40px 0;
+  padding: var(--section-padding-block) 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-inline);
 }
 
 main > .section:first-of-type {
-  margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
-  }
-}
-
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
+  padding-top: var(--spacing-2xl);
 }

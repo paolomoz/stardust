@@ -1,0 +1,82 @@
+.install-cta-content {
+  text-align: center;
+  padding: var(--spacing-2xl) 0;
+}
+
+.install-cta-content .eyebrow {
+  margin-bottom: var(--spacing-l);
+}
+
+.install-cta-content h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 300;
+  max-width: 16ch;
+  margin: 0 auto;
+}
+
+.install-cta-lede {
+  max-width: 52ch;
+  margin: var(--spacing-l) auto 0;
+  font-size: var(--body-font-size-l);
+  opacity: 0.85;
+}
+
+.install-cta-box {
+  max-width: 640px;
+  margin: var(--spacing-2xl) auto var(--spacing-l);
+  background: #141414;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-m);
+  text-align: left;
+}
+
+.install-cta-cmd {
+  font-family: var(--mono-font-family);
+  font-size: 15px;
+  color: var(--color-soft-ink);
+  background: none;
+}
+
+.install-cta-cmd .sigil {
+  color: var(--color-cherry);
+  margin-right: 10px;
+}
+
+.install-cta-copy {
+  font-family: var(--mono-font-family);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--color-hairline);
+  color: var(--color-soft-ink);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.install-cta-copy:hover {
+  border-color: var(--color-soft-ink);
+}
+
+.install-cta-fine {
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  color: var(--color-muted);
+  margin: 0 auto;
+}
+
+.install-cta-ctas {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.install-cta-ctas p {
+  margin: 0;
+}

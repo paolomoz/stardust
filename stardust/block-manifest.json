@@ -1,0 +1,75 @@
+{
+  "page": "stardust",
+  "wireframe": "stardust/wireframes/stardust.html",
+  "design": "stardust/designs/stardust.html",
+  "sections": [
+    {
+      "section": "hero",
+      "surface": "dark",
+      "block": "hero-pipeline",
+      "status": "new",
+      "rationale": "Unique composition: eyebrow + two-line headline with strike-through motif + lede + dual CTA + inline 7-step pipeline diagram with phase-bar. Generic hero can't express the diagram.",
+      "content": ["eyebrow", "h1 (2 lines, strike motif allowed)", "lede", "primary CTA", "secondary CTA", "pipeline diagram (7 steps, 2 phases)"]
+    },
+    {
+      "section": "positioning",
+      "surface": "cream",
+      "block": "need-to-site",
+      "status": "new",
+      "rationale": "Split layout with left body block + right 'need → shipped site' diagram with 7 waypoints. Diagram is custom visual.",
+      "content": ["eyebrow", "h2", "body paragraphs", "diagram: need → site with 7 waypoint labels"]
+    },
+    {
+      "section": "pipeline",
+      "surface": "dark",
+      "block": "pipeline-flow",
+      "status": "new",
+      "rationale": "Eyebrow + h2 + sub + two phase tags + 7-node grid flow. Similar diagram shape as hero-pipeline, but standalone section-scale.",
+      "content": ["eyebrow", "h2", "sub", "phase tags (design, eds)", "7 nodes with num + title + desc"]
+    },
+    {
+      "section": "how-it-works",
+      "surface": "dark",
+      "block": "terminal-demo",
+      "status": "new",
+      "rationale": "Split layout: body left, faux-terminal mock right showing skill invocations. Terminal is a structural content type.",
+      "content": ["eyebrow", "h2", "body paragraphs", "terminal script lines (prompt, out, star)"]
+    },
+    {
+      "section": "portability",
+      "surface": "cream",
+      "block": "host-grid",
+      "status": "new",
+      "rationale": "Eyebrow + h2 + lede + 5-host grid with active-state + availability badge. Similar to cards but with badge + active state.",
+      "content": ["eyebrow", "h2", "lede", "5 host tiles: name + status badge, one active"]
+    },
+    {
+      "section": "output",
+      "surface": "dark",
+      "block": "repo-tree",
+      "status": "new",
+      "rationale": "Split layout: body + CTA left, monospace tree listing right. Tree has specific coloring for dir/star/comment.",
+      "content": ["eyebrow", "h2", "body", "secondary CTA", "repo tree listing"]
+    },
+    {
+      "section": "closing-cta",
+      "surface": "dark",
+      "block": "install-cta",
+      "status": "new",
+      "rationale": "Centered h2 + lede + prominent install-command box with copy button + fine-print + GitHub secondary CTA. Install-box is a bespoke component.",
+      "content": ["eyebrow", "h2", "lede", "install command (mono) + copy button", "fine print", "secondary CTA"]
+    }
+  ],
+  "existingBoilerplateBlocks": {
+    "hero": { "status": "unused", "note": "Replaced by custom hero-pipeline. Keep JS/CSS untouched; don't author .hero content." },
+    "cards": { "status": "unused" },
+    "columns": { "status": "unused" },
+    "fragment": { "status": "used", "note": "Required for header/footer fragment loading." },
+    "header": { "status": "rewrite-css", "note": "Keep JS (hamburger, fragment loading). Rewrite CSS from empty." },
+    "footer": { "status": "rewrite-css", "note": "Keep JS (fragment loading). Rewrite CSS from empty." }
+  },
+  "fragments": {
+    "nav.plain.html": { "status": "new", "note": "Brand + 3 nav links (Pipeline, How it works, Install) + GitHub CTA" },
+    "footer.plain.html": { "status": "new", "note": "sliccy.com / stardust | built with stardust, obviously" }
+  }
+}
