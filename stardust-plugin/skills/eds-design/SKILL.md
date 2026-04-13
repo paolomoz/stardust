@@ -96,8 +96,7 @@ These extracted values become the **desktop-resolution design tokens**. The desi
 
 1. Use the design-extracted values (Phase 0) for sizing, spacing, and proportions
 2. Use `stardust/brand-profile.json` for colors and font families
-3. Use `brand-css-generator` (from eds-site-builder) to generate initial CSS, then verify/override with design values
-4. The generated CSS must include:
+3. The generated CSS must include:
 
 **In `styles/styles.css`:**
 
@@ -119,6 +118,25 @@ Start from the aem.js structural contract above, then add:
 - **Icon defaults** — size for `.icon` spans
 
 **Critical: section padding must use the same values the design stage uses (typically 80px vertical). If the design renders generous section spacing, the EDS page must match.**
+
+### CSS safety sanitization
+
+After writing CSS, apply these mandatory rules — they address recurring production issues:
+
+| Rule | What to do | Why |
+|------|-----------|-----|
+| `@import` position | Any `@import` (e.g., Google Fonts) must be the first rule in the file, before any selector | Browsers silently ignore `@import` after other rules |
+| No `@font-face` in fonts.css with local paths | Prefer `@font-face` pointing at `/fonts/*.woff2` shipped in the repo, or `@import` from Google Fonts. Avoid local-disk paths | Local paths break on deploy |
+| Strip vertical section margin | Remove `margin-top`/`margin-bottom` from section containers; use padding | Section spacing is controlled by the layout system — margin causes double-spacing |
+| Hero image `z-index` | Never use `z-index: -1` on hero images — use `0` | Negative z-index hides images behind the page background |
+| No `opacity: 0` on lazy images | Delete any `opacity: 0` on `img`/`picture` | Lazy-load libraries manage opacity; CSS `opacity: 0` permanently hides images if JS fails |
+| No layout-property animation | Never `transition`/`animation` on `width`, `height`, `top`, `left`, `margin`, `padding` | Causes reflow jank — animate `transform` and `opacity` instead |
+| No bounce/elastic easing | Avoid `cubic-bezier` curves that overshoot | Causes elements to visually overlap neighbors |
+| No `!important` | Use proper selector specificity | Specificity wars are unsustainable |
+
+### WCAG AA contrast enforcement
+
+For every text/background pair, verify contrast ratio: normal text ≥ 4.5:1, large text (≥18px or ≥14px bold) ≥ 3.0:1, UI components ≥ 3.0:1. If a pair fails, darken the text or lighten the background until it passes and note the adjustment in a CSS comment.
 
 **In `styles/lazy-styles.css`:**
 

@@ -63,25 +63,27 @@ Run `/code-review` (from superpowers) on any new or modified blocks to check cod
 
 When the designer is ready to publish:
 
-### Option A: DA Content Pipeline
+### Option A: DA Content Pipeline (optional external integration)
 
-1. Use `da-content-pipeline` (from eds-site-builder) to push content to Document Authoring
-2. This converts `drafts/*.html` into DA-editable content that authors can maintain
-3. Confirm: "Content pushed to DA. Authors can now edit pages in Google Docs/Word."
+Document Authoring is the Adobe authoring system for EDS content. Pushing drafts into DA requires the separate `da-content-pipeline` tooling (from the `eds-site-builder` plugin, if installed) or the DA Admin API directly. This is a publishing concern outside Stardust's build scope.
+
+If the user wants this and doesn't have the integration available, tell them: "DA publishing requires an external integration. You can either install the `eds-site-builder` plugin and invoke its `da-content-pipeline` skill, or copy `drafts/*.plain.html` content manually into your DA workspace." Don't synthesize the pipeline here.
 
 ### Option B: Git + Preview
 
 1. Commit all changes (blocks, styles, drafts)
 2. Push to a feature branch
 3. Construct preview URL: `https://{branch}--{repo}--{owner}.aem.page/`
-4. Run `pagespeed-audit` (from eds-site-builder) against the preview URL
-   - Target: score of 100
-   - Fix any performance issues before proceeding
+4. Run a PageSpeed audit against the preview URL:
+   - Use the PageSpeed Insights API: `curl "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={PREVIEW_URL}&strategy=mobile"` (repeat with `strategy=desktop`).
+   - Or link the designer to the web UI: `https://pagespeed.web.dev/analysis?url={PREVIEW_URL}`.
+   - Parse the response for Core Web Vitals: LCP ≤ 2500ms, CLS ≤ 0.1, INP ≤ 200ms. Target Lighthouse performance score of 100.
+   - Fix any regressions before proceeding. Common offenders: unoptimized images (LCP), CLS from late-loading web fonts (use `font-display: swap` and preload), layout-property animations (see eds-design sanitization rules).
 5. Tell designer: "Preview is live at {URL}. Review and let me know when ready for a PR."
 
 ### Option C: Both
 
-Run DA pipeline first, then git push for code changes. Content lives in DA, presentation lives in the repo.
+Run DA content push (if available) first, then git push for code changes. Content lives in DA, presentation lives in the repo.
 
 ## Artifacts Written
 

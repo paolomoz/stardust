@@ -20,6 +20,11 @@ A skill-based pipeline for creating AEM Edge Delivery Services websites from bra
 | `/stardust:eds-build` | Map designs → EDS blocks + generate pages |
 | `/stardust:eds-refine` | Designer-driven refinement + publish |
 
+**Internal sub-skills** (invoked by the stages above; rarely invoked directly):
+
+| `/stardust:generative-page-pipeline` | Section-by-section page generation from briefings + blocks |
+| `/stardust:ai-image-generator` | Generate brand-styled images for pages |
+
 Brand and briefings are independent — run either first, or both in parallel. Wireframes are optional.
 
 ## Dependencies
@@ -28,7 +33,10 @@ Requires these peer plugins:
 - [superpowers](https://github.com/anthropics/claude-code-plugins) — process methodology
 - [impeccable](https://impeccable.style/) (v2+) — design methodology
 - [aem-edge-delivery-services](https://github.com/adobe/skills) — EDS block development
-- [eds-site-builder](https://github.com/paolomoz/skills) — brand extraction, CSS generation, content pipeline
+
+## Optional integrations
+
+- [eds-site-builder](https://github.com/paolomoz/skills) — if installed, `/stardust:eds-refine` can invoke its `da-content-pipeline` skill to push `drafts/*.plain.html` content into Document Authoring. Without it, DA publishing is a manual step; everything else in Stardust works standalone.
 
 ## Pipeline
 
