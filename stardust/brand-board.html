@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SLICC — Brand Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cone: #0c0c0c;
+    --cream: #faf9f7;
+    --cherry: #e0244f;
+    --soft-ink: #f0f0f0;
+    --deep-ink: #1a1a1a;
+    --hairline: #333;
+    --mint: #33e6a0;
+    --orange: #ff9a00;
+    --muted: #999;
+    --sans: 'Space Grotesk', system-ui, sans-serif;
+    --mono: 'Space Mono', ui-monospace, monospace;
+    --marker: 'Permanent Marker', cursive;
+    --r: 8px;
+    --maxw: 1200px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--deep-ink);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  /* Sticky nav */
+  nav.sticky {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--cone);
+    color: var(--soft-ink);
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav.sticky .inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 28px;
+    font-family: var(--mono); font-size: 13px;
+  }
+  nav.sticky strong { font-family: var(--sans); font-weight: 700; letter-spacing: -0.01em; font-size: 18px; margin-right: auto; }
+  nav.sticky a { text-decoration: none; color: var(--muted); transition: color .15s; }
+  nav.sticky a:hover { color: var(--mint); }
+
+  section { padding: 96px 24px; }
+  section > .inner { max-width: var(--maxw); margin: 0 auto; }
+  section.dark { background: var(--cone); color: var(--soft-ink); }
+  section.cream { background: var(--cream); color: var(--deep-ink); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin: 0 0 20px;
+  }
+  section.dark .eyebrow { color: var(--mint); }
+
+  h1.display {
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0 0 28px;
+    max-width: 18ch;
+  }
+  h2.section-title {
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 48px;
+    max-width: 20ch;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+  }
+
+  .lede {
+    font-size: 22px; line-height: 1.45; max-width: 60ch;
+    opacity: 0.85;
+    margin: 0 0 32px;
+  }
+  section.cream .lede { opacity: 1; color: #444; }
+
+  .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--cherry);
+    text-decoration-thickness: 3px;
+    opacity: 0.55;
+    font-family: var(--marker);
+    font-weight: 400;
+    margin-right: 0.2em;
+  }
+
+  /* Colors */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .swatch {
+    border-radius: var(--r);
+    padding: 20px;
+    min-height: 160px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  section.dark .swatch { border-color: var(--hairline); }
+  .swatch .name { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+  .swatch .hex { font-family: var(--mono); font-size: 13px; opacity: 0.7; }
+  .swatch .role { font-size: 13px; opacity: 0.75; line-height: 1.4; }
+  .swatch-group { margin-bottom: 40px; }
+  .swatch-group h4 { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 16px; }
+
+  /* Typography specimens */
+  .spec {
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 28px 0;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+  }
+  section.dark .spec { border-top-color: var(--hairline); }
+  .spec .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .spec .meta strong { display: block; color: var(--deep-ink); font-family: var(--sans); font-weight: 700; font-size: 13px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  section.dark .spec .meta strong { color: var(--soft-ink); }
+  .type-display { font-weight: 300; font-size: 64px; line-height: 1.05; letter-spacing: -0.025em; margin: 0; }
+  .type-heading { font-weight: 700; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+  .type-sub { font-weight: 600; font-size: 24px; letter-spacing: -0.01em; margin: 0; }
+  .type-body { font-weight: 400; font-size: 18px; line-height: 1.6; margin: 0; max-width: 60ch; opacity: 0.85; }
+  .type-eyebrow { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; color: var(--mint); }
+  .type-accent { font-family: var(--marker); font-size: 48px; color: var(--cherry); margin: 0; transform: rotate(-2deg); display: inline-block; }
+  .type-button { font-family: var(--mono); font-size: 15px; margin: 0; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-weight: 400; font-size: 15px;
+    padding: 14px 28px;
+    border-radius: var(--r);
+    border: 2px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--cherry); color: #fff; border-color: var(--cherry); }
+  .btn-ghost { background: transparent; color: var(--soft-ink); border: 2px solid var(--hairline); font-family: var(--sans); }
+  .btn-tile { background: rgba(255,255,255,0.04); color: var(--soft-ink); border: 1px solid var(--hairline); padding: 10px 18px; font-family: var(--sans); }
+  .btn-video { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25); padding: 10px 22px; border-radius: 6px; }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 24px; }
+  .btn-row .caption { font-family: var(--mono); font-size: 12px; color: var(--muted); align-self: center; }
+
+  /* Logo */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .logo-tile {
+    background: var(--cone);
+    border-radius: var(--r);
+    padding: 48px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+    color: var(--soft-ink);
+  }
+  .logo-tile.inv { background: var(--cream); color: var(--deep-ink); border: 1px solid rgba(0,0,0,0.08); }
+  .logo-tile.cherry { background: var(--cherry); }
+  .logo-tile svg { width: 88px; height: 88px; }
+
+  /* Motifs */
+  .motifs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .motif {
+    padding: 24px;
+    border-radius: var(--r);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--hairline);
+  }
+  section.cream .motif { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .motif h3 { margin-bottom: 8px; }
+  .motif p { margin: 0 0 12px; font-size: 15px; line-height: 1.5; opacity: 0.85; }
+  .motif .usage { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  /* Voice */
+  .voice-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+  @media (max-width: 780px) { .voice-split { grid-template-columns: 1fr; } }
+  .voice-col h4 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 16px; }
+  .voice-col.do h4 { color: var(--mint); }
+  .voice-col.dont h4 { color: var(--cherry); }
+  .voice-item {
+    border-left: none;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.02);
+    border-radius: var(--r);
+    margin-bottom: 12px;
+  }
+  .voice-col.do .voice-item { background: rgba(51,230,160,0.06); border: 1px solid rgba(51,230,160,0.18); }
+  .voice-col.dont .voice-item { background: rgba(224,36,79,0.06); border: 1px solid rgba(224,36,79,0.22); }
+  .voice-item .text { font-size: 17px; line-height: 1.4; margin: 0 0 8px; }
+  .voice-item .ctx { font-family: var(--mono); font-size: 12px; opacity: 0.65; margin: 0; }
+
+  .trait-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; }
+  .tag {
+    font-family: var(--mono); font-size: 12px; padding: 6px 12px;
+    border-radius: 999px; border: 1px solid var(--hairline);
+  }
+  .tag.do { color: var(--mint); border-color: rgba(51,230,160,0.4); }
+  .tag.dont { color: var(--cherry); border-color: rgba(224,36,79,0.4); text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: rgba(224,36,79,0.6); }
+
+  /* Lists */
+  ul.rules { list-style: none; padding: 0; margin: 0; }
+  ul.rules li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  section.cream ul.rules li { border-top-color: rgba(0,0,0,0.08); }
+  ul.rules li:first-child { border-top: none; }
+  ul.rules li::before {
+    content: "→"; position: absolute; left: 0; top: 12px;
+    font-family: var(--mono); color: var(--mint);
+  }
+  section.cream ul.rules li::before { color: var(--cherry); }
+
+  /* Tone / pillars / personas */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .card {
+    background: rgba(255,255,255,0.02);
+    padding: 28px;
+    border-radius: var(--r);
+    border: 1px solid var(--hairline);
+  }
+  section.cream .card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .card h3 { margin-bottom: 10px; }
+  .card p { margin: 0; font-size: 15px; line-height: 1.5; opacity: 0.85; }
+  .card .motto { font-family: var(--marker); color: var(--cherry); font-size: 22px; margin: 16px 0 12px; }
+  .card .stats { display: flex; gap: 20px; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.08); }
+  section.dark .card .stats { border-top-color: var(--hairline); }
+  .stat .val { font-family: var(--sans); font-weight: 700; font-size: 32px; letter-spacing: -0.02em; display: block; }
+  .stat .lbl { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* Spacing */
+  .space-scale { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+  .space-item { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .space-item .block { background: var(--cone); border-radius: 4px; margin-bottom: 8px; }
+  section.cream .space-item .block { background: var(--deep-ink); }
+  .radius-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .radius-sample { width: 80px; height: 80px; background: var(--cherry); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--mono); font-size: 12px; }
+
+  /* Photography */
+  .photo-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r);
+    padding: 28px;
+  }
+  .photo-card h3 { margin-bottom: 16px; }
+  .photo-card .rules-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+  @media (max-width: 780px) { .photo-card .rules-split { grid-template-columns: 1fr; } }
+  .photo-card .col h4 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 12px; }
+  .photo-card .col.do h4 { color: var(--mint); }
+  .photo-card .col.dont h4 { color: var(--cherry); }
+  .photo-card ul { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
+  .photo-card ul li { padding-left: 18px; position: relative; }
+  .photo-card ul li::before { position: absolute; left: 0; font-family: var(--mono); }
+  .col.do ul li::before { content: "+"; color: var(--mint); }
+  .col.dont ul li::before { content: "×"; color: var(--cherry); }
+
+  /* Extraction footer */
+  footer.extraction {
+    background: var(--cone); color: var(--muted); padding: 48px 24px;
+    font-family: var(--mono); font-size: 12px;
+  }
+  footer.extraction .inner { max-width: var(--maxw); margin: 0 auto; }
+  footer.extraction code { color: var(--mint); }
+</style>
+</head>
+<body>
+
+<nav class="sticky">
+  <div class="inner">
+    <strong>SLICC · Brand Board</strong>
+    <a href="#philosophy">philosophy</a>
+    <a href="#logo">logo</a>
+    <a href="#color">color</a>
+    <a href="#type">type</a>
+    <a href="#components">components</a>
+    <a href="#motifs">motifs</a>
+    <a href="#voice">voice</a>
+    <a href="#tone">tone</a>
+    <a href="#persona">persona</a>
+    <a href="#space">space</a>
+  </div>
+</nav>
+
+<!-- Philosophy / Hero -->
+<section class="dark" id="philosophy">
+  <div class="inner">
+    <p class="eyebrow">// brand philosophy</p>
+    <h1 class="display">An <span class="strike">ice cream</span> AI agent that lives in your browser.</h1>
+    <p class="lede">SLICC runs entirely client-side — it uses your browser sessions to automate web apps, run shell commands, and coordinate parallel agents. No server, no API keys, nothing to approve.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Get SLICC</a>
+      <a class="btn btn-ghost" href="#">See it work</a>
+    </div>
+  </div>
+</section>
+
+<!-- Logo -->
+<section class="cream" id="logo">
+  <div class="inner">
+    <p class="eyebrow" style="color: var(--cherry);">// logo</p>
+    <h2 class="section-title">The cone mark.</h2>
+    <div class="logo-grid">
+      <div class="logo-tile">
+        <img src="../icons/slicc-logo.svg" alt="SLICC cone on black" style="width: 88px; height: 88px;">
+      </div>
+      <div class="logo-tile inv">
+        <img src="../icons/slicc-logo.svg" alt="SLICC cone on cream" style="width: 88px; height: 88px; filter: invert(1);">
+      </div>
+      <div class="logo-tile cherry">
+        <img src="../icons/slicc-logo.svg" alt="SLICC cone on cherry" style="width: 88px; height: 88px;">
+      </div>
+    </div>
+    <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+      <div>
+        <h4 style="font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);">clear space</h4>
+        <p style="max-width: 50ch; font-size: 15px;">Keep clear space equal to the scoop radius on all sides of the mark.</p>
+      </div>
+      <div>
+        <h4 style="font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cherry);">don't</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;">
+          <li style="padding: 4px 0;">× Don't recolor the mark outside the brand palette</li>
+          <li style="padding: 4px 0;">× Don't separate the scoop from the cone</li>
+          <li style="padding: 4px 0;">× Don't rotate or skew</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Color -->
+<section class="dark" id="color">
+  <div class="inner">
+    <p class="eyebrow">// color</p>
+    <h2 class="section-title">Cone, cream, and a cherry.</h2>
+
+    <div class="swatch-group">
+      <h4>primary</h4>
+      <div class="swatch-grid">
+        <div class="swatch" style="background:#0c0c0c; color:#f0f0f0;">
+          <div><div class="name">Cone Black</div><div class="hex">#0C0C0C</div></div>
+          <div class="role">Primary surface — default page background</div>
+        </div>
+        <div class="swatch" style="background:#faf9f7; color:#1a1a1a;">
+          <div><div class="name">Ice Cream Cream</div><div class="hex">#FAF9F7</div></div>
+          <div class="role">Light surface — use-cases, install sections</div>
+        </div>
+        <div class="swatch" style="background:#e0244f; color:#fff;">
+          <div><div class="name">Cherry Action</div><div class="hex">#E0244F</div></div>
+          <div class="role">Primary CTA fill — "Get SLICC"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-group">
+      <h4>secondary</h4>
+      <div class="swatch-grid">
+        <div class="swatch" style="background:#f0f0f0; color:#1a1a1a;">
+          <div><div class="name">Soft Ink</div><div class="hex">#F0F0F0</div></div>
+          <div class="role">Body text on dark surfaces</div>
+        </div>
+        <div class="swatch" style="background:#1a1a1a; color:#f0f0f0;">
+          <div><div class="name">Deep Ink</div><div class="hex">#1A1A1A</div></div>
+          <div class="role">Body text on cream surfaces</div>
+        </div>
+        <div class="swatch" style="background:#333; color:#f0f0f0;">
+          <div><div class="name">Hairline</div><div class="hex">#333333</div></div>
+          <div class="role">Outline buttons, borders, dividers on dark</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-group">
+      <h4>web functional</h4>
+      <div class="swatch-grid">
+        <div class="swatch" style="background:#33e6a0; color:#0c0c0c;">
+          <div><div class="name">Mint Code</div><div class="hex">#33E6A0</div></div>
+          <div class="role">Links, inline code, terminal accents</div>
+        </div>
+        <div class="swatch" style="background:#2de896; color:#0c0c0c;">
+          <div><div class="name">Mint Hover</div><div class="hex">#2DE896</div></div>
+          <div class="role">Link hover state</div>
+        </div>
+        <div class="swatch" style="background:#ff9a00; color:#0c0c0c;">
+          <div><div class="name">Highlight Orange</div><div class="hex">#FF9A00</div></div>
+          <div class="role">Occasional inline highlight / warning</div>
+        </div>
+        <div class="swatch" style="background:#999; color:#0c0c0c;">
+          <div><div class="name">Muted</div><div class="hex">#999999</div></div>
+          <div class="role">Supporting micro-copy on dark</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Typography -->
+<section class="cream" id="type">
+  <div class="inner">
+    <p class="eyebrow" style="color: var(--cherry);">// typography</p>
+    <h2 class="section-title">Space Grotesk does the work. Space Mono plays bouncer. Marker shows up once.</h2>
+
+    <div class="spec">
+      <div class="meta"><strong>Display</strong>Space Grotesk<br>300 / -0.025em<br>1.05 line-height</div>
+      <h1 class="type-display">Under the waffle hood.</h1>
+    </div>
+
+    <div class="spec">
+      <div class="meta"><strong>Heading</strong>Space Grotesk<br>700 / -0.02em</div>
+      <h2 class="type-heading">Here's where it gets weird.</h2>
+    </div>
+
+    <div class="spec">
+      <div class="meta"><strong>Subheading</strong>Space Grotesk<br>600 / -0.01em</div>
+      <p class="type-sub">Automate the apps you already use</p>
+    </div>
+
+    <div class="spec">
+      <div class="meta"><strong>Body</strong>Space Grotesk<br>400 / 18px<br>~0.85 opacity on dark</div>
+      <p class="type-body" style="color: #1a1a1a; opacity: 1;">SLICC works with any web app you're logged into. Your browser sessions, its hands. No server, no API keys, nothing to approve.</p>
+    </div>
+
+    <div class="spec">
+      <div class="meta"><strong>Eyebrow</strong>Space Mono<br>400 / uppercase</div>
+      <p class="type-eyebrow" style="color: var(--cherry);">// installation steps</p>
+    </div>
+
+    <div class="spec">
+      <div class="meta"><strong>Marker accent</strong>Permanent Marker<br>reserved — 1× per section</div>
+      <p class="type-accent">nothing to approve!</p>
+    </div>
+
+    <div class="spec">
+      <div class="meta"><strong>Button</strong>Space Mono<br>400 / primary only</div>
+      <p class="type-button">Get SLICC →</p>
+    </div>
+
+    <h3 style="margin-top: 48px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cherry);">rules</h3>
+    <ul class="rules">
+      <li>Display headlines at weight 300 — the brand leans light, not bold, on the hero.</li>
+      <li>Primary CTA label is always Space Mono; secondary/ghost buttons in Space Grotesk.</li>
+      <li>Body softens to ~0.85 opacity on dark surfaces. Full opacity on cream.</li>
+      <li>Marker accent (Permanent Marker) is reserved — one scrawl per section, max.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Components -->
+<section class="dark" id="components">
+  <div class="inner">
+    <p class="eyebrow">// components</p>
+    <h2 class="section-title">Four buttons. No more.</h2>
+
+    <div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#">Get SLICC</a>
+        <span class="caption">Primary (Cherry) — Space Mono · 8px · 14/28</span>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="#">See it work</a>
+        <span class="caption">Secondary (Ghost) — Space Grotesk · 8px · hairline border</span>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-tile" href="#">npm</a>
+        <a class="btn btn-tile" href="#">macOS</a>
+        <a class="btn btn-tile" href="#">Chrome</a>
+        <a class="btn btn-tile" href="#">GitHub</a>
+        <span class="caption">Tile — install targets · 8px · 10/18</span>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-video" href="#">▶ Play</a>
+        <span class="caption">Video chrome — 6px · translucent</span>
+      </div>
+    </div>
+    <p style="margin-top: 28px; color: var(--muted); font-family: var(--mono); font-size: 13px;">dual CTA: primary Cherry fill + ghost outline, side by side. Always in that order.</p>
+  </div>
+</section>
+
+<!-- Motifs -->
+<section class="cream" id="motifs">
+  <div class="inner">
+    <p class="eyebrow" style="color: var(--cherry);">// motifs</p>
+    <h2 class="section-title">The signatures.</h2>
+    <div class="motifs">
+      <div class="motif">
+        <h3>Strike-through rewrite</h3>
+        <p>Headline words crossed out and replaced inline — "<span class="strike" style="font-family: var(--sans); font-weight: 300; font-size: 18px;">ice cream</span> AI agent". The crossed phrase reads first; the real one lands second.</p>
+        <p class="usage">Hero headlines only. Once per page.</p>
+      </div>
+      <div class="motif">
+        <h3>Ice-cream-meets-terminal</h3>
+        <p>Dev-shop copy smuggled in through dessert metaphors — "the self-licking ice cream cone", "Under the waffle hood", "chmod +x everything".</p>
+        <p class="usage">Section headers and eyebrows. Don't force it.</p>
+      </div>
+      <div class="motif">
+        <h3>Dark / cream alternation</h3>
+        <p>Long pages alternate dark Cone Black sections with bright Ice Cream Cream sections. The rhythm is part of the identity.</p>
+        <p class="usage">Dark for atmosphere + demos, cream for feature walkthroughs and install.</p>
+      </div>
+      <div class="motif">
+        <h3>Tool-logo wall</h3>
+        <p>Grid of recognizable product logos (GitHub, Figma, Slack, Notion, …) as a "works with everything" signal.</p>
+        <p class="usage">Monochrome only. Never colored logos.</p>
+      </div>
+      <div class="motif">
+        <h3>Low-opacity body ink</h3>
+        <p>Hero subhead renders at ~0.85 on #F0F0F0 — soft, not pure white on near-black.</p>
+        <p class="usage">Lede copy on dark surfaces. Full opacity on cream.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photography -->
+<section class="dark" id="photography">
+  <div class="inner">
+    <p class="eyebrow">// photography</p>
+    <h2 class="section-title">No humans. No hands on keyboards. The product is the photograph.</h2>
+    <div class="photo-card">
+      <p style="max-width: 60ch; font-size: 17px; opacity: 0.85;">Minimal, product-forward screenshots and silent-video demos. When imagery is needed, it's the UI itself — terminal, browser, app chrome — framed clean on Cone Black or Ice Cream Cream.</p>
+      <div class="rules-split">
+        <div class="col do">
+          <h4>do</h4>
+          <ul>
+            <li>Lead with product video or UI capture, not a photograph.</li>
+            <li>Crop tight to the action — no decorative chrome unless it tells the story.</li>
+            <li>2× renders for crispness; subtle 8px rounding on frames.</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>don't</h4>
+          <ul>
+            <li>No stock "diverse team at laptop" photography.</li>
+            <li>No humans, hands on keyboards, or office interiors.</li>
+            <li>No gradient backdrops — flat brand surfaces only.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section class="cream" id="voice">
+  <div class="inner">
+    <p class="eyebrow" style="color: var(--cherry);">// voice</p>
+    <h2 class="section-title">A dev tool with a sugar high.</h2>
+    <p class="lede">Technically precise, winkingly self-aware, allergic to enterprise-speak. Says what it does, then makes a joke about saying what it does.</p>
+
+    <div class="trait-tags">
+      <span class="tag do">Playful</span>
+      <span class="tag do">Technical</span>
+      <span class="tag do">Self-aware</span>
+      <span class="tag do">Concrete</span>
+      <span class="tag do">Deadpan</span>
+      <span class="tag dont">Corporate</span>
+      <span class="tag dont">Hype-speak</span>
+      <span class="tag dont">Hedged</span>
+      <span class="tag dont">Earnest-SaaS</span>
+      <span class="tag dont">Overpromising</span>
+    </div>
+
+    <div class="voice-split">
+      <div class="voice-col do">
+        <h4>do</h4>
+        <div class="voice-item"><p class="text">An <span style="text-decoration: line-through; text-decoration-color: #e0244f;">ice-cream</span> AI agent that lives in your browser.</p><p class="ctx">Strike-through rewrite lands the joke and the pitch at once.</p></div>
+        <div class="voice-item"><p class="text">SLICC — the self-licking ice cream cone.</p><p class="ctx">The tagline <em>is</em> the joke. No explanation offered.</p></div>
+        <div class="voice-item"><p class="text">Under the waffle hood.</p><p class="ctx">Section header for "how it works".</p></div>
+        <div class="voice-item"><p class="text">chmod +x everything.</p><p class="ctx">Three words, one idea, zero fluff.</p></div>
+        <div class="voice-item"><p class="text">Your browser sessions, its hands.</p><p class="ctx">Mechanical metaphor in six words.</p></div>
+        <div class="voice-item"><p class="text">No server, no API keys, nothing to approve.</p><p class="ctx">Rhythmic triplet. Each clause shorter. Ends on the zinger.</p></div>
+      </div>
+      <div class="voice-col dont">
+        <h4>don't</h4>
+        <div class="voice-item"><p class="text">Revolutionize your workflow with next-generation agentic AI.</p><p class="ctx">Every word is a buzzword. SLICC would never.</p></div>
+        <div class="voice-item"><p class="text">SLICC empowers enterprise teams to unlock productivity.</p><p class="ctx">"Empowers" and "unlock" are on the permanent banlist.</p></div>
+        <div class="voice-item"><p class="text">We're excited to announce…</p><p class="ctx">The brand is deadpan. It's not excited; it's busy.</p></div>
+        <div class="voice-item"><p class="text">An intelligent automation platform for the modern browser.</p><p class="ctx">Generic category copy. No joke, no specifics, no voice.</p></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 48px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cherry);">hard rules</h3>
+    <ul class="rules">
+      <li>No exclamation points. The brand is dry.</li>
+      <li>No "empower", "unlock", "revolutionize", "seamless", "cutting-edge".</li>
+      <li>Earn every dessert metaphor — don't sprinkle them on every heading.</li>
+      <li>Short clauses. Rhythmic triplets are on-brand.</li>
+      <li>If a line could appear on any other SaaS homepage, rewrite it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Tone -->
+<section class="dark" id="tone">
+  <div class="inner">
+    <p class="eyebrow">// tone</p>
+    <h2 class="section-title">Deadpan by default. Jokes per screen is the only dial.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>To Disarm</h3>
+        <p>Make a very technical product feel approachable with one small joke per screen — never two.</p>
+      </div>
+      <div class="card">
+        <h3>To Clarify</h3>
+        <p>Explain what SLICC does in concrete mechanical terms: "your browser sessions, its hands."</p>
+      </div>
+      <div class="card">
+        <h3>To Respect the reader</h3>
+        <p>Assume a developer. Skip the setup; land the point.</p>
+      </div>
+    </div>
+    <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+      <div class="card">
+        <h3 style="color: var(--mint);">Clever</h3>
+        <p>Hero headlines, section eyebrows, taglines. One gag per surface, then move on.</p>
+      </div>
+      <div class="card">
+        <h3 style="color: var(--cherry);">Clear</h3>
+        <p>Install steps, "bring your own tokens", any copy answering "will this break my machine?". Jokes off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars + Persona -->
+<section class="cream" id="persona">
+  <div class="inner">
+    <p class="eyebrow" style="color: var(--cherry);">// content pillars</p>
+    <h2 class="section-title">Three things to write about.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Browser-native automation</h3>
+        <p>Everything SLICC does happens inside your browser — automating web apps you're already signed into.</p>
+      </div>
+      <div class="card">
+        <h3>Client-side trust</h3>
+        <p>No server, no keys in the cloud. Bring your own tokens; SLICC doesn't see them.</p>
+      </div>
+      <div class="card">
+        <h3>Parallel agents</h3>
+        <p>Coordinate multiple agents across tabs. The weird, interesting half of the product.</p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="color: var(--cherry); margin-top: 96px;">// persona</p>
+    <h2 class="section-title">The Tinkering Developer.</h2>
+    <div class="card" style="max-width: 640px;">
+      <h3>The Tinkering Developer</h3>
+      <p>Senior-ish engineer who has tried three agent frameworks this quarter and is tired of spinning up servers. Runs everything locally if they can.</p>
+      <p class="motto">"If it needs a server, it's already too much."</p>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;">
+        <span class="tag do">Local-first</span>
+        <span class="tag do">Own your keys</span>
+        <span class="tag do">Zero-config joy</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="val">0</span><span class="lbl">API keys sent to a third party</span></div>
+        <div class="stat"><span class="val">100%</span><span class="lbl">of the agent runs in the browser</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacing -->
+<section class="dark" id="space">
+  <div class="inner">
+    <p class="eyebrow">// spacing & shape</p>
+    <h2 class="section-title">4pt scale. 8px radius. That's it.</h2>
+
+    <h4 style="font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 16px;">space scale</h4>
+    <div class="space-scale">
+      <div class="space-item"><div class="block" style="width: 24px; height: 4px; background: var(--mint);"></div>XS · 4</div>
+      <div class="space-item"><div class="block" style="width: 24px; height: 8px; background: var(--mint);"></div>S · 8</div>
+      <div class="space-item"><div class="block" style="width: 24px; height: 16px; background: var(--mint);"></div>M · 16</div>
+      <div class="space-item"><div class="block" style="width: 24px; height: 24px; background: var(--mint);"></div>L · 24</div>
+      <div class="space-item"><div class="block" style="width: 24px; height: 48px; background: var(--mint);"></div>XL · 48</div>
+      <div class="space-item"><div class="block" style="width: 24px; height: 96px; background: var(--mint);"></div>XXL · 96</div>
+    </div>
+
+    <h4 style="font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 40px 0 16px;">border radius</h4>
+    <div class="radius-row">
+      <div class="radius-sample" style="border-radius: 6px;">6 · pill</div>
+      <div class="radius-sample" style="border-radius: 8px;">8 · default</div>
+    </div>
+  </div>
+</section>
+
+<footer class="extraction">
+  <div class="inner">
+    <div>extraction · <code>Playwright (Chromium, 1440×900, 2×DPR)</code></div>
+    <div>source · <code>https://sliccy.com/</code></div>
+    <div>captured · <code>2026-04-12</code></div>
+    <div style="margin-top: 12px;">screenshots · <code>stardust/screenshots/hero.png</code>, <code>stardust/screenshots/fullpage.png</code></div>
+  </div>
+</footer>
+
+</body>
+</html>

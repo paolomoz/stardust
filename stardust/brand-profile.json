@@ -1,0 +1,245 @@
+{
+  "name": "SLICC",
+  "philosophy": "SLICC — the self-licking ice cream cone. A browser-native AI agent that lives in your browser, automating the web apps you already use. Client-side only: no server, no API keys, nothing to approve.",
+
+  "logo": {
+    "primary": "icons/slicc-logo.svg",
+    "variants": [
+      { "name": "Cone mark (on dark)", "path": "icons/slicc-logo.svg", "usage": "Primary nav + favicon on the default dark surface" }
+    ],
+    "clearSpace": "Keep clear space equal to the scoop radius around the mark.",
+    "donts": [
+      "Don't recolor the mark outside the brand palette",
+      "Don't separate the scoop from the cone",
+      "Don't rotate or skew"
+    ]
+  },
+
+  "colors": {
+    "primary": [
+      { "name": "Cone Black", "hex": "#0C0C0C", "pantone": null, "role": "Primary surface — default page background" },
+      { "name": "Ice Cream Cream", "hex": "#FAF9F7", "pantone": null, "role": "Light surface — use-cases, install, different sections" },
+      { "name": "Cherry Action", "hex": "#E0244F", "pantone": null, "role": "Primary CTA fill — 'Get SLICC'" }
+    ],
+    "secondary": [
+      { "name": "Soft Ink", "hex": "#F0F0F0", "role": "Body text on dark surfaces" },
+      { "name": "Deep Ink", "hex": "#1A1A1A", "role": "Body text on cream surfaces" },
+      { "name": "Hairline", "hex": "#333333", "role": "Outline buttons, borders, dividers on dark" }
+    ],
+    "web": [
+      { "name": "Mint Code", "hex": "#33E6A0", "role": "Links, inline code, terminal accents" },
+      { "name": "Mint Hover", "hex": "#2DE896", "role": "Link hover state" },
+      { "name": "Highlight Orange", "hex": "#FF9A00", "role": "Occasional inline highlight / warning marker" },
+      { "name": "Muted", "hex": "#999999", "role": "Supporting micro-copy on dark" }
+    ],
+    "gradients": []
+  },
+
+  "componentStyle": {
+    "borderRadius": {
+      "default": "8px",
+      "usage": "Primary CTAs and tile buttons use 8px; compact pill buttons drop to 6px. Never fully round — the brand wants a software-tool feel, not a consumer-app pill."
+    },
+    "maxWidth": "1200px",
+    "pagePadding": "24px",
+    "navbarHeight": "64px",
+    "buttons": {
+      "patterns": [
+        {
+          "name": "Primary (Cherry)",
+          "style": "background #E0244F, text #FFFFFF, 2px solid #E0244F, 8px radius, 14px 28px padding, Space Mono 400",
+          "example": "Get SLICC"
+        },
+        {
+          "name": "Secondary (ghost on dark)",
+          "style": "transparent bg, text #F0F0F0, 2px solid #333, 8px radius, 14px 28px padding, Space Grotesk 400",
+          "example": "See it work"
+        },
+        {
+          "name": "Tile (install target)",
+          "style": "background rgba(255,255,255,0.04), text #F0F0F0, 1px solid #333, 8px radius, 10px 18px padding, Space Grotesk 400",
+          "example": "npm · macOS · Chrome · GitHub"
+        },
+        {
+          "name": "Video chrome",
+          "style": "background rgba(255,255,255,0.15), text #FFF, 1px solid rgba(255,255,255,0.25), 6px radius, 10px 22px padding, Space Mono 400",
+          "example": "Play"
+        }
+      ],
+      "dualCTA": "Hero pairs primary Cherry fill with a ghost outline — 'Get SLICC' alongside 'See it work'."
+    }
+  },
+
+  "motifs": [
+    {
+      "name": "Strike-through rewrite",
+      "description": "Headline words are crossed out and replaced inline — e.g. 'An [ice cream] AI agent that lives in your browser.' The crossed phrase reads first, the real one lands second.",
+      "usage": "Hero display headlines only. One rewrite per headline, max."
+    },
+    {
+      "name": "Ice-cream-meets-terminal vocabulary",
+      "description": "Dev-shop copy smuggled in through dessert metaphors — 'the self-licking ice cream cone', 'Under the waffle hood', 'chmod +x everything', 'Here's where it gets weird.'",
+      "usage": "Section headers and eyebrow callouts. Don't force it into every heading — it loses impact."
+    },
+    {
+      "name": "Light / dark section alternation",
+      "description": "Long page alternates dark Cone Black sections with bright Ice Cream Cream sections — the rhythm is part of the identity.",
+      "usage": "Use dark for atmosphere + demos, cream for feature walkthroughs and install."
+    },
+    {
+      "name": "Tool-logo wall",
+      "description": "Grid of recognizable product logos (GitHub, Figma, Slack, Notion, …) as a 'works with everything' signal.",
+      "usage": "Under hero, and again under 'Bring your own tokens'. Logos in neutral monochrome, never colored."
+    },
+    {
+      "name": "Low-opacity body ink",
+      "description": "Hero subhead renders at ~0.85 opacity on #F0F0F0 — soft, not pure white, on near-black.",
+      "usage": "Lede copy + supporting lines in dark sections. Keep pure #F0F0F0 for primary body."
+    }
+  ],
+
+  "typography": {
+    "heading": {
+      "family": "Space Grotesk",
+      "weights": ["300 (display)", "600", "700"],
+      "lineHeight": 1.1,
+      "letterSpacing": "-0.02em",
+      "usage": "All display + section headlines. Weight 300 for the hero at ~75px; 700 for compact section H2s."
+    },
+    "subheading": {
+      "family": "Space Grotesk",
+      "weight": "500–700",
+      "usage": "Card titles and feature subheads; 22–30px."
+    },
+    "body": {
+      "family": "Space Grotesk",
+      "weight": "400",
+      "opacity": 0.85,
+      "usage": "Running copy. 18px on dark, 22px for hero lede. Body runs at ~0.85 opacity on dark surfaces; full opacity on cream."
+    },
+    "accent": {
+      "family": "Permanent Marker",
+      "weight": "400",
+      "usage": "Hand-drawn marker accent for informal scrawls — strike-through rewrites, arrows, one-word jokes. Use sparingly, never for body or CTAs."
+    },
+    "eyebrow": {
+      "family": "Space Mono",
+      "weight": "400",
+      "transform": "none",
+      "usage": "Technical labels, badges, and section eyebrows where a code-like voice fits."
+    },
+    "button": {
+      "family": "Space Mono",
+      "weight": "400",
+      "usage": "Primary CTAs use Space Mono to echo the terminal side of the brand."
+    },
+    "rules": [
+      "Display headlines at weight 300 — the brand leans light, not bold, on the hero.",
+      "Primary CTA label is always in Space Mono; secondary/ghost buttons in Space Grotesk.",
+      "Body copy softens to ~0.85 opacity on dark surfaces. Full opacity on cream.",
+      "Marker accent (Permanent Marker) is reserved — one scrawl per section max."
+    ]
+  },
+
+  "photography": {
+    "style": "Minimal, product-forward screenshots and silent-video demos. No stock photography, no people. When imagery is needed it's the UI itself — terminal, browser, app chrome — framed clean on Cone Black or Ice Cream Cream.",
+    "rules": [
+      "Lead with a product video or UI capture, not a photograph.",
+      "Crop tight to the action — no decorative browser chrome unless it tells the story.",
+      "Keep captures rendered at 2× for crisp display; subtle 8px rounding on frames."
+    ],
+    "donts": [
+      "No stock 'diverse team at laptop' photography.",
+      "No humans, hands on keyboards, or office interiors.",
+      "No gradient backdrops behind product shots — flat brand surfaces only."
+    ],
+    "social": "Square crops of the cone mark on Cherry or Cone Black; short silent loops of the agent doing a task. Caption in Space Mono."
+  },
+
+  "voice": {
+    "character": "A dev tool with a sugar high. Technically precise, winkingly self-aware, allergic to enterprise-speak. Says what it does, then makes a joke about saying what it does.",
+    "traits": ["Playful", "Technical", "Self-aware", "Concrete", "Deadpan"],
+    "antiTraits": ["Corporate", "Hype-speak", "Hedged", "Earnest-SaaS", "Overpromising"],
+    "examples": {
+      "do": [
+        { "text": "An ice-cream AI agent that lives in your browser.", "context": "Strike-through rewrite lands the joke and the pitch at the same time." },
+        { "text": "SLICC — the self-licking ice cream cone.", "context": "The tagline *is* the joke. No explanation offered." },
+        { "text": "Under the waffle hood.", "context": "Section header for 'how it works'. Terminal idea dressed as dessert." },
+        { "text": "chmod +x everything.", "context": "Permissions section. Three words, one idea, zero fluff." },
+        { "text": "Here's where it gets weird.", "context": "Smart eyebrow before an unusual capability — sets expectations without selling." },
+        { "text": "Your browser sessions, its hands.", "context": "Tiny mechanical metaphor that explains the product in six words." },
+        { "text": "No server, no API keys, nothing to approve.", "context": "Rhythmic triplet. Each clause gets shorter. Ends on the zinger." }
+      ],
+      "dont": [
+        { "text": "Revolutionize your workflow with next-generation agentic AI.", "context": "Every word is a buzzword. SLICC would never." },
+        { "text": "SLICC empowers enterprise teams to unlock productivity.", "context": "'Empowers' and 'unlock' are on the permanent banlist." },
+        { "text": "We're excited to announce…", "context": "The brand is deadpan. It's not excited; it's busy." },
+        { "text": "An intelligent automation platform for the modern browser.", "context": "Generic category copy. No joke, no specifics, no voice." }
+      ]
+    },
+    "rules": [
+      "No exclamation points. The brand is dry.",
+      "No 'empower', 'unlock', 'revolutionize', 'seamless', 'cutting-edge'.",
+      "Earn every dessert metaphor — don't sprinkle them on every heading.",
+      "Short clauses. Rhythmic triplets are on-brand: 'no server, no API keys, nothing to approve.'",
+      "If a line could appear on any other SaaS homepage, rewrite it."
+    ]
+  },
+
+  "tone": {
+    "description": "Tone stays deadpan across contexts; only the density of jokes changes. Hero and section headers earn one gag each; docs and install steps go fully straight.",
+    "writingGoals": [
+      { "goal": "To Disarm", "description": "Make a very technical product feel approachable with one small joke per screen — never two." },
+      { "goal": "To Clarify", "description": "Explain what SLICC does in concrete mechanical terms: 'your browser sessions, its hands.'" },
+      { "goal": "To Respect the reader", "description": "Assume the reader is a developer. Skip the setup; land the point." }
+    ],
+    "cleverVsClear": {
+      "clever": "Hero headlines, section eyebrows, taglines. One gag per surface, then move on.",
+      "clear": "Install steps, 'bring your own tokens', any copy that answers 'will this break my machine?'. Jokes off."
+    }
+  },
+
+  "contentPillars": [
+    { "name": "Browser-native automation", "description": "Everything SLICC does happens inside your browser — automating web apps you're already signed into." },
+    { "name": "Client-side trust", "description": "No server, no keys in the cloud. Bring your own tokens; SLICC doesn't see them." },
+    { "name": "Parallel agents", "description": "Coordinate multiple agents across tabs. The weird, interesting half of the product." }
+  ],
+
+  "personas": [
+    {
+      "name": "The Tinkering Developer",
+      "description": "Senior-ish engineer who has tried three agent frameworks this quarter and is tired of spinning up servers. Runs everything locally if they can.",
+      "values": ["Local-first", "Own your keys", "Zero-config joy"],
+      "motto": "If it needs a server, it's already too much.",
+      "stats": [
+        { "value": "0", "description": "API keys sent to a third party" },
+        { "value": "100%", "description": "of the agent runs in the browser" }
+      ]
+    }
+  ],
+
+  "spacing": {
+    "scale": [
+      { "name": "XS", "value": "4px" },
+      { "name": "S", "value": "8px" },
+      { "name": "M", "value": "16px" },
+      { "name": "L", "value": "24px" },
+      { "name": "XL", "value": "48px" },
+      { "name": "XXL", "value": "96px" }
+    ],
+    "borderRadius": [
+      { "name": "Pill", "value": "6px" },
+      { "name": "Default", "value": "8px" }
+    ]
+  },
+
+  "extraction": {
+    "method": "Playwright (Chromium, 1440×900, 2x DPR) — computed styles + fullpage screenshot",
+    "source": "https://sliccy.com/",
+    "capturedAt": "2026-04-12",
+    "screenshots": [
+      "stardust/screenshots/hero.png",
+      "stardust/screenshots/fullpage.png"
+    ]
+  }
+}
