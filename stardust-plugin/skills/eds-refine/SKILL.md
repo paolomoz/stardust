@@ -1,15 +1,15 @@
 ---
-name: refine
-description: "Designer-driven refinement and publishing. Translates natural feedback into impeccable commands, handles DA content pipeline and deployment. Use after build is complete, or when the designer wants to polish and publish their pages."
+name: eds-refine
+description: "Designer-driven refinement and publishing of EDS pages. Translates natural feedback into impeccable commands, handles DA content pipeline and deployment. Use after /stardust:eds-build is complete, or when the designer wants to polish and publish their pages."
 ---
 
-# Refine
+# EDS Refine
 
 Iterative refinement driven by designer feedback, plus publishing to DA and preview/production environments.
 
 ## MANDATORY PREPARATION
 
-1. Check that generated pages exist in `drafts/`. If not, tell the user to run `/stardust:build` first.
+1. Check that generated pages exist in `drafts/`. If not, tell the user to run `/stardust:eds-build` first.
 2. Read `.impeccable.md` for design context.
 3. Start the AEM dev server if not running: `npx -y @adobe/aem-cli up --no-open`
 

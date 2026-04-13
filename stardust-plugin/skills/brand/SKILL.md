@@ -129,7 +129,7 @@ Common feedback and how to handle it:
 Iterate until the designer says the board looks right. Then:
 1. Confirm the brand profile is saved
 2. Confirm .impeccable.md exists
-3. Tell the designer: "Brand extraction complete. Run `/stardust` to see your next step, or `/stardust:experience` to start wireframing your pages."
+3. Tell the designer: "Brand extraction complete. Run `/stardust` to see your next step. Briefings (`/stardust:briefings`) can be written in parallel; once brand and briefings are ready, choose `/stardust:wireframes` for a grey structural pass, or jump straight to `/stardust:design`."
 
 ## Artifacts Written
 

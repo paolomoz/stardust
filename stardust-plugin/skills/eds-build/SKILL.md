@@ -1,19 +1,19 @@
 ---
-name: build
-description: "Map wireframes to EDS blocks, build blocks via CDD, generate pages with real content. The main construction stage. Use when wireframes are approved and you're ready to build, or when /stardust recommends the build stage."
+name: eds-build
+description: "Map approved designs to EDS blocks, build blocks via CDD, generate pages with real content. The main EDS construction stage. Use when designs are approved and the EDS design system has been generated, or when /stardust recommends the eds-build stage."
 ---
 
-# Build
+# EDS Build
 
-The heaviest stage. Map wireframe sections to EDS blocks, build new blocks through CDD, generate pages with real content from briefings.
+The heaviest stage. Map design sections to EDS blocks, build new blocks through CDD, generate pages with real content from briefings.
 
 ## MANDATORY PREPARATION
 
-1. Check that wireframes exist: `stardust/wireframes/*.html`. If not, tell the user to run `/stardust:experience` first.
-2. Check that briefings exist: `stardust/briefings/*.md`. If not, tell the user to run `/stardust:experience` first.
+1. Check that designs exist: `stardust/designs/*.html`. If not, tell the user to run `/stardust:design` first.
+2. Check that briefings exist: `stardust/briefings/*.md`. If not, tell the user to run `/stardust:briefings` first.
 3. Read `.impeccable.md` for design context.
 4. Read `stardust/brand-profile.json` for brand voice (needed for content generation).
-5. Check that design system is applied: `stardust/design-tokens.json` exists. If not, tell the user to run `/stardust:design-system` first.
+5. Check that the EDS design system is applied: `stardust/design-tokens.json` exists. If not, tell the user to run `/stardust:eds-design` first.
 6. Start the AEM dev server if not running: `npx -y @adobe/aem-cli up --no-open`
 
 ---
@@ -281,7 +281,7 @@ Present results to designer:
 - "Pages are built. Here's what to review:"
 - Link to each page on the dev server
 - List any P2-P3 issues found by audit
-- "Open http://localhost:3000/drafts/{page} to see your pages. Run `/stardust:refine` when you're ready to polish and publish."
+- "Open http://localhost:3000/drafts/{page} to see your pages. Run `/stardust:eds-refine` when you're ready to polish and publish."
 
 ## Artifacts Written
 

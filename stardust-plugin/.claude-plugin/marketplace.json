@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "stardust",
-      "description": "Navigate brand → design system → experience design → build pipeline for AEM EDS websites. 6 skills: /stardust (navigator), /stardust:brand, /stardust:design-system, /stardust:experience, /stardust:build, /stardust:refine.",
+      "description": "Two-phase pipeline for AEM EDS websites. Design phase (EDS-agnostic): brand, briefings, wireframes (optional), design. EDS phase: eds-design, eds-build, eds-refine. 8 skills: /stardust (navigator), /stardust:brand, /stardust:briefings, /stardust:wireframes, /stardust:design, /stardust:eds-design, /stardust:eds-build, /stardust:eds-refine.",
       "version": "0.1.0",
       "author": {
         "name": "Paolo Mottadelli",
