@@ -37,6 +37,7 @@ Render each wireframe as visual HTML in grey mode:
 - **Pure grey layout:** boxes, bars, shapes. No brand colors, no real fonts (system-ui is fine).
 - Background: light grey (#f5f5f5); elements in shades of grey.
 - Placeholder text as grey bars; images as grey rectangles with labels.
+- **Annotations are required** — every block gets a short italic `.note` or `.caption` describing what it represents, so the reviewer can evaluate the flow without guessing. Repeated items (pipeline nodes, host tiles, card grids) carry identifying labels ("01 · brand", "Claude Code"), not generic numbers. See [wireframe-guide.md](reference/wireframe-guide.md) Annotations section.
 - Shows: section order, relative sizing, content density, spatial relationships.
 - Each section gets `data-section`, `data-intent`, `data-layout` attributes so the design stage can pick up the structure.
 - For multi-page sites: add `data-fragment`, `data-fragment-role`, and `data-fragment-source` attributes to reusable content sections — see [wireframe-guide.md](reference/wireframe-guide.md) Content Reuse & Fragments section.
