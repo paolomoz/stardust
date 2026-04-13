@@ -79,14 +79,7 @@ Pull real copy from the rendered page (hero headlines, CTAs, micro-copy) for `vo
 
 #### 4. PDFs and non-URL sources
 
-Playwright is the primary path only for URLs. For PDFs or uploaded assets, do an inline multi-tier extraction:
-
-1. **Read the PDF directly** with the Read tool (pages the model can see as images) to capture logo marks, color swatches, typography specimens, and any callouts the guidelines make (tone words, voice rules, photography direction).
-2. **Web-search corroboration** — if the brand has a public site, search for `"{brand name}" brand guidelines`, the live homepage, and any press/media kit. Cross-check PDF colors and type against live computed styles when possible.
-3. **Training-knowledge fallback** — for well-known brands with thin guidelines, supplement from model knowledge but mark those fields as lower confidence in the `extraction` block.
-4. **Validate before writing** — tone array must be 4-5 evocative attributes (not "professional", "innovative", "trustworthy"); color palette 3-6 hex codes with named roles; positioning a 1-3 sentence strategic statement, not a tagline; visual style anchored to specific cultural references, not "clean and modern".
-
-If confidence is low (missing colors, no type specimens), flag inferred fields explicitly in the `extraction` block and tell the designer which need human review.
+If the input is a PDF or uploaded asset, use `brand-extractor` (from eds-site-builder) as a fallback. Playwright is the primary path only for URLs.
 
 #### 5. Write the profile
 

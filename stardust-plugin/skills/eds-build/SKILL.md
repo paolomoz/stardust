@@ -158,10 +158,10 @@ For each wireframe that has all its blocks built:
 1. Read the wireframe (`stardust/wireframes/{page}.html`) for structure
 2. Read the briefing (`stardust/briefings/{page}.md`) for content intent
 3. Read `stardust/brand-profile.json` for brand voice, tone, and content pillars
-4. Invoke the `stardust:generative-page-pipeline` skill to generate the page:
+4. Use `generative-page-pipeline` (from eds-site-builder) to generate the page:
    - Section-by-section, fill wireframe structure with real content
    - Headlines, body copy, CTA text generated in brand voice
-   - Invoke the `stardust:ai-image-generator` skill for images, applying photography style from brand profile
+   - Use `ai-image-generator` (from eds-site-builder) for images, applying photography style from brand profile
 5. Write generated pages to `drafts/{page}.plain.html`
 6. Restart the dev server with the drafts folder: `npx -y @adobe/aem-cli up --no-open --html-folder drafts`
 7. Serve via dev server at `http://localhost:3000/drafts/{page}`
