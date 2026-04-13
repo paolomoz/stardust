@@ -9,12 +9,35 @@ Design in the browser. Produce **branded, high-fidelity HTML** for each page —
 
 This is the stage where visual design decisions happen: type scale, spacing, proportions, button sizing, visual weight, section rhythm. The approved designs become the authoritative input to `/stardust:eds-design`.
 
-## MANDATORY PREPARATION
+## Pre-flight
 
-1. Read `stardust/brand-profile.json`. If missing, stop and tell the user: "Design needs a brand. Run `/stardust:brand` first."
-2. Read `stardust/briefings/` — at least one `{page}.md` must exist. If none, stop and tell the user: "Design needs at least one briefing. Run `/stardust:briefings` first."
-3. Read `stardust/wireframes/` if it exists — use approved grey wireframes as the **structural blueprint**. If wireframes don't exist, derive structure from the briefing directly (with `/impeccable shape`).
-4. Read `.impeccable.md` — it's the taste filter for every visual judgment on this stage.
+Run the procedure in [`../_shared/preflight.md`](../_shared/preflight.md) first.
+
+## Contract
+
+**Needs (reads if present):**
+- `stardust/brand-profile.json`
+- `stardust/briefings/{page}.md` (including optional `# Copy` and `# Imagery`)
+- `stardust/wireframes/{page}.html`
+- `.impeccable.md`
+
+**Produces:**
+- `stardust/designs/{page}.html` (self-contained, branded, desktop fidelity)
+
+**If missing:**
+- No brand-profile.json → synthesize a neutral brand shape (system-ui fonts, mono palette, straight voice). Stamp provenance in the design's `<head>`.
+- No briefing → prompt the user for a one-line page intent; synthesize a minimal briefing (in memory only, unless the user says "save it"); stamp provenance.
+- Briefing has no `# Copy` → generate on-brand copy following `brand-profile.json` voice rules and `.impeccable.md`. Stamp provenance per section.
+- No wireframe → shape structure from the briefing directly.
+- No `.impeccable.md` → use brand-profile defaults only.
+
+## Copy Ownership
+
+The briefing is the source of truth for copy.
+
+- If a section has `# Copy` in the briefing, use those strings **verbatim**. Never rewrite.
+- If a section has no `# Copy`, generate on-brand copy and record provenance (per-section, in the `<head>` provenance block — e.g. `hero.headline: synthesized`).
+- **Never auto-write generated copy back to the briefing.** If the user asks ("also save this to the briefing") perform a single, targeted writeback and report what changed.
 
 ---
 
@@ -25,7 +48,10 @@ For each briefing:
 1. Load structural input:
    - If `stardust/wireframes/{page}.html` exists, use it as the section order and layout reference.
    - If not, run `/impeccable shape` to plan the sections from the briefing.
-2. Re-read the briefing's `# Copy` section (if present) — use those strings verbatim. For sections without `# Copy`, generate on-brand copy following `brand-profile.json` voice rules and `.impeccable.md` principles.
+2. For each section, check the briefing's `# Copy`:
+   - Present → use **verbatim**. Do not rewrite under any feedback loop unless the user explicitly says to change the words in the briefing.
+   - Absent → generate on-brand copy; add the slot to the design's provenance block (e.g. `hero.headline: synthesized`).
+   - Never write generated copy back to the briefing automatically. Offer: "Want me to also save these lines to the briefing?" after the first render — act only on explicit confirmation.
 3. Re-read the briefing's `# Imagery` section — follow source hints; otherwise generate branded placeholders.
 
 ## Phase 2: Render (Branded Mode)
@@ -39,6 +65,7 @@ Render each design as a self-contained HTML file at desktop fidelity (1440px des
 - **Images** — briefing `# Imagery` sources, or branded placeholders.
 - **CSS custom properties in `:root`** that expose type scale, spacing, max-width, section padding, button proportions. These values are the **authoritative desktop tokens** that `/stardust:eds-design` will extract.
 - Preserve `data-section`, `data-intent`, `data-layout` attributes from the wireframe so downstream stages can read structure.
+- **Provenance block** — if any input was synthesized (brand, briefing, wireframe, or any `# Copy` slot), include a `<!-- stardust:provenance ... -->` comment as the first child of `<head>` per [`../_shared/skill-contract.md`](../_shared/skill-contract.md). List each synthesized input and, for copy, each synthesized slot.
 
 Write to `stardust/designs/{page}.html`.
 
