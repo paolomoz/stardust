@@ -1,6 +1,6 @@
 ---
 name: stardust
-description: "Navigate the stardust pipeline — assess project state and recommend the next step for building an AEM EDS website from brand guidelines. Use when the user wants to check progress, doesn't know what to do next, or says /stardust."
+description: "Navigate the stardust pipeline — assess project state and recommend the next step for building an AEM EDS website. Use when the user wants to check progress, doesn't know what to do next, or says /stardust."
 ---
 
 # Stardust Navigator
@@ -9,9 +9,12 @@ Assess the current project state and guide the user to the right next step.
 
 ## How This Works
 
-You are the navigator for the stardust pipeline — a skill-based flow for creating AEM Edge Delivery Services websites from brand guidelines. You read artifacts on disk to determine where the project is, then recommend the next step.
+You are the navigator for the stardust pipeline — a skill-based flow with two phases:
 
-You NEVER write or modify files. You only read and recommend.
+- **Design phase (EDS-agnostic):** `/stardust:brand`, `/stardust:briefings`, `/stardust:wireframes` (optional), `/stardust:design`.
+- **EDS phase (implementation):** `/stardust:eds-design`, `/stardust:eds-build`, `/stardust:eds-refine`.
+
+You read artifacts on disk to determine where the project is, then recommend the next step. You NEVER write or modify files.
 
 ---
 
@@ -23,10 +26,11 @@ Check for these artifacts and record which exist:
 Check: stardust/brand-profile.json          → brand_extracted
 Check: .impeccable.md                        → design_personality
 Check: stardust/brand-board.html             → brand_board
-Check: styles/styles.css (has custom props)  → design_system_css
-Check: stardust/design-tokens.json           → design_tokens
 Check: stardust/briefings/ (has .md files)   → briefings
-Check: stardust/wireframes/ (has .html files)→ wireframes
+Check: stardust/wireframes/ (has .html files)→ wireframes (optional, grey)
+Check: stardust/designs/ (has .html files)   → designs (branded)
+Check: stardust/design-tokens.json           → design_tokens
+Check: styles/styles.css (has custom props)  → eds_css
 Check: stardust/block-manifest.json          → block_manifest
 Check: blocks/ (non-boilerplate blocks)      → custom_blocks
 Check: nav.plain.html (project root)         → nav_fragment
@@ -40,38 +44,50 @@ To check for non-boilerplate blocks, compare `blocks/` contents against the stan
 
 ## Step 2: Determine Pipeline State
 
-Based on which artifacts exist, determine the stage:
+Brand and briefings are **independent prerequisites**. Either can run first, or both in parallel. Wireframes are **optional** (grey, structural). Design requires brand + briefings (and optionally wireframes).
+
+### Design phase
 
 | State | Condition | Next Step |
 |---|---|---|
-| **Fresh project** | No stardust/ artifacts | Start with `/stardust:brand` |
+| **Fresh project** | Nothing in `stardust/` | Run `/stardust:brand` or `/stardust:briefings` — either first is fine |
 | **Brand in progress** | brand_profile but no brand_board | Complete brand: render the board |
-| **Brand complete** | brand_profile + brand_board + design_personality | Run `/stardust:experience` |
-| **Briefings authored** | briefings exist but no wireframes | Continue `/stardust:experience` to create wireframes |
-| **Wireframes approved** | wireframes exist but no design_tokens | Run `/stardust:design-system` |
-| **Design system applied** | design_system_css + design_tokens but no block_manifest | Run `/stardust:build` |
-| **Build in progress** | block_manifest exists, some blocks built | Continue `/stardust:build` |
-| **Build complete** | generated_pages exist | Run `/stardust:refine` |
-| **Ready to ship** | All artifacts present, pages refined | Publish via `/stardust:refine` |
+| **Brand only** | brand artifacts present, no briefings | Run `/stardust:briefings` |
+| **Briefings only** | briefings present, no brand | Run `/stardust:brand` |
+| **Both ready** | brand + briefings present, no wireframes and no designs | Run `/stardust:wireframes` (optional, grey structural pass) **or** `/stardust:design` (skip wireframes and go straight to branded) |
+| **Wireframes approved** | wireframes exist, no designs | Run `/stardust:design` |
+| **Designs in progress** | some designs rendered, others not | Continue `/stardust:design` |
+
+### EDS phase
+
+| State | Condition | Next Step |
+|---|---|---|
+| **Designs approved** | designs exist, no design_tokens | Run `/stardust:eds-design` |
+| **EDS design applied** | design_tokens + eds_css, no block_manifest | Run `/stardust:eds-build` |
+| **EDS build in progress** | block_manifest exists, some blocks built | Continue `/stardust:eds-build` |
+| **EDS build complete** | generated_pages exist | Run `/stardust:eds-refine` |
+| **Ready to ship** | All artifacts present, pages refined | Publish via `/stardust:eds-refine` |
 
 ## Step 3: Present Status
 
-Report to the user in this format:
+Report to the user in two phases so the agnostic/EDS boundary is visible:
 
 ```
 ## Stardust Pipeline Status
 
-### Completed
+### Design phase
 - ✓ Brand extracted (brand-profile.json)
 - ✓ Design personality set (.impeccable.md)
 - ✓ Brand board rendered
-- ✓ Experience: 3 briefings authored, 3 wireframes approved
+- ✓ Briefings: 3 pages authored
+- ✓ Wireframes: 3 pages (grey, approved)
+- → Designs: 1 of 3 rendered
 
-### Current
-→ Design System: wireframes approved, ready to derive CSS tokens
+### EDS phase
+- Not started
 
 ### Next Step
-Run `/stardust:design-system` to generate EDS CSS from your approved wireframes.
+Continue `/stardust:design` to render the remaining pages.
 ```
 
 Adapt the format to what's actually present. If nothing exists yet:
@@ -82,29 +98,38 @@ Adapt the format to what's actually present. If nothing exists yet:
 This is a fresh project. No pipeline artifacts found yet.
 
 ### Next Step
-Run `/stardust:brand` to start by extracting your brand identity.
+Run `/stardust:brand` or `/stardust:briefings` — they are independent; either can come first.
 
-You'll need one of:
+Brand needs one of:
 - A brand guidelines URL (Corebook, Frontify, etc.)
 - A brand guidelines PDF
 - Or we can discover your brand through conversation
+
+Briefings need one of:
+- A one-line prompt per page
+- Or a structured description of intent, audience, CTAs
+- Or fully-specified copy and imagery
 ```
 
 ## Step 4: Offer Entry Points
 
 If the user already has some artifacts from outside the pipeline (e.g., they manually created CSS or have brand tokens from another tool), acknowledge this:
 
-- "I see you already have custom styles in styles.css. Want me to extract design tokens from your existing CSS so you can skip to experience design?"
-- "You have blocks beyond the boilerplate (accordion, testimonials). These will be available for the build stage."
+- "I see you already have custom styles in styles.css. Want me to extract design tokens from your existing CSS so you can skip to briefings and designs?"
+- "You have blocks beyond the boilerplate (accordion, testimonials). These will be available for the eds-build stage."
 
 ## Full Pipeline Run (End-to-End)
 
 When the user asks to run the full pipeline end-to-end (e.g., "run all stardust stages", "build the whole site", or provides a detailed brief with brand source + page requirements), execute each stage in sequence without waiting for approval at each gate:
 
-1. **`/stardust:brand`** — extract brand identity, render board, auto-approve
-2. **`/stardust:experience`** — create briefings from the user's brief, wireframe all pages, auto-approve
-3. **`/stardust:design-system`** — derive CSS tokens from approved wireframes + brand profile
-4. **`/stardust:build`** — build blocks, generate pages, start dev server
+1. **`/stardust:brand`** — extract brand identity, render board, auto-approve.
+2. **`/stardust:briefings`** — capture page intent from the user's brief, auto-approve.
+3. **`/stardust:wireframes`** — grey structural pass, auto-approve. (Skip if the user explicitly opts out — going straight to `design` is valid.)
+4. **`/stardust:design`** — branded design per page, auto-approve after critique.
+5. **`/stardust:eds-design`** — derive EDS CSS tokens from approved designs + brand profile.
+6. **`/stardust:eds-build`** — build blocks, generate pages, start dev server.
+
+Brand and briefings are independent and can run in either order, but the end-to-end default runs brand first so briefings can reference brand voice when the user wants fully-specified copy.
 
 Each stage skill has a "pipeline automation" note in its approval gate section — when running end-to-end, skip interactive approval loops and continue to the next stage.
 
@@ -116,10 +141,12 @@ Consult [artifact-map.md](reference/artifact-map.md) for the complete artifact s
 
 ## Skills in the Pipeline
 
-| Stage | Skill | What it does |
-|---|---|---|
-| Brand | `/stardust:brand` | Extract brand → board + tokens + personality |
-| Experience Design | `/stardust:experience` | Briefings + visual wireframes (uses brand colors/fonts) |
-| Design System | `/stardust:design-system` | Derive EDS CSS from approved wireframes + brand profile |
-| Build | `/stardust:build` | Wireframes → EDS blocks + generated pages |
-| Refine | `/stardust:refine` | Polish + publish |
+| Phase | Stage | Skill | What it does |
+|---|---|---|---|
+| Design | Brand | `/stardust:brand` | Extract brand → board + tokens + personality |
+| Design | Briefings | `/stardust:briefings` | Capture page intent (standalone, no brand dependency) |
+| Design | Wireframes | `/stardust:wireframes` | Optional — grey structural pass from briefings |
+| Design | Design | `/stardust:design` | Branded, high-fidelity HTML designs (EDS-independent) |
+| EDS | EDS Design | `/stardust:eds-design` | Derive EDS CSS from approved designs + brand profile |
+| EDS | EDS Build | `/stardust:eds-build` | Designs → EDS blocks + generated pages |
+| EDS | EDS Refine | `/stardust:eds-refine` | Polish + publish |

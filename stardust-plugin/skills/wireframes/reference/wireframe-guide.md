@@ -1,27 +1,20 @@
 # Wireframe Guide
 
-Wireframes are visual HTML pages that show page layout and content structure. They are unconstrained by EDS blocks — the designer thinks in terms of what they SEE, not how it's coded.
+Wireframes are low-fidelity HTML pages that show page **structure** only — section order, relative sizing, content density, spatial relationships. Visual design (colors, fonts, proportions) is intentionally absent; it belongs to `/stardust:design`.
 
-## Two Fidelity Modes
+## Styling — Grey Mode Only
 
-### Grey Mode (no design system yet)
-- Pure grey layout: boxes, bars, shapes
-- No brand colors, no real fonts
-- Shows: section order, relative sizing, content density, spatial relationships
-- Background: light grey (#f5f5f5), elements in shades of grey
-- Placeholder text as grey bars, images as grey rectangles with labels
+Wireframes at this stage are **always grey**. No brand colors, no real fonts, no polish.
 
-### Branded Mode (design system present)
-- Same structure as grey mode but styled with brand tokens
-- Read `stardust/design-tokens.json` for colors, fonts, spacing
-- Use actual brand typography for headings
-- Use brand colors for backgrounds, accents, CTAs
-- Still placeholder content (grey bars for body text) but with real visual identity
+- Background: `#f5f5f5`.
+- Section blocks, tiles, and cards in shades of grey (`#e5e5e5`, `#d0d0d0`, `#bbb`).
+- Typography: `system-ui, sans-serif`. No web fonts.
+- Placeholder text renders as grey bars at the height of real text (don't fake-type Lorem ipsum — structural bars make relative sizing easier to judge).
+- Images render as grey rectangles with a label (e.g., "HERO IMAGE 16:9").
+- Buttons: dark grey rectangles with a light grey label. All one shape. No colored CTAs.
+- The absence of visual design is a feature: it forces the reviewer to evaluate structure on its own.
 
-### Mode Selection
-- Check if `stardust/design-tokens.json` exists
-- If yes: branded mode
-- If no: grey mode
+If you catch yourself reaching for `brand-profile.json` to color something, stop. That work belongs to `/stardust:design`.
 
 ## HTML Structure
 

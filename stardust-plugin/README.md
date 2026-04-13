@@ -6,12 +6,21 @@ A skill-based pipeline for creating AEM Edge Delivery Services websites from bra
 
 | Skill | Purpose |
 |-------|---------|
+**Design phase (EDS-agnostic):**
+
 | `/stardust` | Navigator — assess project state, recommend next step |
 | `/stardust:brand` | Extract brand from guidelines → visual brand board |
-| `/stardust:design-system` | Translate brand tokens → EDS CSS |
-| `/stardust:experience` | Briefing + wireframe → visual page blueprints |
-| `/stardust:build` | Map wireframes → EDS blocks + generate pages |
-| `/stardust:refine` | Designer-driven refinement + publish |
+| `/stardust:briefings` | Capture page intent (standalone — no brand dependency) |
+| `/stardust:wireframes` | Optional — grey structural wireframes from briefings |
+| `/stardust:design` | Branded, high-fidelity HTML designs (iterated in the browser) |
+
+**EDS phase (implementation):**
+
+| `/stardust:eds-design` | Derive EDS CSS from approved designs + brand |
+| `/stardust:eds-build` | Map designs → EDS blocks + generate pages |
+| `/stardust:eds-refine` | Designer-driven refinement + publish |
+
+Brand and briefings are independent — run either first, or both in parallel. Wireframes are optional.
 
 ## Dependencies
 
@@ -24,10 +33,13 @@ Requires these peer plugins:
 ## Pipeline
 
 ```
-Brand → Design System → Experience Design → Build → Refine
+       ┌─ brand ──────────────────────────┐
+start ─┤                                   ├─→ design → eds-design → eds-build → eds-refine
+       └─ briefings → (wireframes?) ──────┘
+                        optional
 ```
 
-Each stage is independently invocable. The navigator (`/stardust`) guides non-technical users through the flow. Experts invoke stages directly.
+Brand and briefings are independent — run either first, or both in parallel. Wireframes are an optional grey structural pass; users can skip straight to `design`. Each stage is independently invocable. The navigator (`/stardust`) guides non-technical users through the flow. Experts invoke stages directly.
 
 ## Artifacts
 
