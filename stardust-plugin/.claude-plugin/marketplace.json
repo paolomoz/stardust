@@ -1,7 +1,8 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "stardust",
   "metadata": {
-    "description": "Skill-based pipeline for creating AEM Edge Delivery Services websites from brand guidelines. Composes superpowers, impeccable, and Adobe EDS skills."
+    "description": "One-stop marketplace for Stardust: an AEM Edge Delivery Services pipeline that composes brand, design, and implementation skills. Bundles Stardust plus its peer plugins (superpowers, impeccable, aem-edge-delivery-services) and the eds-site-builder skills it depends on, so users install everything from one place."
   },
   "owner": {
     "name": "Paolo Mottadelli",
@@ -20,6 +21,94 @@
       "skills": "./skills/",
       "category": "design",
       "tags": ["aem", "eds", "edge-delivery", "brand", "design-system", "pipeline"]
+    },
+    {
+      "name": "superpowers",
+      "description": "Process methodology: brainstorming, subagent-driven development, systematic debugging, TDD, plan writing. Required by Stardust for /brainstorm, /write-plan, /verification, /code-review.",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/obra/superpowers.git"
+      },
+      "homepage": "https://github.com/obra/superpowers"
+    },
+    {
+      "name": "impeccable",
+      "description": "Design vocabulary and quality gates: 18 commands (/polish, /distill, /audit, /typeset, /colorize, /shape, /bolder, /quieter, /delight, /craft, /critique, …) plus the impeccable skill. Required by Stardust for design personality capture and refinement loops.",
+      "category": "design",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pbakaus/impeccable.git"
+      },
+      "homepage": "https://impeccable.style"
+    },
+    {
+      "name": "aem-edge-delivery-services",
+      "description": "Official Adobe skills for AEM Edge Delivery Services development — block authoring, content modeling, import, testing. Required by Stardust for EDS-native block and page patterns.",
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "adobe/skills",
+        "path": "skills/aem/edge-delivery-services",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/adobe/skills"
+    },
+    {
+      "name": "eds-brand-design",
+      "description": "Brand extraction, design token management, and CSS generation. Provides brand-extractor, brand-css-generator, figma-token-sync, design-system-extractor. Used by /stardust:brand (PDF fallback) and /stardust:eds-design (CSS seeding).",
+      "category": "design",
+      "source": {
+        "source": "git-subdir",
+        "url": "paolomoz/skills",
+        "path": ".",
+        "ref": "main"
+      },
+      "skills": [
+        "./skills/brand-extractor",
+        "./skills/brand-css-generator",
+        "./skills/figma-token-sync",
+        "./skills/design-system-extractor"
+      ],
+      "homepage": "https://github.com/paolomoz/skills"
+    },
+    {
+      "name": "eds-page-generation",
+      "description": "AI-powered web page creation and content pipelines. Provides generative-page-pipeline, ai-image-generator, da-content-pipeline, conversational-page-builder. Used by /stardust:eds-build and /stardust:eds-refine publishing.",
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "paolomoz/skills",
+        "path": ".",
+        "ref": "main"
+      },
+      "skills": [
+        "./skills/generative-page-pipeline",
+        "./skills/ai-image-generator",
+        "./skills/da-content-pipeline",
+        "./skills/conversational-page-builder"
+      ],
+      "homepage": "https://github.com/paolomoz/skills"
+    },
+    {
+      "name": "eds-audit",
+      "description": "Website auditing and performance analysis: pagespeed-audit, accessibility-auditor, site-auditor, block-detector. Used by /stardust:eds-refine for Core Web Vitals checks on preview URLs.",
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "paolomoz/skills",
+        "path": ".",
+        "ref": "main"
+      },
+      "skills": [
+        "./skills/pagespeed-audit",
+        "./skills/accessibility-auditor",
+        "./skills/site-auditor",
+        "./skills/block-detector"
+      ],
+      "homepage": "https://github.com/paolomoz/skills"
     }
   ]
 }
+</content>
+</invoke>
